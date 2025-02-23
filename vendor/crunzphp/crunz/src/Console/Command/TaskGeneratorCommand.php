@@ -20,7 +20,7 @@ class TaskGeneratorCommand extends Command
      *
      * @var array<string,string>
      */
-    public const DEFAULTS = [
+    final public const DEFAULTS = [
         'frequency' => 'everyThirtyMinutes',
         'constraint' => 'weekdays',
         'in' => 'path/to/your/command',
@@ -36,8 +36,8 @@ class TaskGeneratorCommand extends Command
     protected $stub;
 
     public function __construct(
-        private ConfigurationInterface $config,
-        private FilesystemInterface $filesystem
+        private readonly ConfigurationInterface $config,
+        private readonly FilesystemInterface $filesystem,
     ) {
         parent::__construct();
     }
@@ -186,11 +186,14 @@ class TaskGeneratorCommand extends Command
      */
     protected function outputFile()
     {
+        /** @var string $suffix */
         $suffix = $this->config
             ->get('suffix')
         ;
+        /** @var string $taskFile */
+        $taskFile = $this->arguments['taskfile'];
 
-        return \preg_replace('/Tasks|\.php$/', '', $this->arguments['taskfile']) . $suffix;
+        return \preg_replace('/Tasks|\.php$/', '', $taskFile) . $suffix;
     }
 
     /**
@@ -243,33 +246,37 @@ class TaskGeneratorCommand extends Command
         return $this;
     }
 
-    /**
-     * Replace command.
-     */
     protected function replaceCommand(): self
     {
-        $this->stub = \str_replace('DummyCommand', $this->options['run'], $this->stub);
+        $run = $this->optionString('run');
+        $this->stub = \str_replace('DummyCommand', $run, $this->stub);
 
         return $this;
     }
 
-    /**
-     * Replace path.
-     */
     protected function replacePath(): self
     {
-        $this->stub = \str_replace('DummyPath', $this->options['in'], $this->stub);
+        $in = $this->optionString('in');
+        $this->stub = \str_replace('DummyPath', $in, $this->stub);
 
         return $this;
     }
 
-    /**
-     * Replace description.
-     */
     protected function replaceDescription(): self
     {
-        $this->stub = \str_replace('DummyDescription', $this->options['description'], $this->stub);
+        $description = $this->optionString('description');
+        $this->stub = \str_replace('DummyDescription', $description, $this->stub);
 
         return $this;
+    }
+
+    private function optionString(string $name): string
+    {
+        $option = $this->options[$name] ?? throw new \RuntimeException("Missing option '{$name}'.");
+        if (false === \is_string($option)) {
+            throw new \RuntimeException("Option must be of type 'string'.");
+        }
+
+        return $option;
     }
 }

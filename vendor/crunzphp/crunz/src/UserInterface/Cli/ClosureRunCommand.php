@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ClosureRunCommand extends SymfonyCommand
 {
-    public function __construct(private ClosureSerializerInterface $closureSerializer)
+    public function __construct(private readonly ClosureSerializerInterface $closureSerializer)
     {
         parent::__construct();
     }
@@ -45,8 +45,13 @@ class ClosureRunCommand extends SymfonyCommand
         /** @var string $closure */
         $closure = $input->getArgument('closure');
         \parse_str($closure, $args);
+        $serializedClosure = $args[0] ?? '';
+        if (false === \is_string($serializedClosure)) {
+            $serializedClosure = '';
+        }
+
         $closure = $this->closureSerializer
-            ->unserialize($args[0] ?? '')
+            ->unserialize($serializedClosure)
         ;
 
         \call_user_func_array($closure, []);

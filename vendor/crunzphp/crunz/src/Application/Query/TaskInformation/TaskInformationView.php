@@ -7,16 +7,16 @@ namespace Crunz\Application\Query\TaskInformation;
 final class TaskInformationView
 {
     /** @var \DateTimeImmutable[] */
-    private array $nextRuns;
+    private readonly array $nextRuns;
 
     public function __construct(
-        private string|object $command,
-        private string $description,
-        private string $cronExpression,
-        private bool $preventOverlapping,
-        private ?\DateTimeZone $timeZone,
-        private \DateTimeZone $configTimeZone,
-        \DateTimeImmutable ...$nextRuns
+        private readonly string|object $command,
+        private readonly string $description,
+        private readonly string $cronExpression,
+        private readonly bool $preventOverlapping,
+        private readonly ?\DateTimeZone $timeZone,
+        private readonly \DateTimeZone $configTimeZone,
+        \DateTimeImmutable ...$nextRuns,
     ) {
         $this->nextRuns = $nextRuns;
     }

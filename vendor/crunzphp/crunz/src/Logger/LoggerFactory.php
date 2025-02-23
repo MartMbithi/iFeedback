@@ -15,14 +15,11 @@ class LoggerFactory
 {
     private ?LoggerFactoryInterface $loggerFactory = null;
 
-    /**
-     * @throws \Exception if the timezone supplied in configuration is not recognised as a valid timezone
-     */
     public function __construct(
-        private ConfigurationInterface $configuration,
-        private Timezone $timezoneProvider,
-        private ConsoleLoggerInterface $consoleLogger,
-        private ClockInterface $clock
+        private readonly ConfigurationInterface $configuration,
+        private readonly Timezone $timezoneProvider,
+        private readonly ConsoleLoggerInterface $consoleLogger,
+        private readonly ClockInterface $clock,
     ) {
     }
 
@@ -77,7 +74,7 @@ class LoggerFactory
     private function createLoggerFactory(
         ConfigurationInterface $configuration,
         Timezone $timezoneProvider,
-        ClockInterface $clock
+        ClockInterface $clock,
     ): LoggerFactoryInterface {
         $params = [];
         $loggerFactoryClass = $configuration->get('logger_factory');

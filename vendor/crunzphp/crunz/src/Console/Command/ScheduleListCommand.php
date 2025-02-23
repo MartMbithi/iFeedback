@@ -25,9 +25,9 @@ class ScheduleListCommand extends \Symfony\Component\Console\Command\Command
     ];
 
     public function __construct(
-        private ConfigurationInterface $configuration,
-        private CollectionInterface $taskCollection,
-        private LoaderInterface $taskLoader
+        private readonly ConfigurationInterface $configuration,
+        private readonly CollectionInterface $taskCollection,
+        private readonly LoaderInterface $taskLoader,
     ) {
         parent::__construct();
     }
@@ -156,7 +156,7 @@ class ScheduleListCommand extends \Symfony\Component\Console\Command\Command
     private function printList(
         OutputInterface $output,
         array $tasks,
-        string $format
+        string $format,
     ): void {
         switch ($format) {
             case self::FORMAT_TEXT:

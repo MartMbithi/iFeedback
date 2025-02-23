@@ -12,29 +12,20 @@ final class FallbackHttpClient implements HttpClientInterface
     private $httpClient;
 
     public function __construct(
-        private StreamHttpClient $streamHttpClient,
-        private CurlHttpClient $curlHttpClient,
-        private ConsoleLoggerInterface $consoleLogger
+        private readonly StreamHttpClient $streamHttpClient,
+        private readonly CurlHttpClient $curlHttpClient,
+        private readonly ConsoleLoggerInterface $consoleLogger,
     ) {
     }
 
-    /**
-     * @param string $url
-     *
-     * @throws HttpClientException
-     */
     public function ping($url): void
     {
         $httpClient = $this->chooseHttpClient();
         $httpClient->ping($url);
     }
 
-    /**
-     * @return HttpClientInterface
-     *
-     * @throws HttpClientException
-     */
-    private function chooseHttpClient()
+    /** @throws HttpClientException */
+    private function chooseHttpClient(): HttpClientInterface
     {
         if (null !== $this->httpClient) {
             return $this->httpClient;

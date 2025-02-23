@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Crunz;
 
+use Crunz\CacheDirectoryFactory\CacheDirectoryFactory;
 use Crunz\Console\Command\ConfigGeneratorCommand;
 use Crunz\Console\Command\ScheduleListCommand;
 use Crunz\Console\Command\ScheduleRunCommand;
@@ -59,12 +60,14 @@ class Application extends SymfonyApplication
     ];
 
     private Container $container;
-    private EnvFlags $envFlags;
+    private readonly EnvFlags $envFlags;
+    private readonly CacheDirectoryFactory $cacheDirectoryFactory;
 
     public function __construct(string $appName, string $appVersion)
     {
         parent::__construct($appName, $appVersion);
 
+        $this->cacheDirectoryFactory = new CacheDirectoryFactory();
         $this->envFlags = new EnvFlags();
 
         $this->initializeContainer();
@@ -169,7 +172,7 @@ class Application extends SymfonyApplication
         ConfigCache $cache,
         ContainerBuilder $container,
         string $class,
-        string $baseClass
+        string $baseClass,
     ): void {
         $dumper = new PhpDumper($container);
 
@@ -208,19 +211,9 @@ class Application extends SymfonyApplication
         return \is_writable($baseCacheDir);
     }
 
-    /**
-     * @return string
-     */
-    private function getBaseCacheDir()
+    private function getBaseCacheDir(): string
     {
-        $baseCacheDir = Path::create(
-            [
-                \sys_get_temp_dir(),
-                '.crunz',
-            ]
-        );
-
-        return $baseCacheDir->toString();
+        return $this->cacheDirectoryFactory->generate()->toString();
     }
 
     /**
@@ -257,7 +250,7 @@ class Application extends SymfonyApplication
                 int $errorNumber,
                 string $errorString,
                 string $file,
-                int $line
+                int $line,
             ) use ($io): bool {
                 $io->block(
                     "{$errorString} File {$file}, line {$line}",

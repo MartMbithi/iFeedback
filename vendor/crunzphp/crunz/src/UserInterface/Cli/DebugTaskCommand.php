@@ -18,7 +18,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class DebugTaskCommand extends Command
 {
-    public function __construct(private TaskInformationHandler $taskInformationHandler)
+    public function __construct(private readonly TaskInformationHandler $taskInformationHandler)
     {
         parent::__construct('task:debug');
     }
@@ -53,7 +53,7 @@ final class DebugTaskCommand extends Command
     private function createTable(
         TaskInformationView $taskInformation,
         OutputInterface $output,
-        TaskNumber $taskNumber
+        TaskNumber $taskNumber,
     ): Table {
         $command = $taskInformation->command();
         $timeZone = $taskInformation->timeZone();
