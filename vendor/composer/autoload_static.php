@@ -169,8 +169,8 @@ class ComposerStaticInitf81d80c49603f5681bc0bef7f301cdbc
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -215,7 +215,6 @@ class ComposerStaticInitf81d80c49603f5681bc0bef7f301cdbc
         'Crunz\\' => 
         array (
             0 => __DIR__ . '/..' . '/crunzphp/crunz/src',
-            1 => __DIR__ . '/..' . '/lavary/crunz/src',
         ),
         'Cron\\' => 
         array (
