@@ -15,12 +15,9 @@ class Mailer
 {
     /** @var SymfonyMailer|null */
     protected $mailer;
-    /** @var ConfigurationInterface */
-    private $configuration;
 
-    public function __construct(ConfigurationInterface $configuration)
+    public function __construct(private ConfigurationInterface $configuration)
     {
-        $this->configuration = $configuration;
     }
 
     /**
@@ -114,8 +111,7 @@ class Mailer
         return $messageObject;
     }
 
-    /** @return mixed */
-    private function config(string $key)
+    private function config(string $key): mixed
     {
         return $this->configuration
             ->get($key)

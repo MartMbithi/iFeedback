@@ -11,12 +11,15 @@
 
 namespace Symfony\Component\Lock\Store;
 
+use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Exception as DBALException;
 use Doctrine\DBAL\Exception\TableNotFoundException;
 use Doctrine\DBAL\ParameterType;
+use Doctrine\DBAL\Schema\DefaultSchemaManagerFactory;
 use Doctrine\DBAL\Schema\Schema;
+use Doctrine\DBAL\Tools\DsnParser;
 use Symfony\Component\Lock\Exception\InvalidArgumentException;
 use Symfony\Component\Lock\Exception\InvalidTtlException;
 use Symfony\Component\Lock\Exception\LockConflictedException;
@@ -28,7 +31,7 @@ use Symfony\Component\Lock\PersistingStoreInterface;
  *
  * Lock metadata are stored in a table. You can use createTable() to initialize
  * a correctly defined table.
-
+ *
  * CAUTION: This store relies on all client and server nodes to have
  * synchronized clocks for lock expiry to occur at the correct time.
  * To ensure locks don't expire prematurely; the TTLs should be set with enough
@@ -66,14 +69,35 @@ class DoctrineDbalStore implements PersistingStoreInterface
             $this->conn = $connOrUrl;
         } else {
             if (!class_exists(DriverManager::class)) {
-                throw new InvalidArgumentException(sprintf('Failed to parse the DSN "%s". Try running "composer require doctrine/dbal".', $connOrUrl));
+                throw new InvalidArgumentException('Failed to parse the DSN. Try running "composer require doctrine/dbal".');
             }
-            $this->conn = DriverManager::getConnection(['url' => $connOrUrl]);
+            if (class_exists(DsnParser::class)) {
+                $params = (new DsnParser([
+                    'db2' => 'ibm_db2',
+                    'mssql' => 'pdo_sqlsrv',
+                    'mysql' => 'pdo_mysql',
+                    'mysql2' => 'pdo_mysql',
+                    'postgres' => 'pdo_pgsql',
+                    'postgresql' => 'pdo_pgsql',
+                    'pgsql' => 'pdo_pgsql',
+                    'sqlite' => 'pdo_sqlite',
+                    'sqlite3' => 'pdo_sqlite',
+                ]))->parse($connOrUrl);
+            } else {
+                $params = ['url' => $connOrUrl];
+            }
+
+            $config = new Configuration();
+            if (class_exists(DefaultSchemaManagerFactory::class)) {
+                $config->setSchemaManagerFactory(new DefaultSchemaManagerFactory());
+            }
+
+            $this->conn = DriverManager::getConnection($params, $config);
         }
     }
 
     /**
-     * {@inheritdoc}
+     * @return void
      */
     public function save(Key $key)
     {
@@ -115,7 +139,7 @@ class DoctrineDbalStore implements PersistingStoreInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return void
      */
     public function putOffExpiration(Key $key, $ttl)
     {
@@ -149,7 +173,7 @@ class DoctrineDbalStore implements PersistingStoreInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return void
      */
     public function delete(Key $key)
     {
@@ -159,9 +183,6 @@ class DoctrineDbalStore implements PersistingStoreInterface
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function exists(Key $key): bool
     {
         $sql = "SELECT 1 FROM $this->table WHERE $this->idCol = ? AND $this->tokenCol = ? AND $this->expirationCol > {$this->getCurrentTimestampStatement()}";
@@ -193,10 +214,18 @@ class DoctrineDbalStore implements PersistingStoreInterface
 
     /**
      * Adds the Table to the Schema if it doesn't exist.
+     *
+     * @param \Closure $isSameDatabase
      */
-    public function configureSchema(Schema $schema): void
+    public function configureSchema(Schema $schema/* , \Closure $isSameDatabase */): void
     {
         if ($schema->hasTable($this->table)) {
+            return;
+        }
+
+        $isSameDatabase = 1 < \func_num_args() ? func_get_arg(1) : static fn () => true;
+
+        if (!$isSameDatabase($this->conn->executeStatement(...))) {
             return;
         }
 

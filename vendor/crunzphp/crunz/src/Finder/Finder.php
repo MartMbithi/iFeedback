@@ -8,9 +8,6 @@ use Crunz\Path\Path;
 
 final class Finder implements FinderInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function find(Path $directory, $suffix)
     {
         $quotedSuffix = \preg_quote($suffix, '/');
@@ -26,9 +23,7 @@ final class Finder implements FinderInterface
 
         /** @var \SplFileInfo[] $files */
         $files = \array_map(
-            static function (array $file) {
-                return new \SplFileInfo(\reset($file));
-            },
+            static fn (array $file) => new \SplFileInfo(\reset($file)),
             \iterator_to_array($regexIterator)
         );
 

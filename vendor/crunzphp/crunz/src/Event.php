@@ -64,14 +64,7 @@ class Event implements PingableInterface
      */
     public $logger;
 
-    /**
-     * The event's unique identifier.
-     *
-     * @var string|int
-     */
-    protected $id;
-
-    /** @var string|Closure */
+    /** @var string|\Closure */
     protected $command;
 
     /**
@@ -94,6 +87,16 @@ class Event implements PingableInterface
      * @var \DateTimeZone|string
      */
     protected $timezone;
+
+    /**
+     * Datetime or time since the task is evaluated and possibly executed only for display purposes.
+     */
+    protected \DateTime|string|null $from = null;
+
+    /**
+     * Datetime or time until the task is evaluated and possibly executed only for display purposes.
+     */
+    protected \DateTime|string|null $to = null;
 
     /**
      * The user the command should run as.
@@ -152,14 +155,11 @@ class Event implements PingableInterface
 
     /**
      * Indicates if the command should not overlap itself.
-     *
-     * @var bool
      */
-    private $preventOverlapping = false;
+    private bool $preventOverlapping = false;
     /** @var ClockInterface */
     private static $clock;
-    /** @var ClosureSerializerInterface|null */
-    private static $closureSerializer = null;
+    private static ?ClosureSerializerInterface $closureSerializer = null;
 
     /**
      * The symfony lock factory that is used to acquire locks. If the value is null, but preventOverlapping = true
@@ -169,22 +169,21 @@ class Event implements PingableInterface
      */
     private $lockFactory;
     /** @var string[] */
-    private $wholeOutput = [];
+    private array $wholeOutput = [];
     /** @var Lock */
     private $lock;
     /** @var \Closure[] */
-    private $errorCallbacks = [];
+    private array $errorCallbacks = [];
 
     /**
      * Create a new event instance.
      *
-     * @param string|Closure $command
-     * @param string|int     $id
+     * @param string|\Closure $command
+     * @param string|int      $id
      */
-    public function __construct($id, $command)
+    public function __construct(protected $id, $command)
     {
         $this->command = $command;
-        $this->id = $id;
         $this->output = $this->getDefaultOutput();
     }
 
@@ -246,13 +245,13 @@ class Event implements PingableInterface
     }
 
     /**
-     * Determine whether the passed value is a closure ot not.
+     * Determine whether the passed value is a closure or not.
      *
      * @return bool
      */
     public function isClosure()
     {
-        return \is_object($this->command) && ($this->command instanceof Closure);
+        return \is_object($this->command) && ($this->command instanceof \Closure);
     }
 
     /**
@@ -262,7 +261,7 @@ class Event implements PingableInterface
      */
     public function isDue(\DateTimeZone $timeZone)
     {
-        return $this->expressionPasses($timeZone) && $this->filtersPass();
+        return $this->expressionPasses($timeZone) && $this->filtersPass($timeZone);
     }
 
     /**
@@ -270,7 +269,7 @@ class Event implements PingableInterface
      *
      * @return bool
      */
-    public function filtersPass()
+    public function filtersPass(\DateTimeZone $timeZone)
     {
         $invoker = new Invoker();
 
@@ -281,7 +280,7 @@ class Event implements PingableInterface
         }
 
         foreach ($this->rejects as $callback) {
-            if ($invoker->call($callback)) {
+            if ($invoker->call($callback, [$timeZone])) {
                 return false;
             }
         }
@@ -393,9 +392,7 @@ class Event implements PingableInterface
         $segments = \array_intersect_key($parsedDate, $this->fieldsPosition);
 
         if ($parsedDate['year']) {
-            $this->skip(static function () use ($parsedDate) {
-                return (int) \date('Y') !== $parsedDate['year'];
-            });
+            $this->skip(static fn () => (int) \date('Y') !== $parsedDate['year']);
         }
 
         foreach ($segments as $key => $value) {
@@ -460,9 +457,11 @@ class Event implements PingableInterface
      */
     public function from($datetime)
     {
-        return $this->skip(function () use ($datetime) {
-            return $this->notYet($datetime);
-        });
+        $this->from = $datetime;
+
+        return $this->skip(
+            fn (\DateTimeZone $timeZone) => $this->notYet($datetime, $timeZone)
+        );
     }
 
     /**
@@ -474,9 +473,11 @@ class Event implements PingableInterface
      */
     public function to($datetime)
     {
-        return $this->skip(function () use ($datetime) {
-            return $this->past($datetime);
-        });
+        $this->to = $datetime;
+
+        return $this->skip(
+            fn (\DateTimeZone $timeZone) => $this->past($datetime, $timeZone),
+        );
     }
 
     /**
@@ -606,10 +607,8 @@ class Event implements PingableInterface
 
     /**
      * Set the days of the week the command should run on.
-     *
-     * @param mixed $days
      */
-    public function days($days): self
+    public function days(mixed $days): self
     {
         $days = \is_array($days) ? $days : \func_get_args();
 
@@ -618,10 +617,8 @@ class Event implements PingableInterface
 
     /**
      * Set hour for the cron job.
-     *
-     * @param mixed $value
      */
-    public function hour($value): self
+    public function hour(mixed $value): self
     {
         $value = \is_array($value) ? $value : \func_get_args();
 
@@ -630,10 +627,8 @@ class Event implements PingableInterface
 
     /**
      * Set minute for the cron job.
-     *
-     * @param mixed $value
      */
-    public function minute($value): self
+    public function minute(mixed $value): self
     {
         $value = \is_array($value) ? $value : \func_get_args();
 
@@ -642,10 +637,8 @@ class Event implements PingableInterface
 
     /**
      * Set hour for the cron job.
-     *
-     * @param mixed $value
      */
-    public function dayOfMonth($value): self
+    public function dayOfMonth(mixed $value): self
     {
         $value = \is_array($value) ? $value : \func_get_args();
 
@@ -654,10 +647,8 @@ class Event implements PingableInterface
 
     /**
      * Set hour for the cron job.
-     *
-     * @param mixed $value
      */
-    public function month($value): self
+    public function month(mixed $value): self
     {
         $value = \is_array($value) ? $value : \func_get_args();
 
@@ -666,10 +657,8 @@ class Event implements PingableInterface
 
     /**
      * Set hour for the cron job.
-     *
-     * @param mixed $value
      */
-    public function dayOfWeek($value): self
+    public function dayOfWeek(mixed $value): self
     {
         $value = \is_array($value) ? $value : \func_get_args();
 
@@ -718,11 +707,11 @@ class Event implements PingableInterface
      *
      * @return $this
      */
-    public function preventOverlapping(object $store = null)
+    public function preventOverlapping(?object $store = null)
     {
         if (null !== $store && !($store instanceof PersistingStoreInterface)) {
             $expectedClass = PersistingStoreInterface::class;
-            $actualClass = \get_class($store);
+            $actualClass = $store::class;
 
             throw new \RuntimeException(
                 "Instance of '{$expectedClass}' is expected, '{$actualClass}' provided"
@@ -758,7 +747,7 @@ class Event implements PingableInterface
      *
      * @return $this
      */
-    public function when(Closure $callback)
+    public function when(\Closure $callback)
     {
         $this->filters[] = $callback;
 
@@ -770,7 +759,7 @@ class Event implements PingableInterface
      *
      * @return $this
      */
-    public function skip(Closure $callback)
+    public function skip(\Closure $callback)
     {
         $this->rejects[] = $callback;
 
@@ -811,7 +800,7 @@ class Event implements PingableInterface
      *
      * @return $this
      */
-    public function before(Closure $callback)
+    public function before(\Closure $callback)
     {
         $this->beforeCallbacks[] = $callback;
 
@@ -823,7 +812,7 @@ class Event implements PingableInterface
      *
      * @return $this
      */
-    public function after(Closure $callback)
+    public function after(\Closure $callback)
     {
         return $this->then($callback);
     }
@@ -833,7 +822,7 @@ class Event implements PingableInterface
      *
      * @return $this
      */
-    public function then(Closure $callback)
+    public function then(\Closure $callback)
     {
         $this->afterCallbacks[] = $callback;
 
@@ -936,6 +925,22 @@ class Event implements PingableInterface
     public function getExpression()
     {
         return $this->expression;
+    }
+
+    /**
+     * Get the 'from' configuration for the event if present.
+     */
+    public function getFrom(): \DateTime|string|null
+    {
+        return $this->from;
+    }
+
+    /**
+     * Get the 'to' configuration for the event if present.
+     */
+    public function getTo(): \DateTime|string|null
+    {
+        return $this->to;
     }
 
     /**
@@ -1149,7 +1154,7 @@ class Event implements PingableInterface
      *
      * @return string
      */
-    protected function serializeClosure(Closure $closure)
+    protected function serializeClosure(\Closure $closure)
     {
         $closure = $this->closureSerializer()
             ->serialize($closure)
@@ -1192,24 +1197,26 @@ class Event implements PingableInterface
      * Check if time hasn't arrived.
      *
      * @param string $datetime
-     *
-     * @return bool
      */
-    protected function notYet($datetime)
+    protected function notYet($datetime, \DateTimeZone $timeZone): bool
     {
-        return \time() < \strtotime($datetime);
+        $timeZonedNow = $this->timeZonedNow($timeZone);
+        $testedDateTime = new \DateTimeImmutable($datetime, $timeZone);
+
+        return $timeZonedNow < $testedDateTime;
     }
 
     /**
      * Check if the time has passed.
      *
      * @param string $datetime
-     *
-     * @return bool
      */
-    protected function past($datetime)
+    protected function past($datetime, \DateTimeZone $timeZone): bool
     {
-        return \time() > \strtotime($datetime);
+        $timeZonedNow = $this->timeZonedNow($timeZone);
+        $testedDateTime = new \DateTimeImmutable($datetime, $timeZone);
+
+        return $timeZonedNow > $testedDateTime;
     }
 
     /**
@@ -1254,7 +1261,7 @@ class Event implements PingableInterface
         $lock->acquire();
     }
 
-    private function addErrorCallback(Closure $closure): void
+    private function addErrorCallback(\Closure $closure): void
     {
         $this->errorCallbacks[] = $closure;
     }
@@ -1270,7 +1277,7 @@ class Event implements PingableInterface
     /**
      * @return FlockStore
      *
-     * @throws Exception\CrunzException
+     * @throws CrunzException
      */
     private function createDefaultLockStore()
     {
@@ -1283,7 +1290,7 @@ class Event implements PingableInterface
             );
 
             $store = new FlockStore($lockPath->toString());
-        } catch (InvalidArgumentException $exception) {
+        } catch (InvalidArgumentException) {
             // Fallback to system temp dir
             $lockPath = Path::create([\sys_get_temp_dir()]);
             $store = new FlockStore($lockPath->toString());
@@ -1343,5 +1350,13 @@ class Event implements PingableInterface
         );
 
         return 'WIN' === $osCode;
+    }
+
+    private function timeZonedNow(\DateTimeZone $timeZone): \DateTimeImmutable
+    {
+        $clock = $this->getClock();
+        $now = $clock->now();
+
+        return $now->setTimezone($timeZone);
     }
 }

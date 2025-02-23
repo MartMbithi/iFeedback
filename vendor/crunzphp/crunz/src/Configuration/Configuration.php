@@ -12,25 +12,17 @@ final class Configuration implements ConfigurationInterface
 {
     /** @var array<string,mixed> */
     private $config;
-    /** @var ConfigurationParserInterface */
-    private $configurationParser;
-    /** @var FilesystemInterface */
-    private $filesystem;
 
-    public function __construct(ConfigurationParserInterface $configurationParser, FilesystemInterface $filesystem)
-    {
-        $this->configurationParser = $configurationParser;
-        $this->filesystem = $filesystem;
+    public function __construct(
+        private ConfigurationParserInterface $configurationParser,
+        private FilesystemInterface $filesystem
+    ) {
     }
 
     /**
      * Return a parameter based on a key.
-     *
-     * @param mixed $default
-     *
-     * @return mixed
      */
-    public function get(string $key, $default = null)
+    public function get(string $key, mixed $default = null): mixed
     {
         if (null === $this->config) {
             $this->config = $this->configurationParser
@@ -57,10 +49,8 @@ final class Configuration implements ConfigurationInterface
 
     /**
      * Set a parameter based on key/value.
-     *
-     * @param mixed $value
      */
-    public function withNewEntry(string $key, $value): ConfigurationInterface
+    public function withNewEntry(string $key, mixed $value): ConfigurationInterface
     {
         $newConfiguration = clone $this;
 

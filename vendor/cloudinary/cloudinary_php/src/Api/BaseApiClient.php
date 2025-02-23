@@ -28,13 +28,11 @@ use Cloudinary\Utils;
 use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Promise;
+use GuzzleHttp\Promise\Create;
 use GuzzleHttp\Promise\PromiseInterface;
 use InvalidArgumentException;
 use JsonSerializable;
 use Psr\Http\Message\ResponseInterface;
-use Teapot\StatusCode\Http as HttpStatusCode;
-use Teapot\StatusCode\Vendor\Twitter as TwitterStatusCode;
 
 /**
  * Class BaseApiClient
@@ -46,11 +44,6 @@ class BaseApiClient
     use LoggerTrait;
 
     /**
-     * @var string Cloudinary API version
-     */
-    const API_VERSION = '1.1';
-
-    /**
      * @var array Cloudinary API Error Classes mapping between http error codes and Cloudinary exceptions
      */
     const CLOUDINARY_API_ERROR_CLASSES
@@ -60,7 +53,7 @@ class BaseApiClient
             HttpStatusCode::FORBIDDEN             => NotAllowed::class,
             HttpStatusCode::NOT_FOUND             => NotFound::class,
             HttpStatusCode::CONFLICT              => AlreadyExists::class,
-            TwitterStatusCode::ENHANCE_YOUR_CALM  => RateLimited::class, // RFC6585::TOO_MANY_REQUESTS
+            HttpStatusCode::ENHANCE_YOUR_CALM     => RateLimited::class, // RFC6585::TOO_MANY_REQUESTS
             HttpStatusCode::INTERNAL_SERVER_ERROR => GeneralError::class,
         ];
 
@@ -277,13 +270,15 @@ class BaseApiClient
     /**
      * Gets the API version string from the version.
      *
+     * @param string $apiVersion The API version in the form Major.minor (for example: 1.1).
+     *
      * @return string API version string
      *
      * @internal
      */
-    public static function apiVersion()
+    public static function apiVersion($apiVersion = ApiConfig::DEFAULT_API_VERSION)
     {
-        return 'v' . str_replace('.', '_', self::API_VERSION);
+        return 'v' . str_replace('.', '_', $apiVersion);
     }
 
     /**
@@ -317,7 +312,11 @@ class BaseApiClient
      */
     protected function callAsync($method, $endPoint, $options)
     {
-        $endPoint = self::finalizeEndPoint($endPoint);
+        $endPoint           = self::finalizeEndPoint($endPoint);
+        $options['headers'] = ArrayUtils::mergeNonEmpty(
+            ArrayUtils::get($options, 'headers', []),
+            ArrayUtils::get($options, 'extra_headers', [])
+        );
         $this->getLogger()->debug("Making async $method request", ['method' => $method, 'endPoint' => $endPoint]);
 
         return $this
@@ -330,7 +329,7 @@ class BaseApiClient
                         ['statusCode' => $response->getStatusCode()]
                     );
                     try {
-                        return Promise\promise_for($this->handleApiResponse($response));
+                        return Create::promiseFor($this->handleApiResponse($response));
                     } catch (Exception $e) {
                         $this->getLogger()->critical(
                             'Async request failed',
@@ -340,7 +339,7 @@ class BaseApiClient
                             ]
                         );
 
-                        return Promise\rejection_for($e);
+                        return Create::rejectionFor($e);
                     }
                 },
                 function (Exception $error) {
@@ -352,10 +351,10 @@ class BaseApiClient
                         ]
                     );
                     if ($error instanceof ClientException) {
-                        return Promise\rejection_for($this->handleApiResponse($error->getResponse()));
+                        return Create::rejectionFor($this->handleApiResponse($error->getResponse()));
                     }
 
-                    return Promise\rejection_for($error);
+                    return Create::rejectionFor($error);
                 }
             );
     }

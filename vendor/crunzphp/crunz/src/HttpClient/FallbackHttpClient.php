@@ -8,23 +8,14 @@ use Crunz\Logger\ConsoleLoggerInterface;
 
 final class FallbackHttpClient implements HttpClientInterface
 {
-    /** @var StreamHttpClient */
-    private $streamHttpClient;
-    /** @var CurlHttpClient */
-    private $curlHttpClient;
     /** @var HttpClientInterface|null */
     private $httpClient;
-    /** @var ConsoleLoggerInterface */
-    private $consoleLogger;
 
     public function __construct(
-        StreamHttpClient $streamHttpClient,
-        CurlHttpClient $curlHttpClient,
-        ConsoleLoggerInterface $consoleLogger
+        private StreamHttpClient $streamHttpClient,
+        private CurlHttpClient $curlHttpClient,
+        private ConsoleLoggerInterface $consoleLogger
     ) {
-        $this->streamHttpClient = $streamHttpClient;
-        $this->curlHttpClient = $curlHttpClient;
-        $this->consoleLogger = $consoleLogger;
     }
 
     /**
@@ -74,7 +65,7 @@ final class FallbackHttpClient implements HttpClientInterface
             ->debug('<error>Choosing HttpClient implementation failed.</error>');
 
         throw new HttpClientException(
-            "Unable to choose HttpClient. Enable cURL extension (preffered) or turn on 'allow_url_fopen' in php.ini."
+            "Unable to choose HttpClient. Enable cURL extension (preferred) or turn on 'allow_url_fopen' in php.ini."
         );
     }
 }

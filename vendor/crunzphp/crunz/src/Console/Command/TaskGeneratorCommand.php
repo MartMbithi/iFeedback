@@ -34,16 +34,11 @@ class TaskGeneratorCommand extends Command
      * @var string
      */
     protected $stub;
-    /** @var ConfigurationInterface */
-    private $config;
-    /** @var FilesystemInterface */
-    private $filesystem;
 
-    public function __construct(ConfigurationInterface $configuration, FilesystemInterface $filesystem)
-    {
-        $this->config = $configuration;
-        $this->filesystem = $filesystem;
-
+    public function __construct(
+        private ConfigurationInterface $config,
+        private FilesystemInterface $filesystem
+    ) {
         parent::__construct();
     }
 
@@ -109,12 +104,7 @@ class TaskGeneratorCommand extends Command
             ->setHelp('This command makes a task file skeleton.');
     }
 
-    /**
-     * Executes the current command.
-     *
-     * @return int|null null or 0 if everything went fine, or an error code
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->input = $input;
         $this->output = $output;
@@ -180,7 +170,7 @@ class TaskGeneratorCommand extends Command
             ->getSourcePath()
         ;
         $destination = $this->ask('Where do you want to save the file? (Press enter for the current directory)');
-        $outputPath = null !== $destination ? $destination : $source;
+        $outputPath = $destination ?? $source;
 
         if (!\file_exists($outputPath)) {
             \mkdir($outputPath, 0744, true);

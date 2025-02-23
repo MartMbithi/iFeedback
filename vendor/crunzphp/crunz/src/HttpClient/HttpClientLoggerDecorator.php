@@ -8,20 +8,10 @@ use Crunz\Logger\ConsoleLoggerInterface;
 
 final class HttpClientLoggerDecorator implements HttpClientInterface
 {
-    /** @var HttpClientInterface */
-    private $httpClient;
-    /** @var ConsoleLoggerInterface */
-    private $logger;
-
-    public function __construct(HttpClientInterface $httpClient, ConsoleLoggerInterface $logger)
+    public function __construct(private HttpClientInterface $httpClient, private ConsoleLoggerInterface $logger)
     {
-        $this->httpClient = $httpClient;
-        $this->logger = $logger;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function ping($url): void
     {
         $this->logger

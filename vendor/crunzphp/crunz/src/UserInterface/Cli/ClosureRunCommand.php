@@ -12,13 +12,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ClosureRunCommand extends SymfonyCommand
 {
-    /** @var ClosureSerializerInterface */
-    private $closureSerializer;
-
-    public function __construct(ClosureSerializerInterface $closureSerializer)
+    public function __construct(private ClosureSerializerInterface $closureSerializer)
     {
-        $this->closureSerializer = $closureSerializer;
-
         parent::__construct();
     }
 
@@ -44,8 +39,7 @@ class ClosureRunCommand extends SymfonyCommand
         ;
     }
 
-    /** {@inheritdoc} */
-    protected function execute(InputInterface $input, OutputInterface $output): ?int
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $args = [];
         /** @var string $closure */
