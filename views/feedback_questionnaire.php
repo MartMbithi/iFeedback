@@ -67,7 +67,6 @@
 
 session_start();
 require_once('../config/config.php');
-require_once('../helpers/feedbacks.php');
 require_once('../partials/backoffice_head.php');
 ?>
 
@@ -82,7 +81,7 @@ require_once('../partials/backoffice_head.php');
                                 <img class="logo-dark logo-img logo-img-lg" src="../public/images/logo.png" srcset="../public/images/logo.png 2x" alt="logo-dark">
                                 <div class="nk-block-des">
                                     <h5 class="">
-                                        <br> Proceed to submit a compliment, kindly select a directorate and subsequent department <br>
+                                        <br> Kindly fill all the required fields to submit your feedback<br>
                                     </h5>
                                 </div>
                             </div>
@@ -92,7 +91,7 @@ require_once('../partials/backoffice_head.php');
                                 <div class="nk-block">
                                     <div class="row g-gs">
                                         <div class="col-md-12">
-                                            <input type="hidden" name="feedback_type" value="Compliment">
+                                            <input type="hidden" name="feedback_type" value="Complain">
                                             <label for="directorate" class="form-label">Choose Directorate:</label>
                                             <select id="directorate" name="feedback_directorate" class="form-select" onchange="updateDepartments()">
                                                 <option value="">Select directorate</option>
@@ -109,7 +108,7 @@ require_once('../partials/backoffice_head.php');
                             </div>
                             <div class="d-flex justify-content-end">
                                 <a href="../" class="btn btn-primary mt-3"> <em class="icon ni ni-first"></em> Back</a> &nbsp; &nbsp;
-                                <button type="submit" name="Step_One" class="btn btn-primary mt-3"> Next <em class="icon ni ni-last"></em> </button>
+                                <button type="submit" name="Step_One" class="btn btn-primary mt-3">Next <em class="icon ni ni-last"></em> </button>
                             </div>
                         </form>
                     </div>

@@ -65,63 +65,24 @@
  *
  */
 
-session_start();
-require_once('../config/config.php');
-require_once('../helpers/feedbacks.php');
-require_once('../partials/backoffice_head.php');
-?>
+/* Step One */
+if (isset($_POST['Step_One'])) {
+    $feedback_type = mysqli_real_escape_string($mysqli, $_POST['feedback_type']);
+    $feedback_directorate = mysqli_real_escape_string($mysqli, $_POST['feedback_directorate']);
+    $feedback_department = mysqli_real_escape_string($mysqli, $_POST['feedback_department']);
 
-<body class="nk-body npc-subscription has-aside ui-clean ">
-    <div class="nk-content ">
-        <div class="container-fluid">
-            <div class="nk-content-inner">
-                <div class="nk-content-body">
-                    <div class="content-page wide-md m-auto">
-                        <div class="nk-block-head nk-block-head-lg wide-xs mx-auto">
-                            <div class="nk-block-head-content text-center">
-                                <img class="logo-dark logo-img logo-img-lg" src="../public/images/logo.png" srcset="../public/images/logo.png 2x" alt="logo-dark">
-                                <div class="nk-block-des">
-                                    <h5 class="">
-                                        <br> Proceed to submit a compliment, kindly select a directorate and subsequent department <br>
-                                    </h5>
-                                </div>
-                            </div>
-                        </div><!-- .nk-block-head -->
-                        <form method="post" enctype="multipart/form-data">
-                            <div class="nk-block">
-                                <div class="nk-block">
-                                    <div class="row g-gs">
-                                        <div class="col-md-12">
-                                            <input type="hidden" name="feedback_type" value="Compliment">
-                                            <label for="directorate" class="form-label">Choose Directorate:</label>
-                                            <select id="directorate" name="feedback_directorate" class="form-select" onchange="updateDepartments()">
-                                                <option value="">Select directorate</option>
-                                                <option value="Administration">Administration</option>
-                                                <option value="Quality Control Lab">Quality Control Lab</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label for="department" class="form-label">Choose Department:</label>
-                                            <select id="department" name="feedback_department" class="form-select"></select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <a href="../" class="btn btn-primary mt-3"> <em class="icon ni ni-first"></em> Back</a> &nbsp; &nbsp;
-                                <button type="submit" name="Step_One" class="btn btn-primary mt-3"> Next <em class="icon ni ni-last"></em> </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- app-root @e -->
-    <!-- JavaScript -->
-    <?php require_once('../partials/backoffice_scripts.php'); ?>
-</body>
-
-
-</html>
+    /* Persist This And Set The Mood Right */
+    if (mysqli_query(
+        $mysqli,
+        "INSERT INTO feedbacks (feedback_type, feedback_directorate, feedback_department) 
+        VALUES ('{$feedback_type}', '{$feedback_directorate}', '{$feedback_department}')"
+    )) {
+        $feedback_id = mysqli_insert_id($mysqli);
+        $_SESSION['feedback_id'] = $feedback_id;
+        $_SESSION['success'] = 'Submitted Successfully, Proceed to filling the next step';
+        header('Location: feedback_questionnaire');
+        exit;
+    } else {
+        $err = "Failed, please try again";
+    }
+}

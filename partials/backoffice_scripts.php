@@ -12,3 +12,16 @@
 
 <!-- Init Js -->
 <?php include('../partials/alert.php'); ?>
+<script defer>
+    function updateDepartments() {
+        const directorate = document.getElementById('directorate').value;
+        const department = document.getElementById('department');
+        department.innerHTML = '';
+        const options = directorate === 'Administration' ? ['Transport', 'Security', 'Finance'] : ['Testing', 'Analysis'];
+        options.forEach(dep => {
+            let opt = document.createElement('option');
+            opt.innerHTML = dep;
+            department.appendChild(opt);
+        });
+    }
+</script>

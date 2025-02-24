@@ -67,6 +67,7 @@
 
 session_start();
 require_once('../config/config.php');
+require_once('../helpers/feedbacks.php');
 require_once('../partials/backoffice_head.php');
 ?>
 
@@ -93,15 +94,15 @@ require_once('../partials/backoffice_head.php');
                                         <div class="col-md-12">
                                             <input type="hidden" name="feedback_type" value="Complain">
                                             <label for="directorate" class="form-label">Choose Directorate:</label>
-                                            <select id="directorate" class="form-select" onchange="updateDepartments()">
+                                            <select id="directorate" name="feedback_directorate" class="form-select" onchange="updateDepartments()">
                                                 <option value="">Select directorate</option>
-                                                <option value="administration">Administration</option>
-                                                <option value="quality_control">Quality Control Lab</option>
+                                                <option value="Administration">Administration</option>
+                                                <option value="Quality Control Lab">Quality Control Lab</option>
                                             </select>
                                         </div>
                                         <div class="col-md-12">
                                             <label for="department" class="form-label">Choose Department:</label>
-                                            <select id="department" class="form-select"></select>
+                                            <select id="department" name="feedback_department" class="form-select"></select>
                                         </div>
                                     </div>
                                 </div>
@@ -120,20 +121,6 @@ require_once('../partials/backoffice_head.php');
     <!-- app-root @e -->
     <!-- JavaScript -->
     <?php require_once('../partials/backoffice_scripts.php'); ?>
-    <script defer>
-        function updateDepartments() {
-            const directorate = document.getElementById('directorate').value;
-            const department = document.getElementById('department');
-            department.innerHTML = '';
-            const options = directorate === 'administration' ? ['Transport', 'Security', 'Finance'] : ['Testing', 'Analysis'];
-            options.forEach(dep => {
-                let opt = document.createElement('option');
-                opt.value = dep.toLowerCase();
-                opt.innerHTML = dep;
-                department.appendChild(opt);
-            });
-        }
-    </script>
 </body>
 
 
