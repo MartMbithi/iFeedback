@@ -248,6 +248,84 @@ require_once('../partials/backoffice_head.php');
                                 </div>
                             </form>
                         <?php } else if ($_GET['page'] == '3') { ?>
+                            <form method="post" enctype="multipart/form-data">
+                                <div class="nk-block">
+                                    <div class="nk-block">
+                                        <div class="row g-gs">
+                                            <div class="col-md-12">
+                                                <input type="hidden" name="feedback_id" value="<?php echo $_SESSION['feedback_id']; ?>">
+                                                <fieldset class="border col-12 border p-3 rounded ">
+                                                    <legend class="w-auto text-danger">Section 3: Efficiency and Timeliness</legend>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">1. How satisfied are you with the time it took to complete your transaction or request? <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_et1" value="Very Satisfied"> Very Satisfied</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et1" value="Satisfied"> Satisfied</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et1" value="Neutral"> Neutral</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et1" value="Dissatisfied"> Dissatisfied</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et1" value="Very Dissatisfied"> Very Dissatisfied</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">2. Were there any unnecessary delays in the service delivery process?
+                                                                <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_et2" value="Very Efficient">Very Efficient</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et2" value="Efficient"> Efficient</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et2" value="Neutral"> Neutral</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et2" value="Inefficient"> Inefficient</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et2" value="Very Inefficient"> Very Inefficient</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">3. How would you rate the efficiency of the processes at the office? <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_et3" value="Very Efficient">Very Efficient</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et3" value="Efficient"> Efficient</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et3" value="Neutral"> Neutral</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et3" value="Inefficient"> Inefficient</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et3" value="Very Inefficient"> Very Inefficient</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">4. Were you informed of any waiting times or delays in advance? <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_et4" value="Very Satisfied"> Very Satisfied</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et4" value="Satisfied"> Satisfied</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et4" value="Neutral"> Neutral</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et4" value="Dissatisfied"> Dissatisfied</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et4" value="Very Dissatisfied"> Very Dissatisfied</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">5. Did the office meet the promised deadlines for your requests? <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_et5" value="Strongly Agree"> Strongly Agree</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et5" value="Agree"> Agree</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et5" value="Neutral"> Neutral</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et5" value="Disagree"> Disagree</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_et5" value="Strongly Disagree"> Strongly Disagree</label>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" name="Step_Five" class="btn btn-primary mt-3">Save and proceed <em class="icon ni ni-last"></em> </button>
+                                    </div>
+                                </div>
+                            </form>
                         <?php } else if ($_GET['page'] == '4') { ?>
                         <?php } else if ($_GET['page'] == '5') { ?>
                         <?php }  ?>
