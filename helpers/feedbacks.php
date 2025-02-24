@@ -80,7 +80,7 @@ if (isset($_POST['Step_One'])) {
         $feedback_id = mysqli_insert_id($mysqli);
         $_SESSION['feedback_id'] = $feedback_id;
         $_SESSION['success'] = 'Submitted Successfully, Proceed to filling the next step';
-        header('Location: feedback_questionnaire');
+        header('Location: feedback_questionnaire?page=1');
         exit;
     } else {
         $err = "Failed, please try again";
@@ -90,26 +90,37 @@ if (isset($_POST['Step_One'])) {
 
 /* Step Two */
 if (isset($_POST['Step_Three'])) {
-    $feedback_id = mysqli_real_escape_string($mysqli, $_POST['feedback_id']);
-    $feedback_gsd1 = mysqli_real_escape_string($mysqli, $_POST['feedback_gsd1']);
-    $feedback_gsd2 = mysqli_real_escape_string($mysqli, $_POST['feedback_gsd2']);
-    $feedback_gsd3 = mysqli_real_escape_string($mysqli, $_POST['feedback_gsd3']);
-    $feedback_gsd4 = mysqli_real_escape_string($mysqli, $_POST['feedback_gsd4']);
-    $feedback_gsd5 = mysqli_real_escape_string($mysqli, $_POST['feedback_gsd5']);
+    /* Prevent Nulls */
+    if (
+        empty($_POST['feedback_gsd1']) ||
+        empty($_POST['feedback_gsd2']) ||
+        empty($_POST['feedback_gsd3']) ||
+        empty($_POST['feedback_gsd4']) ||
+        empty($_POST['feedback_gsd5'])
+    ) {
+        $err = "Kindly fill all required fields";
+    } else {
+        $feedback_id = mysqli_real_escape_string($mysqli, $_POST['feedback_id']);
+        $feedback_gsd1 = mysqli_real_escape_string($mysqli, $_POST['feedback_gsd1']);
+        $feedback_gsd2 = mysqli_real_escape_string($mysqli, $_POST['feedback_gsd2']);
+        $feedback_gsd3 = mysqli_real_escape_string($mysqli, $_POST['feedback_gsd3']);
+        $feedback_gsd4 = mysqli_real_escape_string($mysqli, $_POST['feedback_gsd4']);
+        $feedback_gsd5 = mysqli_real_escape_string($mysqli, $_POST['feedback_gsd5']);
 
-    /* Update */
-    if (mysqli_query(
-        $mysqli,
-        "UPDATE feedbacks SET feedback_gsd1 = '{$feedback_gsd1}', feedback_gsd2 = '{$feedback_gsd2}', 
+        /* Update */
+        if (mysqli_query(
+            $mysqli,
+            "UPDATE feedbacks SET feedback_gsd1 = '{$feedback_gsd1}', feedback_gsd2 = '{$feedback_gsd2}', 
         feedback_gsd3 = '{$feedback_gsd3}', feedback_gsd4 = '{$feedback_gsd4}', feedback_gsd5 = '{$feedback_gsd5}'
         WHERE feedback_id = '{$feedback_id}'"
-    )) {
-        $feedback_id = mysqli_insert_id($mysqli);
-        $_SESSION['feedback_id'] = $feedback_id;
-        $_SESSION['success'] = 'Submitted Successfully, Proceed to filling the next step';
-        header('Location: feedback_questionnaire_two');
-        exit;
-    } else {
-        $err = "Failed, please try again";
+        )) {
+            $feedback_id = mysqli_insert_id($mysqli);
+            $_SESSION['feedback_id'] = $feedback_id;
+            $_SESSION['success'] = 'Submitted Successfully, Proceed to filling the next step';
+            header('Location: feedback_questionnaire?page=2');
+            exit;
+        } else {
+            $err = "Failed, please try again";
+        }
     }
 }
