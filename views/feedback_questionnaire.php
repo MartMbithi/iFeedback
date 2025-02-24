@@ -410,6 +410,75 @@ require_once('../partials/backoffice_head.php');
                                 </div>
                             </form>
                         <?php } else if ($_GET['page'] == '5') { ?>
+                            <form method="post" enctype="multipart/form-data">
+                                <div class="nk-block">
+                                    <div class="nk-block">
+                                        <div class="row g-gs">
+                                            <div class="col-md-12">
+                                                <input type="hidden" name="feedback_id" value="<?php echo $_SESSION['feedback_id']; ?>">
+                                                <fieldset class="border col-12 border p-3 rounded ">
+                                                    <legend class="w-auto text-danger">Section 5: Improvement Suggestions</legend>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">
+                                                                1. What improvements would you suggest to enhance service delivery at the Pharmacy
+                                                                and Poisons Board office?
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <textarea name="feedback_is1" class="form-control" rows="3" required></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">
+                                                                2. Were there any specific challenges you faced during your visit or interaction with the
+                                                                office?
+                                                                <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <textarea name="feedback_is2" class="form-control" rows="3" required></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">3. What additional services or information would you like the office to provide? <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <textarea name="feedback_is3" class="form-control" rows="3" required></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">4.How likely are you to recommend the Pharmacy and Poisons Board Kenya office to
+                                                                others? <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_ac4" value="Very Likely"> Very Likely</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac4" value="Likely"> Likely</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac4" value="Neutral"> Neutral</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac4" value="Unlikely"> Unlikely</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac4" value="Very Unlikely"> Very Unlikely</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">5. Any other comments or feedback you would like to share? <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <textarea name="feedback_is3" class="form-control" rows="3" required></textarea>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" name="Step_Seven" class="btn btn-primary mt-3">Save and Submit <em class="icon ni ni-last"></em> </button>
+                                    </div>
+                                </div>
+                            </form>
                         <?php }  ?>
                     </div>
                 </div>
