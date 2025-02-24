@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="author" content="DevTeam - martin.mbithi@makueni.go.ke">
+    <meta name="author" content="Devlan Solutions LTD">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="@@page-discription">
     <!-- Fav Icon  -->
@@ -11,12 +11,11 @@
     <link rel="icon" href="../public/images/small-logo.png" type="image/x-icon">
     <!-- Page Title  -->
     <title>
-        Government of Makueni County - Horticulture Produce & Products Dealers
-        Registration Portal
+        Pharmacy and Poisons Board - Feedback MIS
     </title> <!-- StyleSheets  -->
-    <link rel="stylesheet" href="../public/backoffice/css/dashlite.css?ver=1.4.0">
-    <link id="skin-default" rel="stylesheet" href="../public/backoffice/css/theme.css?ver=1.4.0">
-    <link rel="stylesheet" href="../public/backoffice/js/libs/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="../public/css/dashlite.css?ver=1.4.0">
+    <link id="skin-default" rel="stylesheet" href="../public/css/theme.css?ver=1.4.0">
+    <link rel="stylesheet" href="../public/js/libs/sweetalert2/sweetalert2.min.css">
     <?php
     /* Alert Sesion Via Alerts */
     if (isset($_SESSION['success'])) {
@@ -29,7 +28,4 @@
         unset($_SESSION['err']);
     }
     ?>
-
-    <!-- Google Tags -->
-
 </head>
