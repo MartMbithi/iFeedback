@@ -91,24 +91,64 @@ require_once('../partials/backoffice_head.php');
                                 <div class="nk-block">
                                     <div class="row g-gs">
                                         <div class="col-md-12">
-                                            <input type="hidden" name="feedback_type" value="Complain">
-                                            <label for="directorate" class="form-label">Choose Directorate:</label>
-                                            <select id="directorate" name="feedback_directorate" class="form-select" onchange="updateDepartments()">
-                                                <option value="">Select directorate</option>
-                                                <option value="Administration">Administration</option>
-                                                <option value="Quality Control Lab">Quality Control Lab</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label for="department" class="form-label">Choose Department:</label>
-                                            <select id="department" name="feedback_department" class="form-select"></select>
+                                            <input type="hidden" name="feedback_id" value="<?php echo $_SESSION['feedback_id']; ?>">
+                                            <fieldset class="border col-12 border p-3 rounded ">
+                                                <legend class="w-auto text-danger">Section 1: General Service Delivery</legend>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label for="service_delivery">1. How would you rate our service delivery? <span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label><input type="radio" name="feedback_gsd1" value="Excellent"> Excellent</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd1" value="Good"> Good</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd1" value="Average"> Average</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd1" value="Poor"> Poor</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd1" value="Very Poor"> Very Poor</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label for="service_delivery">2. Were your concerns or inquiries addressed promptly and effectively? <span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label><input type="radio" name="feedback_gsd2" value="Strongly Agree"> Strongly Agree</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd2" value="Agree"> Agree</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd2" value="Neutral"> Neutral</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd2" value="Disagree"> Disagree</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd2" value="Strongly Disagree"> Strongly Disagree</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label for="service_delivery">3. How satisfied are you with the clarity of information provided by the staff? <span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label><input type="radio" name="feedback_gsd3" value="Very Satisfied"> Very Satisfied</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd3" value="Satisfied"> Satisfied</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd3" value="Neutral"> Neutral</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd3" value="Dissatisfied"> Dissatisfiedd</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd3" value="Very Dissatisfied"> Very Dissatisfied</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label for="service_delivery">4. Did you find the office environment clean, organized, and professional? <span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label><input type="radio" name="feedback_gsd4" value="Strongly Agree"> Strongly Agree</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd4" value="Agree"> Agree</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd4" value="Neutral"> Neutral</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd4" value="Disagree"> Disagree</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd4" value="Strongly Disagree"> Strongly Disagree</label>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <a href="../" class="btn btn-primary mt-3"> <em class="icon ni ni-first"></em> Back</a> &nbsp; &nbsp;
-                                <button type="submit" name="Step_One" class="btn btn-primary mt-3">Next <em class="icon ni ni-last"></em> </button>
+                                <div class="d-flex justify-content-end">
+                                    <button type="submit" name="Step_Two" class="btn btn-primary mt-3">Submit <em class="icon ni ni-last"></em> </button>
+                                </div>
                             </div>
                         </form>
                     </div>
