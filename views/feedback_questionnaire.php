@@ -455,11 +455,11 @@ require_once('../partials/backoffice_head.php');
                                                                 others? <span class="text-danger">*</span></label>
                                                         </div>
                                                         <div class="col-md-12">
-                                                            <label><input type="radio" name="feedback_ac4" value="Very Likely"> Very Likely</label> &nbsp;
-                                                            <label><input type="radio" name="feedback_ac4" value="Likely"> Likely</label> &nbsp;
-                                                            <label><input type="radio" name="feedback_ac4" value="Neutral"> Neutral</label> &nbsp;
-                                                            <label><input type="radio" name="feedback_ac4" value="Unlikely"> Unlikely</label> &nbsp;
-                                                            <label><input type="radio" name="feedback_ac4" value="Very Unlikely"> Very Unlikely</label>
+                                                            <label><input type="radio" name="feedback_is4" value="Very Likely"> Very Likely</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_is4" value="Likely"> Likely</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_is4" value="Neutral"> Neutral</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_is4" value="Unlikely"> Unlikely</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_is4" value="Very Unlikely"> Very Unlikely</label>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -467,7 +467,7 @@ require_once('../partials/backoffice_head.php');
                                                             <label for="service_delivery">5. Any other comments or feedback you would like to share? <span class="text-danger">*</span></label>
                                                         </div>
                                                         <div class="col-md-12">
-                                                            <textarea name="feedback_is3" class="form-control" rows="3" required></textarea>
+                                                            <textarea name="feedback_is5" class="form-control" rows="3" required></textarea>
                                                         </div>
                                                     </div>
                                                 </fieldset>
