@@ -91,6 +91,7 @@ require_once('../partials/backoffice_head.php');
                                 <div class="nk-block">
                                     <div class="row g-gs">
                                         <div class="col-md-12">
+                                            <input type="hidden" name="feedback_type" value="Complain">
                                             <label for="directorate" class="form-label">Choose Directorate:</label>
                                             <select id="directorate" class="form-select" onchange="updateDepartments()">
                                                 <option value="">Select directorate</option>
@@ -106,8 +107,8 @@ require_once('../partials/backoffice_head.php');
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <a href="../" class="btn btn-primary mt-3">Back</a> &nbsp; &nbsp;
-                                <button type="submit" class="btn btn-primary mt-3">Next</button>
+                                <a href="../" class="btn btn-primary mt-3"> <em class="icon ni ni-first"></em> Back</a> &nbsp; &nbsp;
+                                <button type="submit" name="Step_One" class="btn btn-primary mt-3">Next <em class="icon ni ni-last"></em> </button>
                             </div>
                         </form>
                     </div>
