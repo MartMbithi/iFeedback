@@ -327,6 +327,88 @@ require_once('../partials/backoffice_head.php');
                                 </div>
                             </form>
                         <?php } else if ($_GET['page'] == '4') { ?>
+                            <form method="post" enctype="multipart/form-data">
+                                <div class="nk-block">
+                                    <div class="nk-block">
+                                        <div class="row g-gs">
+                                            <div class="col-md-12">
+                                                <input type="hidden" name="feedback_id" value="<?php echo $_SESSION['feedback_id']; ?>">
+                                                <fieldset class="border col-12 border p-3 rounded ">
+                                                    <legend class="w-auto text-danger">Section 4: Accessibility and Convenience</legend>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">
+                                                                1. How easy was it to locate the Pharmacy and Poisons Board office?
+                                                                <span class="text-danger">*</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_ac1" value="Very Easy"> Very Easy</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac1" value="Easy"> Easy</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac1" value="Neutral"> Neutral</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac1" value="Difficult"> Difficult</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac1" value="Very Difficult"> Very Difficult</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">2. Were the office facilities accessible and user-friendly (e.g., signage, seating, and
+                                                                waiting areas)?
+                                                                <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_ac2" value="Excellent">Excellent</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac2" value="Good"> Good</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac2" value="Neutral"> Neutral</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac2" value="Poor"> Poor</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac2" value="Very Poor"> Very Poor</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">3. How would you rate the availability of online services? <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_ac3" value="Excellent">Excellent</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac3" value="Good"> Good</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac3" value="Neutral"> Neutral</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac3" value="Poor"> Poor</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac3" value="Very Poor"> Very Poor</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">4. Were you able to access the information or services you needed without difficulty? <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_ac4" value="Very Easy"> Very Easy</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac4" value="Easy"> Easy</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac4" value="Neutral"> Neutral</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac4" value="Difficult"> Difficult</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac4" value="Very Difficult"> Very Difficult</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">5. How convenient was the payment process? <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_ac5" value="Very Convenient"> Very Convenient</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac5" value="Convenient"> Convenient</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac5" value="Neutral"> Neutral</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac5" value="Inconvenient"> Inconvenient</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_ac5" value="Very Inconvenient"> Very Inconvenient</label>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" name="Step_Six" class="btn btn-primary mt-3">Save and proceed <em class="icon ni ni-last"></em> </button>
+                                    </div>
+                                </div>
+                            </form>
                         <?php } else if ($_GET['page'] == '5') { ?>
                         <?php }  ?>
                     </div>
