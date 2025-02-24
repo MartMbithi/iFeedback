@@ -34,4 +34,3 @@ Disallow:
 User-agent: *
 Disallow: 
 Disallow: /cgi-bin/
-Sitemap: https://pmts.makueni.go.ke/sitemap.xml
