@@ -162,3 +162,36 @@ if (isset($_POST['Step_Four'])) {
 
 
 /* Step 4 */
+if (isset($_POST['Step_Five'])) {
+    if (
+        empty($_POST['feedback_et1']) ||
+        empty($_POST['feedback_et2']) ||
+        empty($_POST['feedback_et3']) ||
+        empty($_POST['feedback_et4']) ||
+        empty($_POST['feedback_et5'])
+    ) {
+        $err = "Kindly fill all required fields";
+    } else {
+        $feedback_id = mysqli_real_escape_string($mysqli, $_POST['feedback_id']);
+        $feedback_et1 = mysqli_real_escape_string($mysqli, $_POST['feedback_et1']);
+        $feedback_et2 = mysqli_real_escape_string($mysqli, $_POST['feedback_et2']);
+        $feedback_et3 = mysqli_real_escape_string($mysqli, $_POST['feedback_et3']);
+        $feedback_et4 = mysqli_real_escape_string($mysqli, $_POST['feedback_et4']);
+        $feedback_et5 = mysqli_real_escape_string($mysqli, $_POST['feedback_et5']);
+
+        /* Persist */
+        if (mysqli_query(
+            $mysqli,
+            "UPDATE feedbacks SET feedback_et1 = '{$feedback_et1}', feedback_et2 = '{$feedback_et2}',
+            feedback_et3 = '{$feedback_et3}', feedback_et4 = '{$feedback_et4}', feedback_et5 = '{$feedback_et5}'
+            WHERE feedback_id = '{$feedback_id}'"
+        )) {
+            $_SESSION['feedback_id'] = $feedback_id;
+            $_SESSION['success'] = 'Submitted Successfully, Proceed to filling the next step';
+            header('Location: feedback_questionnaire?page=4');
+            exit;
+        } else {
+            $err = "Failed, please try again";
+        }
+    }
+}
