@@ -166,6 +166,87 @@ require_once('../partials/backoffice_head.php');
                                 </div>
                             </form>
                         <?php } else if ($_GET['page'] == '2') { ?>
+                            <form method="post" enctype="multipart/form-data">
+                                <div class="nk-block">
+                                    <div class="nk-block">
+                                        <div class="row g-gs">
+                                            <div class="col-md-12">
+                                                <input type="hidden" name="feedback_id" value="<?php echo $_SESSION['feedback_id']; ?>">
+                                                <fieldset class="border col-12 border p-3 rounded ">
+                                                    <legend class="w-auto text-danger">Section 2: Staff Interaction</legend>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">1. How would you rate the professionalism and courtesy of the staff? <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_si1" value="Excellent"> Excellent</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si1" value="Good"> Good</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si1" value="Average"> Average</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si1" value="Poor"> Poor</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si1" value="Very Poor"> Very Poor</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">2. Were the staff members knowledgeable and able to answer your questions
+                                                                adequately?
+                                                                <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_si2" value="Strongly Agree"> Strongly Agree</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si2" value="Agree"> Agree</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si2" value="Neutral"> Neutral</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si2" value="Disagree"> Disagree</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si2" value="Strongly Disagree"> Strongly Disagree</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">3. Did you feel treated with respect and fairness during your interaction with the staff? <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_si3" value="Very Satisfied"> Very Satisfied</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si3" value="Satisfied"> Satisfied</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si3" value="Neutral"> Neutral</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si3" value="Dissatisfied"> Dissatisfiedd</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si3" value="Very Dissatisfied"> Very Dissatisfied</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">4. How would you rate the communication skills of the staff (e.g., clarity, patience, and
+                                                                willingness to help)? <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_si4" value="Excellent"> Excellent</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si4" value="Good"> Good</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si4" value="Average"> Average</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si4" value="Poor"> Poor</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si4" value="Very Poor"> Very Poor</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <label for="service_delivery">5.Were you able to easily identify the appropriate staff member to assist with your
+                                                                needs? <span class="text-danger">*</span></label>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label><input type="radio" name="feedback_si5" value="Strongly Agree"> Strongly Agree</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si5" value="Agree"> Agree</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si5" value="Neutral"> Neutral</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si5" value="Disagree"> Disagree</label> &nbsp;
+                                                            <label><input type="radio" name="feedback_si5" value="Strongly Disagree"> Strongly Disagree</label>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" name="Step_Four" class="btn btn-primary mt-3">Save and proceed <em class="icon ni ni-last"></em> </button>
+                                    </div>
+                                </div>
+                            </form>
                         <?php } else if ($_GET['page'] == '3') { ?>
                         <?php } else if ($_GET['page'] == '4') { ?>
                         <?php } else if ($_GET['page'] == '5') { ?>

@@ -114,10 +114,45 @@ if (isset($_POST['Step_Three'])) {
         feedback_gsd3 = '{$feedback_gsd3}', feedback_gsd4 = '{$feedback_gsd4}', feedback_gsd5 = '{$feedback_gsd5}'
         WHERE feedback_id = '{$feedback_id}'"
         )) {
-            $feedback_id = mysqli_insert_id($mysqli);
             $_SESSION['feedback_id'] = $feedback_id;
             $_SESSION['success'] = 'Submitted Successfully, Proceed to filling the next step';
             header('Location: feedback_questionnaire?page=2');
+            exit;
+        } else {
+            $err = "Failed, please try again";
+        }
+    }
+}
+
+
+/* Step Three */
+if (isset($_POST['Step_Four'])) {
+    if (
+        empty($_POST['feedback_si1']) ||
+        empty($_POST['feedback_si2']) ||
+        empty($_POST['feedback_si3']) ||
+        empty($_POST['feedback_si4']) ||
+        empty($_POST['feedback_si5'])
+    ) {
+        $err = "Kindly fill all required fields";
+    } else {
+        $feedback_id = mysqli_real_escape_string($mysqli, $_POST['feedback_id']);
+        $feedback_si1 = mysqli_real_escape_string($mysqli, $_POST['feedback_si1']);
+        $feedback_si2 = mysqli_real_escape_string($mysqli, $_POST['feedback_si2']);
+        $feedback_si3 = mysqli_real_escape_string($mysqli, $_POST['feedback_si3']);
+        $feedback_si4 = mysqli_real_escape_string($mysqli, $_POST['feedback_si4']);
+        $feedback_si5 = mysqli_real_escape_string($mysqli, $_POST['feedback_si5']);
+
+        /* Persist */
+        if (mysqli_query(
+            $mysqli,
+            "UPDATE feedbacks SET feedback_si1 = '{$feedback_si1}', feedback_si2 = '{$feedback_si2}',
+        feedback_si3 = '{$feedback_si3}', feedback_si4 = '{$feedback_si4}', feedback_si5 = '{$feedback_si5}'
+        WHERE feedback_id = '{$feedback_id}'"
+        )) {
+            $_SESSION['feedback_id'] = $feedback_id;
+            $_SESSION['success'] = 'Submitted Successfully, Proceed to filling the next step';
+            header('Location: feedback_questionnaire?page=3');
             exit;
         } else {
             $err = "Failed, please try again";
