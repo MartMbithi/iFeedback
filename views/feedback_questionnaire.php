@@ -142,12 +142,24 @@ require_once('../partials/backoffice_head.php');
                                                         <label><input type="radio" name="feedback_gsd4" value="Strongly Disagree"> Strongly Disagree</label>
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label for="service_delivery">5. Were the operating hours convenient for your needs? <span class="text-danger">*</span></label>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label><input type="radio" name="feedback_gsd5" value="Strongly Agree"> Strongly Agree</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd5" value="Agree"> Agree</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd5" value="Neutral"> Neutral</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd5" value="Disagree"> Disagree</label> &nbsp;
+                                                        <label><input type="radio" name="feedback_gsd5" value="Strongly Disagree"> Strongly Disagree</label>
+                                                    </div>
+                                                </div>
                                             </fieldset>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-end">
-                                    <button type="submit" name="Step_Two" class="btn btn-primary mt-3">Submit <em class="icon ni ni-last"></em> </button>
+                                    <button type="submit" name="Step_Three" class="btn btn-primary mt-3">Save and proceed <em class="icon ni ni-last"></em> </button>
                                 </div>
                             </div>
                         </form>
