@@ -105,7 +105,7 @@ require_once('../partials/backoffice_head.php');
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-end">
-                                            <button class="btn btn-primary mt-3" onclick="nextPage('questions')">Next</button>
+                                            <button type="submit" class="btn btn-primary mt-3">Next</button>
                                         </div>
                                     </form>
                                 </div>
