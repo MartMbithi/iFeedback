@@ -106,8 +106,8 @@ require_once('../partials/backoffice_head.php');
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
-                                <a href="../" class="btn btn-primary mt-3">Back</a> &nbsp; &nbsp;
-                                <button type="submit" class="btn btn-primary mt-3">Next</button>
+                                <a href="../" class="btn btn-primary mt-3"> <em class="icon ni ni-first"></em> Back</a> &nbsp; &nbsp;
+                                <button type="submit" class="btn btn-primary mt-3"> <em class="icon ni ni-save"></em> Next</button>
                             </div>
                         </form>
                     </div>
