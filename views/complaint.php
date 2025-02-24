@@ -86,31 +86,29 @@ require_once('../partials/backoffice_head.php');
                                 </div>
                             </div>
                         </div><!-- .nk-block-head -->
-                        <div class="nk-block">
+                        <form method="post" enctype="multipart/form-data">
                             <div class="nk-block">
-                                <div class="row g-gs">
-                                    <form method="post" enctype="multipart/form-data">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="directorate" class="form-label">Choose Directorate:</label>
-                                                <select id="directorate" class="form-select" onchange="updateDepartments()">
-                                                    <option value="">Select directorate</option>
-                                                    <option value="administration">Administration</option>
-                                                    <option value="quality_control">Quality Control Lab</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-12">
-                                                <label for="department" class="form-label">Choose Department:</label>
-                                                <select id="department" class="form-select"></select>
-                                            </div>
+                                <div class="nk-block">
+                                    <div class="row g-gs">
+                                        <div class="col-md-12">
+                                            <label for="directorate" class="form-label">Choose Directorate:</label>
+                                            <select id="directorate" class="form-select" onchange="updateDepartments()">
+                                                <option value="">Select directorate</option>
+                                                <option value="administration">Administration</option>
+                                                <option value="quality_control">Quality Control Lab</option>
+                                            </select>
                                         </div>
-                                        <div class="d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary mt-3">Next</button>
+                                        <div class="col-md-12">
+                                            <label for="department" class="form-label">Choose Department:</label>
+                                            <select id="department" class="form-select"></select>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary mt-3">Next</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
