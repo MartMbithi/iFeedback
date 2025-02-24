@@ -81,7 +81,7 @@ require_once('../partials/backoffice_head.php');
                                 <img class="logo-dark logo-img logo-img-lg" src="../public/images/logo.png" srcset="../public/images/logo.png 2x" alt="logo-dark">
                                 <div class="nk-block-des">
                                     <h5 class="">
-                                        <br> Proceed to submit a complain, kindly select a directorate and subsequent department <br>
+                                        <br> Proceed to submit a compliment, kindly select a directorate and subsequent department <br>
                                     </h5>
                                 </div>
                             </div>

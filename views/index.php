@@ -80,12 +80,12 @@ require_once('../partials/backoffice_head.php');
                             <div class="nk-block-head-content text-center">
                                 <img class="logo-dark logo-img logo-img-lg" src="../public/images/logo.png" srcset="../public/images/logo.png 2x" alt="logo-dark">
                                 <h2 class="nk-block-title fw-normal"><br><?php echo $greeting; ?>!</h2>
-                                    <div class="nk-block-des">
-                                        <h5 class="">
-                                            Welcome to our Feedback Portal! <br>
-                                            We're delighted to have you here. To begin, simply select a feedback type and follow the steps to share your thoughts.
-                                        </h5>
-                                    </div>
+                                <div class="nk-block-des">
+                                    <h5 class="">
+                                        Welcome to our Feedback Portal! <br>
+                                        We're delighted to have you here. To begin, simply select a feedback type and follow the steps to share your thoughts.
+                                    </h5>
+                                </div>
                             </div>
                         </div><!-- .nk-block-head -->
                         <div class="nk-block">
