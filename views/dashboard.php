@@ -227,6 +227,26 @@ require_once('../partials/backoffice_head.php');
                                                             </div>
                                                         </div>
                                                     <?php } ?>
+                                                    <!-- Totals -->
+                                                    <div class="nk-tb-item">
+                                                        <div class="nk-tb-col">
+                                                            <span class="tb-sub tb-amount">Totals</span>
+                                                        </div>
+                                                        <div class="nk-tb-col">
+                                                            <span class="tb-sub tb-amount"><?php echo $total_resolved; ?></span>
+                                                        </div>
+                                                        <div class="nk-tb-col">
+                                                            <span class="tb-sub tb-amount"><?php echo $total_inprogress; ?></span>
+                                                        </div>
+                                                        <div class="nk-tb-col">
+                                                            <span class="tb-sub tb-amount"><?php echo $total_pending; ?></span>
+                                                        </div>
+                                                        <div class="nk-tb-col">
+                                                            <span class="tb-sub tb-amount">
+                                                                <?php echo $resolved + $inprogress + $pending; ?>
+                                                            </span>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div><!-- .card -->
                                         </div><!-- .col -->
