@@ -75,245 +75,328 @@ require_once('../helpers/users.php');
                 <?php require_once('../partials/backoffice_header.php'); ?>
                 <!-- main header @e -->
                 <!-- content @s -->
-                <div class="nk-content ">
-                    <div class="container-fluid">
-                        <div class="nk-content-inner">
-                            <div class="nk-content-body">
-                                <div class="nk-block-head nk-block-head-sm">
-                                    <div class="nk-block-between">
-                                        <div class="nk-block-head-content">
-                                            <h3 class="nk-block-title page-title"><?php echo $_GET['type']; ?> Complains</h3>
-                                            <div class="nk-block-des text-soft">
-                                                <p>
-                                                    This module allows you to manage <?php echo $_GET['type']; ?> complains <br>
-                                                </p>
-                                            </div>
-                                        </div><!-- .nk-block-head-content -->
-                                    </div><!-- .nk-block-between -->
-                                </div><!-- .nk-block-head -->
+                <?php if ($_GET['directorate'] == 'all') { ?>
+                    <div class="nk-content ">
+                        <div class="container-fluid">
+                            <div class="nk-content-inner">
+                                <div class="nk-content-body">
+                                    <div class="nk-block-head nk-block-head-sm">
+                                        <div class="nk-block-between">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title"><?php echo $_GET['type']; ?> Complains</h3>
+                                                <div class="nk-block-des text-soft">
+                                                    <p>
+                                                        This module allows you to manage <?php echo $_GET['type']; ?> complains <br>
+                                                    </p>
+                                                </div>
+                                            </div><!-- .nk-block-head-content -->
+                                        </div><!-- .nk-block-between -->
+                                    </div><!-- .nk-block-head -->
 
 
-                                <div class="">
-                                    <div class="row">
-                                        <div class="card mb-3 col-md-12 border border-success">
-                                            <div class="card-body">
-                                                <?php if ($_GET['type'] == 'All' && $_GET['directorate'] == 'all') { ?>
-                                                    <table class="datatable-init table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>Complain Submitted By</th>
-                                                                <th>Status</th>
-                                                                <th>Date Submitted</th>
-                                                                <th>Directorate</th>
-                                                                <th>Department</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <?php
-                                                            $fetch_records_sql = mysqli_query(
-                                                                $mysqli,
-                                                                "SELECT * FROM feedbacks WHERE feedback_type = 'Complain'"
-                                                            );
-                                                            $cnt = 1;
-                                                            if (mysqli_num_rows($fetch_records_sql) > 0) {
-                                                                while ($return_results = mysqli_fetch_array($fetch_records_sql)) {
-                                                                    if (empty($return_results['feedback_owner_name'])) {
-                                                                        $feedback_by = "Anonymous";
-                                                                    } else {
-                                                                        $feedback_by = $return_results['feedback_owner_name'];
+                                    <div class="">
+                                        <div class="row">
+                                            <div class="card mb-3 col-md-12 border border-success">
+                                                <div class="card-body">
+                                                    <?php if ($_GET['type'] == 'All' && $_GET['directorate'] == 'all') { ?>
+                                                        <table class="datatable-init table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Complain Submitted By</th>
+                                                                    <th>Status</th>
+                                                                    <th>Date Submitted</th>
+                                                                    <th>Directorate</th>
+                                                                    <th>Department</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php
+                                                                $fetch_records_sql = mysqli_query(
+                                                                    $mysqli,
+                                                                    "SELECT * FROM feedbacks WHERE feedback_type = 'Complain'"
+                                                                );
+                                                                $cnt = 1;
+                                                                if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                                                    while ($return_results = mysqli_fetch_array($fetch_records_sql)) {
+                                                                        if (empty($return_results['feedback_owner_name'])) {
+                                                                            $feedback_by = "Anonymous";
+                                                                        } else {
+                                                                            $feedback_by = $return_results['feedback_owner_name'];
+                                                                        }
+                                                                ?>
+                                                                        <tr style='cursor: pointer; cursor: hand;' onclick="window.location='complain?view=<?php echo $return_results['feedback_id']; ?>';">
+                                                                            <td><?php echo $cnt; ?></td>
+                                                                            <td>
+                                                                                <?php echo $feedback_by; ?>
+                                                                            </td>
+                                                                            <td>
+                                                                                <?php
+                                                                                if ($return_results['feedback_status'] == 'Queued') { ?>
+                                                                                    <span class="badge badge-dot badge-dot-xs badge-warning">Queued</span>
+                                                                                <?php } elseif ($return_results['feedback_status'] == 'In Progress') { ?>
+                                                                                    <span class="badge badge-dot badge-dot-xs badge-primary">In Progress</span>
+                                                                                <?php } elseif ($return_results['feedback_status'] == 'Resolved') { ?>
+                                                                                    <span class="badge badge-dot badge-dot-xs badge-success">Resolved</span>
+                                                                                <?php } ?>
+                                                                            </td>
+                                                                            <td><?php echo date('d M Y g:ia', strtotime($return_results['feedback_sumbitted_on'])); ?></td>
+                                                                            <td><?php echo $return_results['feedback_directorate']; ?></td>
+                                                                            <td><?php echo $return_results['feedback_department']; ?></td>
+                                                                        </tr>
+                                                                <?php
+                                                                        $cnt = $cnt + 1;
                                                                     }
-                                                            ?>
-                                                                    <tr style='cursor: pointer; cursor: hand;' onclick="window.location='complain?view=<?php echo $return_results['feedback_id']; ?>';">
-                                                                        <td><?php echo $cnt; ?></td>
-                                                                        <td>
-                                                                            <?php echo $feedback_by; ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?php
-                                                                            if ($return_results['feedback_status'] == 'Queued') { ?>
-                                                                                <span class="badge badge-dot badge-dot-xs badge-warning">Queued</span>
-                                                                            <?php } elseif ($return_results['feedback_status'] == 'In Progress') { ?>
-                                                                                <span class="badge badge-dot badge-dot-xs badge-primary">In Progress</span>
-                                                                            <?php } elseif ($return_results['feedback_status'] == 'Resolved') { ?>
-                                                                                <span class="badge badge-dot badge-dot-xs badge-success">Resolved</span>
-                                                                            <?php } ?>
-                                                                        </td>
-                                                                        <td><?php echo date('d M Y g:ia', strtotime($return_results['feedback_sumbitted_on'])); ?></td>
-                                                                        <td><?php echo $return_results['feedback_directorate']; ?></td>
-                                                                        <td><?php echo $return_results['feedback_department']; ?></td>
-                                                                    </tr>
-                                                            <?php
-                                                                    $cnt = $cnt + 1;
-                                                                }
-                                                            } ?>
-                                                        </tbody>
-                                                    </table>
-                                                <?php } else if ($_GET['type'] == 'Solved' && $_GET['directorate'] == 'all') { ?>
-                                                    <table class="datatable-init table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>Complain Submitted By</th>
-                                                                <th>Status</th>
-                                                                <th>Date Submitted</th>
-                                                                <th>Directorate</th>
-                                                                <th>Department</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <?php
-                                                            $fetch_records_sql = mysqli_query(
-                                                                $mysqli,
-                                                                "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_status = 'Resolved'"
-                                                            );
-                                                            $cnt = 1;
-                                                            if (mysqli_num_rows($fetch_records_sql) > 0) {
-                                                                while ($return_results = mysqli_fetch_array($fetch_records_sql)) {
-                                                                    if (empty($return_results['feedback_owner_name'])) {
-                                                                        $feedback_by = "Anonymous";
-                                                                    } else {
-                                                                        $feedback_by = $return_results['feedback_owner_name'];
+                                                                } ?>
+                                                            </tbody>
+                                                        </table>
+                                                    <?php } else if ($_GET['type'] == 'Solved' && $_GET['directorate'] == 'all') { ?>
+                                                        <table class="datatable-init table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Complain Submitted By</th>
+                                                                    <th>Status</th>
+                                                                    <th>Date Submitted</th>
+                                                                    <th>Directorate</th>
+                                                                    <th>Department</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php
+                                                                $fetch_records_sql = mysqli_query(
+                                                                    $mysqli,
+                                                                    "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_status = 'Resolved'"
+                                                                );
+                                                                $cnt = 1;
+                                                                if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                                                    while ($return_results = mysqli_fetch_array($fetch_records_sql)) {
+                                                                        if (empty($return_results['feedback_owner_name'])) {
+                                                                            $feedback_by = "Anonymous";
+                                                                        } else {
+                                                                            $feedback_by = $return_results['feedback_owner_name'];
+                                                                        }
+                                                                ?>
+                                                                        <tr style='cursor: pointer; cursor: hand;' onclick="window.location='complain?view=<?php echo $return_results['feedback_id']; ?>';">
+                                                                            <td><?php echo $cnt; ?></td>
+                                                                            <td>
+                                                                                <?php echo $feedback_by; ?>
+                                                                            </td>
+                                                                            <td>
+                                                                                <?php
+                                                                                if ($return_results['feedback_status'] == 'Queued') { ?>
+                                                                                    <span class="badge badge-dot badge-dot-xs badge-warning">Queued</span>
+                                                                                <?php } elseif ($return_results['feedback_status'] == 'In Progress') { ?>
+                                                                                    <span class="badge badge-dot badge-dot-xs badge-primary">In Progress</span>
+                                                                                <?php } elseif ($return_results['feedback_status'] == 'Resolved') { ?>
+                                                                                    <span class="badge badge-dot badge-dot-xs badge-success">Resolved</span>
+                                                                                <?php } ?>
+                                                                            </td>
+                                                                            <td><?php echo date('d M Y g:ia', strtotime($return_results['feedback_sumbitted_on'])); ?></td>
+                                                                            <td><?php echo $return_results['feedback_directorate']; ?></td>
+                                                                            <td><?php echo $return_results['feedback_department']; ?></td>
+                                                                        </tr>
+                                                                <?php
+                                                                        $cnt = $cnt + 1;
                                                                     }
-                                                            ?>
-                                                                    <tr style='cursor: pointer; cursor: hand;' onclick="window.location='complain?view=<?php echo $return_results['feedback_id']; ?>';">
-                                                                        <td><?php echo $cnt; ?></td>
-                                                                        <td>
-                                                                            <?php echo $feedback_by; ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?php
-                                                                            if ($return_results['feedback_status'] == 'Queued') { ?>
-                                                                                <span class="badge badge-dot badge-dot-xs badge-warning">Queued</span>
-                                                                            <?php } elseif ($return_results['feedback_status'] == 'In Progress') { ?>
-                                                                                <span class="badge badge-dot badge-dot-xs badge-primary">In Progress</span>
-                                                                            <?php } elseif ($return_results['feedback_status'] == 'Resolved') { ?>
-                                                                                <span class="badge badge-dot badge-dot-xs badge-success">Resolved</span>
-                                                                            <?php } ?>
-                                                                        </td>
-                                                                        <td><?php echo date('d M Y g:ia', strtotime($return_results['feedback_sumbitted_on'])); ?></td>
-                                                                        <td><?php echo $return_results['feedback_directorate']; ?></td>
-                                                                        <td><?php echo $return_results['feedback_department']; ?></td>
-                                                                    </tr>
-                                                            <?php
-                                                                    $cnt = $cnt + 1;
-                                                                }
-                                                            } ?>
-                                                        </tbody>
-                                                    </table>
-                                                <?php } else if ($_GET['type'] == 'In Progress' && $_GET['directorate'] == 'all') { ?>
-                                                    <table class="datatable-init table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>Complain Submitted By</th>
-                                                                <th>Status</th>
-                                                                <th>Date Submitted</th>
-                                                                <th>Directorate</th>
-                                                                <th>Department</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <?php
-                                                            $fetch_records_sql = mysqli_query(
-                                                                $mysqli,
-                                                                "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_status = 'In Progress'"
-                                                            );
-                                                            $cnt = 1;
-                                                            if (mysqli_num_rows($fetch_records_sql) > 0) {
-                                                                while ($return_results = mysqli_fetch_array($fetch_records_sql)) {
-                                                                    if (empty($return_results['feedback_owner_name'])) {
-                                                                        $feedback_by = "Anonymous";
-                                                                    } else {
-                                                                        $feedback_by = $return_results['feedback_owner_name'];
+                                                                } ?>
+                                                            </tbody>
+                                                        </table>
+                                                    <?php } else if ($_GET['type'] == 'In Progress' && $_GET['directorate'] == 'all') { ?>
+                                                        <table class="datatable-init table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Complain Submitted By</th>
+                                                                    <th>Status</th>
+                                                                    <th>Date Submitted</th>
+                                                                    <th>Directorate</th>
+                                                                    <th>Department</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php
+                                                                $fetch_records_sql = mysqli_query(
+                                                                    $mysqli,
+                                                                    "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_status = 'In Progress'"
+                                                                );
+                                                                $cnt = 1;
+                                                                if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                                                    while ($return_results = mysqli_fetch_array($fetch_records_sql)) {
+                                                                        if (empty($return_results['feedback_owner_name'])) {
+                                                                            $feedback_by = "Anonymous";
+                                                                        } else {
+                                                                            $feedback_by = $return_results['feedback_owner_name'];
+                                                                        }
+                                                                ?>
+                                                                        <tr style='cursor: pointer; cursor: hand;' onclick="window.location='complain?view=<?php echo $return_results['feedback_id']; ?>';">
+                                                                            <td><?php echo $cnt; ?></td>
+                                                                            <td>
+                                                                                <?php echo $feedback_by; ?>
+                                                                            </td>
+                                                                            <td>
+                                                                                <?php
+                                                                                if ($return_results['feedback_status'] == 'Queued') { ?>
+                                                                                    <span class="badge badge-dot badge-dot-xs badge-warning">Queued</span>
+                                                                                <?php } elseif ($return_results['feedback_status'] == 'In Progress') { ?>
+                                                                                    <span class="badge badge-dot badge-dot-xs badge-primary">In Progress</span>
+                                                                                <?php } elseif ($return_results['feedback_status'] == 'Resolved') { ?>
+                                                                                    <span class="badge badge-dot badge-dot-xs badge-success">Resolved</span>
+                                                                                <?php } ?>
+                                                                            </td>
+                                                                            <td><?php echo date('d M Y g:ia', strtotime($return_results['feedback_sumbitted_on'])); ?></td>
+                                                                            <td><?php echo $return_results['feedback_directorate']; ?></td>
+                                                                            <td><?php echo $return_results['feedback_department']; ?></td>
+                                                                        </tr>
+                                                                <?php
+                                                                        $cnt = $cnt + 1;
                                                                     }
-                                                            ?>
-                                                                    <tr style='cursor: pointer; cursor: hand;' onclick="window.location='complain?view=<?php echo $return_results['feedback_id']; ?>';">
-                                                                        <td><?php echo $cnt; ?></td>
-                                                                        <td>
-                                                                            <?php echo $feedback_by; ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?php
-                                                                            if ($return_results['feedback_status'] == 'Queued') { ?>
-                                                                                <span class="badge badge-dot badge-dot-xs badge-warning">Queued</span>
-                                                                            <?php } elseif ($return_results['feedback_status'] == 'In Progress') { ?>
-                                                                                <span class="badge badge-dot badge-dot-xs badge-primary">In Progress</span>
-                                                                            <?php } elseif ($return_results['feedback_status'] == 'Resolved') { ?>
-                                                                                <span class="badge badge-dot badge-dot-xs badge-success">Resolved</span>
-                                                                            <?php } ?>
-                                                                        </td>
-                                                                        <td><?php echo date('d M Y g:ia', strtotime($return_results['feedback_sumbitted_on'])); ?></td>
-                                                                        <td><?php echo $return_results['feedback_directorate']; ?></td>
-                                                                        <td><?php echo $return_results['feedback_department']; ?></td>
-                                                                    </tr>
-                                                            <?php
-                                                                    $cnt = $cnt + 1;
-                                                                }
-                                                            } ?>
-                                                        </tbody>
-                                                    </table>
-                                                <?php } else { ?>
-                                                    <table class="datatable-init table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>Complain Submitted By</th>
-                                                                <th>Status</th>
-                                                                <th>Date Submitted</th>
-                                                                <th>Directorate</th>
-                                                                <th>Department</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <?php
-                                                            $fetch_records_sql = mysqli_query(
-                                                                $mysqli,
-                                                                "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_status = 'Queued'"
-                                                            );
-                                                            $cnt = 1;
-                                                            if (mysqli_num_rows($fetch_records_sql) > 0) {
-                                                                while ($return_results = mysqli_fetch_array($fetch_records_sql)) {
-                                                                    if (empty($return_results['feedback_owner_name'])) {
-                                                                        $feedback_by = "Anonymous";
-                                                                    } else {
-                                                                        $feedback_by = $return_results['feedback_owner_name'];
+                                                                } ?>
+                                                            </tbody>
+                                                        </table>
+                                                    <?php } else { ?>
+                                                        <table class="datatable-init table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Complain Submitted By</th>
+                                                                    <th>Status</th>
+                                                                    <th>Date Submitted</th>
+                                                                    <th>Directorate</th>
+                                                                    <th>Department</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php
+                                                                $fetch_records_sql = mysqli_query(
+                                                                    $mysqli,
+                                                                    "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_status = 'Queued'"
+                                                                );
+                                                                $cnt = 1;
+                                                                if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                                                    while ($return_results = mysqli_fetch_array($fetch_records_sql)) {
+                                                                        if (empty($return_results['feedback_owner_name'])) {
+                                                                            $feedback_by = "Anonymous";
+                                                                        } else {
+                                                                            $feedback_by = $return_results['feedback_owner_name'];
+                                                                        }
+                                                                ?>
+                                                                        <tr style='cursor: pointer; cursor: hand;' onclick="window.location='complain?view=<?php echo $return_results['feedback_id']; ?>';">
+                                                                            <td><?php echo $cnt; ?></td>
+                                                                            <td>
+                                                                                <?php echo $feedback_by; ?>
+                                                                            </td>
+                                                                            <td>
+                                                                                <?php
+                                                                                if ($return_results['feedback_status'] == 'Queued') { ?>
+                                                                                    <span class="badge badge-dot badge-dot-xs badge-warning">Queued</span>
+                                                                                <?php } elseif ($return_results['feedback_status'] == 'In Progress') { ?>
+                                                                                    <span class="badge badge-dot badge-dot-xs badge-primary">In Progress</span>
+                                                                                <?php } elseif ($return_results['feedback_status'] == 'Resolved') { ?>
+                                                                                    <span class="badge badge-dot badge-dot-xs badge-success">Resolved</span>
+                                                                                <?php } ?>
+                                                                            </td>
+                                                                            <td><?php echo date('d M Y g:ia', strtotime($return_results['feedback_sumbitted_on'])); ?></td>
+                                                                            <td><?php echo $return_results['feedback_directorate']; ?></td>
+                                                                            <td><?php echo $return_results['feedback_department']; ?></td>
+                                                                        </tr>
+                                                                <?php
+                                                                        $cnt = $cnt + 1;
                                                                     }
-                                                            ?>
-                                                                    <tr style='cursor: pointer; cursor: hand;' onclick="window.location='complain?view=<?php echo $return_results['feedback_id']; ?>';">
-                                                                        <td><?php echo $cnt; ?></td>
-                                                                        <td>
-                                                                            <?php echo $feedback_by; ?>
-                                                                        </td>
-                                                                        <td>
-                                                                            <?php
-                                                                            if ($return_results['feedback_status'] == 'Queued') { ?>
-                                                                                <span class="badge badge-dot badge-dot-xs badge-warning">Queued</span>
-                                                                            <?php } elseif ($return_results['feedback_status'] == 'In Progress') { ?>
-                                                                                <span class="badge badge-dot badge-dot-xs badge-primary">In Progress</span>
-                                                                            <?php } elseif ($return_results['feedback_status'] == 'Resolved') { ?>
-                                                                                <span class="badge badge-dot badge-dot-xs badge-success">Resolved</span>
-                                                                            <?php } ?>
-                                                                        </td>
-                                                                        <td><?php echo date('d M Y g:ia', strtotime($return_results['feedback_sumbitted_on'])); ?></td>
-                                                                        <td><?php echo $return_results['feedback_directorate']; ?></td>
-                                                                        <td><?php echo $return_results['feedback_department']; ?></td>
-                                                                    </tr>
-                                                            <?php
-                                                                    $cnt = $cnt + 1;
-                                                                }
-                                                            } ?>
-                                                        </tbody>
-                                                    </table>
-                                                <?php } ?>
+                                                                } ?>
+                                                            </tbody>
+                                                        </table>
+                                                    <?php } ?>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div><!-- .nk-block -->
+                                    </div><!-- .nk-block -->
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php } else { ?>
+                    <div class="nk-content ">
+                        <div class="container-fluid">
+                            <div class="nk-content-inner">
+                                <div class="nk-content-body">
+                                    <div class="nk-block-head nk-block-head-sm">
+                                        <div class="nk-block-between">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title"><?php echo $_GET['directorate'] . ' Directorate' . $_GET['type']; ?> Complains</h3>
+                                                <div class="nk-block-des text-soft">
+                                                    <p>
+                                                        This module allows you to manage <?php echo $_GET['type']; ?> complains in <?php echo $_GET['directorate']; ?><br>
+                                                    </p>
+                                                </div>
+                                            </div><!-- .nk-block-head-content -->
+                                        </div><!-- .nk-block-between -->
+                                    </div><!-- .nk-block-head -->
+
+                                    <div class="">
+                                        <div class="row">
+                                            <div class="card mb-3 col-md-12 border border-success">
+                                                <div class="card-body">
+                                                    <table class="datatable-init table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Complain Submitted By</th>
+                                                                <th>Status</th>
+                                                                <th>Date Submitted</th>
+                                                                <th>Directorate</th>
+                                                                <th>Department</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                            $fetch_records_sql = mysqli_query(
+                                                                $mysqli,
+                                                                "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_directorate = '{$_GET['directorate']}'"
+                                                            );
+                                                            $cnt = 1;
+                                                            if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                                                while ($return_results = mysqli_fetch_array($fetch_records_sql)) {
+                                                                    if (empty($return_results['feedback_owner_name'])) {
+                                                                        $feedback_by = "Anonymous";
+                                                                    } else {
+                                                                        $feedback_by = $return_results['feedback_owner_name'];
+                                                                    }
+                                                            ?>
+                                                                    <tr style='cursor: pointer; cursor: hand;' onclick="window.location='complain?view=<?php echo $return_results['feedback_id']; ?>';">
+                                                                        <td><?php echo $cnt; ?></td>
+                                                                        <td>
+                                                                            <?php echo $feedback_by; ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php
+                                                                            if ($return_results['feedback_status'] == 'Queued') { ?>
+                                                                                <span class="badge badge-dot badge-dot-xs badge-warning">Queued</span>
+                                                                            <?php } elseif ($return_results['feedback_status'] == 'In Progress') { ?>
+                                                                                <span class="badge badge-dot badge-dot-xs badge-primary">In Progress</span>
+                                                                            <?php } elseif ($return_results['feedback_status'] == 'Resolved') { ?>
+                                                                                <span class="badge badge-dot badge-dot-xs badge-success">Resolved</span>
+                                                                            <?php } ?>
+                                                                        </td>
+                                                                        <td><?php echo date('d M Y g:ia', strtotime($return_results['feedback_sumbitted_on'])); ?></td>
+                                                                        <td><?php echo $return_results['feedback_directorate']; ?></td>
+                                                                        <td><?php echo $return_results['feedback_department']; ?></td>
+                                                                    </tr>
+                                                            <?php
+                                                                    $cnt = $cnt + 1;
+                                                                }
+                                                            } ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- .nk-block -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
                 <!-- content @e -->
                 <!-- footer @s -->
                 <?php require_once('../partials/backoffice_footer.php'); ?>

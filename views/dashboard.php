@@ -207,9 +207,9 @@ require_once('../partials/backoffice_head.php');
                                                         COALESCE(SUM(CASE WHEN feedback_status = 'Resolved' THEN 1 ELSE 0 END), 0) AS resolved,
                                                         COALESCE(SUM(CASE WHEN feedback_status = 'In Progress' THEN 1 ELSE 0 END), 0) AS inprogress,
                                                         COALESCE(SUM(CASE WHEN feedback_status = 'Queued' THEN 1 ELSE 0 END), 0) AS pending
-                                                    FROM feedbacks 
-                                                    WHERE feedback_type = 'Complain' 
-                                                    AND feedback_department = ?";
+                                                        FROM feedbacks 
+                                                        WHERE feedback_type = 'Complain' 
+                                                        AND feedback_department = ?";
 
                                                         $stmt = $mysqli->prepare($query);
                                                         $stmt->bind_param("s", $department);
