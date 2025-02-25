@@ -21,7 +21,7 @@
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="complains?type=all&directorate=all" class="nk-menu-link">
+                        <a href="complains?type=All&directorate=all" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
                             <span class="nk-menu-text">All Complains</span>
                         </a>
@@ -34,7 +34,7 @@
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
                         <a href="api_settings" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-plug"></em></span>
+                            <span class="nk-menu-icon"><em class="icon ni ni-setting-alt"></em></span>
                             <span class="nk-menu-text">Mailer API Settings</span>
                         </a>
                     </li>

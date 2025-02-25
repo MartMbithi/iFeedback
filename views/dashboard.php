@@ -103,7 +103,7 @@ require_once('../partials/backoffice_head.php');
                                     <div class="row g-gs">
 
                                         <div class="col-md-4 col-sm-12">
-                                            <a href="dealers">
+                                            <a href="complains?type=All&directorate=all">
                                                 <div class="card card-bordered card-full">
                                                     <div class="card-inner">
                                                         <div class="card-title-group align-start mb-0">
@@ -122,7 +122,7 @@ require_once('../partials/backoffice_head.php');
                                         </div><!-- .col -->
 
                                         <div class="col-md-4 col-sm-12">
-                                            <a href="reports_all_dealers">
+                                            <a href="complains?type=Solved&directorate=all">
                                                 <div class="card card-bordered card-full">
                                                     <div class="card-inner">
                                                         <div class="card-title-group align-start mb-0">
@@ -141,7 +141,7 @@ require_once('../partials/backoffice_head.php');
                                         </div><!-- .col -->
 
                                         <div class="col-md-4 col-sm-12">
-                                            <a href="payment_confirmations">
+                                            <a href="complains?type=Queued&directorate=all">
                                                 <div class="card card-bordered card-full">
                                                     <div class="card-inner">
                                                         <div class="card-title-group align-start mb-0">
@@ -339,7 +339,7 @@ require_once('../partials/backoffice_head.php');
                                                                 </div>
                                                                 <div class="nk-tb-col">
                                                                     <span class="tb-sub tb-amount">
-                                                                        <a  href="backoffice_feedback?view=<?php echo $return_results['feedback_id']; ?>" class="btn btn-sm btn-primary">View</a>
+                                                                        <a href="backoffice_feedback?view=<?php echo $return_results['feedback_id']; ?>" class="btn btn-sm btn-primary">View</a>
                                                                     </span>
                                                                 </div>
                                                             </div>
