@@ -116,7 +116,7 @@ require_once('../partials/backoffice_head.php');
                                                         <div class="toggle-expand-content" data-content="pageMenu">
                                                             <ul class="nk-block-tools g-3">
                                                                 <li>
-                                                                    <a href="javascript:history.back()" data-toggle="modal" class="btn btn-white btn-outline-light">
+                                                                    <a href="javascript:history.back()"  class="btn btn-white btn-outline-light">
                                                                         <em class="icon ni ni-first"></em>
                                                                         <span>Back</span>
                                                                     </a>
@@ -428,12 +428,15 @@ require_once('../partials/backoffice_head.php');
                                                                                 <?php } ?>
                                                                             </fieldset>
                                                                             <br>
-                                                                            <div class="d-flex justify-content-end">
-                                                                                <a href="#status_change" data-toggle="modal" class="btn btn-white btn-outline-primary">
-                                                                                    <em class="icon ni ni-grid-add-c"></em>
-                                                                                    <span>Change Status</span>
-                                                                                </a>
-                                                                            </div>
+                                                                            <?php if ($return_results['feedback_status'] == 'Resolved') {
+                                                                            } else { ?>
+                                                                                <div class="d-flex justify-content-end">
+                                                                                    <a href="#status_change" data-toggle="modal" class="btn btn-white btn-outline-primary">
+                                                                                        <em class="icon ni ni-grid-add-c"></em>
+                                                                                        <span>Change Status</span>
+                                                                                    </a>
+                                                                                </div>
+                                                                            <?php } ?>
                                                                         </div>
                                                                     </div>
                                                                 </div>
