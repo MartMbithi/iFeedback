@@ -473,12 +473,28 @@ require_once('../partials/backoffice_head.php');
                                                             <textarea name="feedback_is5" class="form-control" rows="3" required></textarea>
                                                         </div>
                                                     </div>
+                                                    <br>
+
+                                                    <div class="row" id="Personal_Data">
+                                                        <div class="form-group col-md-4">
+                                                            <label>Full names<span class="text-danger">*</span></label>
+                                                            <input type="text" name="feedback_owner_name" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label>Email address<span class="text-danger">*</span></label>
+                                                            <input type="email" name="feedback_owner_email" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-md-4">
+                                                            <label>Contacts / Phone Number<span class="text-danger">*</span></label>
+                                                            <input type="text" name="feedback_owner_contact" placeholder="0712345678" class="form-control" pattern="07[0-9]{8}" title="Phone number must be in the format 0712345678">
+                                                        </div>
+                                                    </div>
                                                 </fieldset>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-end">
-                                        <button type="submit" name="Step_Seven" class="btn btn-primary mt-3">Save and Submit <em class="icon ni ni-last"></em> </button>
+                                        <button type="submit" name="Step_Seven" class="btn btn-primary mt-3">Submit <em class="icon ni ni-last"></em> </button>
                                     </div>
                                     <br><br>
                                 </div>
