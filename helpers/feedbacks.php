@@ -248,12 +248,17 @@ if (isset($_POST['Step_Seven'])) {
         $feedback_is3 = mysqli_real_escape_string($mysqli, $_POST['feedback_is3']);
         $feedback_is4 = mysqli_real_escape_string($mysqli, $_POST['feedback_is4']);
         $feedback_is5 = mysqli_real_escape_string($mysqli, $_POST['feedback_is5']);
+        $feedback_owner_name = mysqli_real_escape_string($mysqli, $_POST['feedback_owner_name']);
+        $feedback_owner_email = mysqli_real_escape_string($mysqli, $_POST['feedback_owner_email']);
+        $feedback_owner_contact = mysqli_real_escape_string($mysqli, $_POST['feedback_owner_contact']);
 
         /* Persist */
         if (mysqli_query(
             $mysqli,
             "UPDATE feedbacks SET feedback_is1 = '{$feedback_is1}', feedback_is2 = '{$feedback_is2}',
-        feedback_is3 = '{$feedback_is3}', feedback_is4 = '{$feedback_is4}', feedback_is5 = '{$feedback_is5}'
+        feedback_is3 = '{$feedback_is3}', feedback_is4 = '{$feedback_is4}', feedback_is5 = '{$feedback_is5}',
+        feedback_owner_name = '{$feedback_owner_name}', feedback_owner_email = '{$feedback_owner_email}',
+        feedback_owner_contact = '{$feedback_owner_contact}'
         WHERE feedback_id = '{$feedback_id}'"
         )) {
             $_SESSION['feedback_id'] = $feedback_id;
