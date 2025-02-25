@@ -113,7 +113,7 @@ require_once('../partials/backoffice_head.php');
                                                         </div>
                                                         <div class="card-amount">
                                                             <span class="amount">
-
+                                                                <?php echo number_format($all_complains); ?>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -132,7 +132,7 @@ require_once('../partials/backoffice_head.php');
                                                         </div>
                                                         <div class="card-amount">
                                                             <span class="amount">
-
+                                                                <?php echo number_format($all_solved); ?>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -151,7 +151,7 @@ require_once('../partials/backoffice_head.php');
                                                         </div>
                                                         <div class="card-amount">
                                                             <span class="amount">
-
+                                                                <?php echo  number_format($all_pending); ?>
                                                             </span>
                                                         </div>
                                                     </div>
