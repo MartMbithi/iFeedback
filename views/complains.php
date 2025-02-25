@@ -323,7 +323,7 @@ require_once('../helpers/users.php');
                                     <div class="nk-block-head nk-block-head-sm">
                                         <div class="nk-block-between">
                                             <div class="nk-block-head-content">
-                                                <h3 class="nk-block-title page-title"><?php echo $_GET['directorate'] . ' Directorate' . $_GET['type']; ?> Complains</h3>
+                                                <h3 class="nk-block-title page-title"><?php echo $_GET['directorate'] . ' Department'; ?> Complains</h3>
                                                 <div class="nk-block-des text-soft">
                                                     <p>
                                                         This module allows you to manage <?php echo $_GET['type']; ?> complains in <?php echo $_GET['directorate']; ?><br>
@@ -352,7 +352,7 @@ require_once('../helpers/users.php');
                                                             <?php
                                                             $fetch_records_sql = mysqli_query(
                                                                 $mysqli,
-                                                                "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_directorate = '{$_GET['directorate']}'"
+                                                                "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_department = '{$_GET['directorate']}'"
                                                             );
                                                             $cnt = 1;
                                                             if (mysqli_num_rows($fetch_records_sql) > 0) {
