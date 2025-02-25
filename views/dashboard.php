@@ -102,13 +102,13 @@ require_once('../partials/backoffice_head.php');
                                 <div class="nk-block">
                                     <div class="row g-gs">
 
-                                        <div class="col-md-4 col-sm-12">
+                                        <div class="col-md-3 col-sm-12">
                                             <a href="complains?type=All&directorate=all">
                                                 <div class="card card-bordered card-full">
                                                     <div class="card-inner">
                                                         <div class="card-title-group align-start mb-0">
                                                             <div class="card-title">
-                                                                <h6 class="subtitle">Cumulative Reported Complains </h6>
+                                                                <h6 class="subtitle">All Reported Complains </h6>
                                                             </div>
                                                         </div>
                                                         <div class="card-amount">
@@ -121,7 +121,7 @@ require_once('../partials/backoffice_head.php');
                                             </a>
                                         </div><!-- .col -->
 
-                                        <div class="col-md-4 col-sm-12">
+                                        <div class="col-md-3 col-sm-12">
                                             <a href="complains?type=Solved&directorate=all">
                                                 <div class="card card-bordered card-full">
                                                     <div class="card-inner">
@@ -140,7 +140,26 @@ require_once('../partials/backoffice_head.php');
                                             </a>
                                         </div><!-- .col -->
 
-                                        <div class="col-md-4 col-sm-12">
+                                        <div class="col-md-3 col-sm-12">
+                                            <a href="complains?type=In Progress&directorate=all">
+                                                <div class="card card-bordered card-full">
+                                                    <div class="card-inner">
+                                                        <div class="card-title-group align-start mb-0">
+                                                            <div class="card-title">
+                                                                <h6 class="subtitle">In Progress Complains</h6>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card-amount">
+                                                            <span class="amount">
+                                                                <?php echo number_format($in_progress); ?>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .card -->
+                                            </a>
+                                        </div><!-- .col -->
+
+                                        <div class="col-md-3 col-sm-12">
                                             <a href="complains?type=Queued&directorate=all">
                                                 <div class="card card-bordered card-full">
                                                     <div class="card-inner">

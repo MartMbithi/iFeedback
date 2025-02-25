@@ -201,6 +201,58 @@ require_once('../helpers/users.php');
                                                             } ?>
                                                         </tbody>
                                                     </table>
+                                                <?php } else if ($_GET['type'] == 'In Progress' && $_GET['directorate'] == 'all') { ?>
+                                                    <table class="datatable-init table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>Complain Submitted By</th>
+                                                                <th>Status</th>
+                                                                <th>Date Submitted</th>
+                                                                <th>Directorate</th>
+                                                                <th>Department</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                            $fetch_records_sql = mysqli_query(
+                                                                $mysqli,
+                                                                "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_status = 'In Progress'"
+                                                            );
+                                                            $cnt = 1;
+                                                            if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                                                while ($return_results = mysqli_fetch_array($fetch_records_sql)) {
+                                                                    if (empty($return_results['feedback_owner_name'])) {
+                                                                        $feedback_by = "Anonymous";
+                                                                    } else {
+                                                                        $feedback_by = $return_results['feedback_owner_name'];
+                                                                    }
+                                                            ?>
+                                                                    <tr style='cursor: pointer; cursor: hand;' onclick="window.location='complain?view=<?php echo $return_results['feedback_id']; ?>';">
+                                                                        <td><?php echo $cnt; ?></td>
+                                                                        <td>
+                                                                            <?php echo $feedback_by; ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php
+                                                                            if ($return_results['feedback_status'] == 'Queued') { ?>
+                                                                                <span class="badge badge-dot badge-dot-xs badge-warning">Queued</span>
+                                                                            <?php } elseif ($return_results['feedback_status'] == 'In Progress') { ?>
+                                                                                <span class="badge badge-dot badge-dot-xs badge-primary">In Progress</span>
+                                                                            <?php } elseif ($return_results['feedback_status'] == 'Resolved') { ?>
+                                                                                <span class="badge badge-dot badge-dot-xs badge-success">Resolved</span>
+                                                                            <?php } ?>
+                                                                        </td>
+                                                                        <td><?php echo date('d M Y g:ia', strtotime($return_results['feedback_sumbitted_on'])); ?></td>
+                                                                        <td><?php echo $return_results['feedback_directorate']; ?></td>
+                                                                        <td><?php echo $return_results['feedback_department']; ?></td>
+                                                                    </tr>
+                                                            <?php
+                                                                    $cnt = $cnt + 1;
+                                                                }
+                                                            } ?>
+                                                        </tbody>
+                                                    </table>
                                                 <?php } else { ?>
                                                     <table class="datatable-init table">
                                                         <thead>

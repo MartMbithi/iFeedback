@@ -83,6 +83,15 @@ $stmt->bind_result($all_solved);
 $stmt->fetch();
 $stmt->close();
 
+/* in_progress */
+$query = "SELECT COUNT(*) FROM feedbacks 
+WHERE feedback_type = 'Complain' AND feedback_status = 'In Progress'";
+$stmt = $mysqli->prepare($query);
+$stmt->execute();
+$stmt->bind_result($in_progress);
+$stmt->fetch();
+$stmt->close();
+
 /* All Pending */
 $query = "SELECT COUNT(*) FROM feedbacks 
  WHERE feedback_type = 'Complain' AND feedback_status = 'Queued'";
