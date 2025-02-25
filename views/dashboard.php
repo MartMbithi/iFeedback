@@ -177,14 +177,20 @@ require_once('../partials/backoffice_head.php');
                                                     </div>
                                                     <?php
                                                     $departments = array('Transport', 'Security', 'Finance', 'Testing', 'Analysis');
+
+                                                    // Initialize total counters
+                                                    $total_resolved = 0;
+                                                    $total_inprogress = 0;
+                                                    $total_pending = 0;
+
                                                     foreach ($departments as $department) {
                                                         $query = "SELECT 
                                                         COALESCE(SUM(CASE WHEN feedback_status = 'Resolved' THEN 1 ELSE 0 END), 0) AS resolved,
                                                         COALESCE(SUM(CASE WHEN feedback_status = 'In Progress' THEN 1 ELSE 0 END), 0) AS inprogress,
                                                         COALESCE(SUM(CASE WHEN feedback_status = 'Queued' THEN 1 ELSE 0 END), 0) AS pending
-                                                      FROM feedbacks 
-                                                      WHERE feedback_type = 'Complain' 
-                                                      AND feedback_department = ?";
+                                                    FROM feedbacks 
+                                                    WHERE feedback_type = 'Complain' 
+                                                    AND feedback_department = ?";
 
                                                         $stmt = $mysqli->prepare($query);
                                                         $stmt->bind_param("s", $department);
@@ -193,18 +199,21 @@ require_once('../partials/backoffice_head.php');
                                                         $stmt->fetch();
                                                         $stmt->close();
 
+                                                        // Ensure values are not null
                                                         $resolved = $resolved ?? 0;
                                                         $inprogress = $inprogress ?? 0;
                                                         $pending = $pending ?? 0;
 
+                                                        // Accumulate totals
+                                                        $total_resolved += $resolved;
+                                                        $total_inprogress += $inprogress;
+                                                        $total_pending += $pending;
                                                     ?>
                                                         <div class="nk-tb-item">
                                                             <div class="nk-tb-col tb-col-sm">
                                                                 <div class="user-card">
                                                                     <div class="user-avatar user-avatar-xs bg-pink-dim">
-                                                                        <span>
-                                                                            <?php echo substr($department, 0, 2); ?>
-                                                                        </span>
+                                                                        <span><?php echo substr($department, 0, 2); ?></span>
                                                                     </div>
                                                                     <div class="user-name">
                                                                         <span class="tb-lead"><?php echo $department; ?></span>
@@ -227,23 +236,28 @@ require_once('../partials/backoffice_head.php');
                                                             </div>
                                                         </div>
                                                     <?php } ?>
-                                                    <!-- Totals -->
+
+                                                    <!-- Totals Row -->
                                                     <div class="nk-tb-item">
-                                                        <div class="nk-tb-col">
-                                                            <span class="tb-sub tb-amount">Totals</span>
+                                                        <div class="nk-tb-col tb-col-sm">
+                                                            <div class="user-card">
+                                                                <div class="user-name">
+                                                                    <span class="tb-lead">Totals</span>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="nk-tb-col">
-                                                            <span class="tb-sub tb-amount"><?php echo $total_resolved; ?></span>
+                                                            <span class="tb-sub tb-amount"><strong><?php echo $total_resolved; ?></strong></span>
                                                         </div>
                                                         <div class="nk-tb-col">
-                                                            <span class="tb-sub tb-amount"><?php echo $total_inprogress; ?></span>
+                                                            <span class="tb-sub tb-amount"><strong><?php echo $total_inprogress; ?></strong></span>
                                                         </div>
                                                         <div class="nk-tb-col">
-                                                            <span class="tb-sub tb-amount"><?php echo $total_pending; ?></span>
+                                                            <span class="tb-sub tb-amount"><strong><?php echo $total_pending; ?></strong></span>
                                                         </div>
                                                         <div class="nk-tb-col">
                                                             <span class="tb-sub tb-amount">
-                                                                <?php echo $resolved + $inprogress + $pending; ?>
+                                                                <strong><?php echo $total_resolved + $total_inprogress + $total_pending; ?></strong>
                                                             </span>
                                                         </div>
                                                     </div>
