@@ -178,6 +178,25 @@ require_once('../partials/backoffice_head.php');
                                                     <?php
                                                     $departments = array('Transport', 'Security', 'Finance', 'Testing', 'Analysis');
                                                     foreach ($departments as $department) {
+                                                        $query = "SELECT 
+                                                        COALESCE(SUM(CASE WHEN feedback_status = 'Resolved' THEN 1 ELSE 0 END), 0) AS resolved,
+                                                        COALESCE(SUM(CASE WHEN feedback_status = 'In Progress' THEN 1 ELSE 0 END), 0) AS inprogress,
+                                                        COALESCE(SUM(CASE WHEN feedback_status = 'Queued' THEN 1 ELSE 0 END), 0) AS pending
+                                                      FROM feedbacks 
+                                                      WHERE feedback_type = 'Complain' 
+                                                      AND feedback_department = ?";
+
+                                                        $stmt = $mysqli->prepare($query);
+                                                        $stmt->bind_param("s", $department);
+                                                        $stmt->execute();
+                                                        $stmt->bind_result($resolved, $inprogress, $pending);
+                                                        $stmt->fetch();
+                                                        $stmt->close();
+
+                                                        $resolved = $resolved ?? 0;
+                                                        $inprogress = $inprogress ?? 0;
+                                                        $pending = $pending ?? 0;
+
                                                     ?>
                                                         <div class="nk-tb-item">
                                                             <div class="nk-tb-col tb-col-sm">
@@ -193,17 +212,17 @@ require_once('../partials/backoffice_head.php');
                                                                 </div>
                                                             </div>
                                                             <div class="nk-tb-col">
-                                                                <span class="tb-sub tb-amount"></span>
+                                                                <span class="tb-sub tb-amount"><?php echo $resolved; ?></span>
                                                             </div>
                                                             <div class="nk-tb-col">
-                                                                <span class="tb-sub tb-amount"></span>
+                                                                <span class="tb-sub tb-amount"><?php echo $inprogress; ?></span>
                                                             </div>
                                                             <div class="nk-tb-col">
-                                                                <span class="tb-sub tb-amount"></span>
+                                                                <span class="tb-sub tb-amount"><?php echo $pending; ?></span>
                                                             </div>
                                                             <div class="nk-tb-col">
                                                                 <span class="tb-sub tb-amount">
-
+                                                                    <?php echo $resolved + $inprogress + $pending; ?>
                                                                 </span>
                                                             </div>
                                                         </div>
