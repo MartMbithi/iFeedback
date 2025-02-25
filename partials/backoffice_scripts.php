@@ -7,9 +7,6 @@
 <!-- Sweet Alert Js -->
 <script src="../public/js/libs/sweetalert2/sweetalert2.min.js"></script>
 <script src="../public/js/apps/inbox.js?ver=1.4.0"></script>
-<!-- Stepper -->
-<script src="../public/js/libs/bs-stepper/js/bs-stepper.min.js"></script>
-
 <!-- Init Js -->
 <?php include('../partials/alert.php'); ?>
 <script defer>

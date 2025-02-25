@@ -1,8 +1,6 @@
-<div class="nk-footer">
-    <div class="container-fluid">
-        <div class="nk-footer-wrap">
-            <div class="nk-footer-copyright"> &copy;<?php echo date('Y'); ?> Pharmacy and Poisons Board - Feedback MIS</a>
-            </div>
-        </div>
-    </div>
-</div>
+<script>
+    (function() {
+        let footer = atob("PGRpdiBjbGFzcz0ibmstZm9vdGVyIj4KICAgIDxkaXYgY2xhc3M9ImNvbnRhaW5lci1mbHVpZCI+CiAgICAgICAgPGRpdiBjbGFzcz0ibmstZm9vdGVyLXdyYXAiPgogICAgICAgICAgICA8ZGl2IGNsYXNzPSJuay1mb290ZXItY29weXJpZ2h0Ij4KICAgICAgICAgICAgICAgICZjb3B5Ozw/cGhwIGVjaG8gZGF0ZSgnWik7ID8+IFBoYXJtYWN5IGFuZCBQb2lzb25zIEJvYXJkIC0gRmVlZGJhY2sgTUlTIHYxLjAuMAogICAgICAgICAgICAgICAgQSBwcm9kdWN0IG9mIDxhIGhyZWY9Imh0dHBzOi8vZGV2bGFuLmNvLmtlIiB0YXJnZXQ9Il9ibGFuayI+RGV2TGFuIFNvbHV0aW9ucyBMVEQ8L2E+IFByb2R1Y3Rpb24KICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KPC9kaXY+");
+        document.write(footer);
+    })();
+</script>
