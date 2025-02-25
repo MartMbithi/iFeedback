@@ -6,8 +6,8 @@
             </div>
             <div class="nk-header-brand d-xl-none">
                 <a href="dashboard" class="logo-link">
-                    <img class="logo-light logo-img" src="../public/images/merged_logos.png" srcset="../public/images/merged_logos.png 2x" alt="logo">
-                    <img class="logo-dark logo-img" src="../public/images/merged_logos.png" srcset="../public/images/merged_logos.png 2x" alt="logo-dark">
+                    <img class="logo-light logo-img" src="../public/images/logo.png" srcset="../public/images/logo.png 2x" alt="logo">
+                    <img class="logo-dark logo-img" src="../public/images/logo.png" srcset="../public/images/logo.png 2x" alt="logo-dark">
                 </a>
             </div><!-- .nk-header-brand -->
             <div class="nk-header-tools">
