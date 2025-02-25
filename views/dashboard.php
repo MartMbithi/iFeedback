@@ -94,7 +94,7 @@ require_once('../partials/backoffice_head.php');
                                         <div class="nk-block-head-content">
                                             <h3 class="nk-block-title page-title"><?php echo $greeting . ' ' . $_SESSION['user_names']; ?></h3>
                                             <div class="nk-block-des text-soft">
-                                                <p>Welcome to Pharmacy and Poisons Board  </p>
+                                                <p>Welcome to Pharmacy and Poisons Board Feedback & Complains Redress MIS </p>
                                             </div>
                                         </div><!-- .nk-block-head-content -->
                                     </div><!-- .nk-block-between -->
@@ -108,7 +108,7 @@ require_once('../partials/backoffice_head.php');
                                                     <div class="card-inner">
                                                         <div class="card-title-group align-start mb-0">
                                                             <div class="card-title">
-                                                                <h6 class="subtitle">Registererd Horticulture Produce & Products Dealers </h6>
+                                                                <h6 class="subtitle">Cumulative Reported Complains </h6>
                                                             </div>
                                                         </div>
                                                         <div class="card-amount">
@@ -127,7 +127,7 @@ require_once('../partials/backoffice_head.php');
                                                     <div class="card-inner">
                                                         <div class="card-title-group align-start mb-0">
                                                             <div class="card-title">
-                                                                <h6 class="subtitle">Certification Applications</h6>
+                                                                <h6 class="subtitle">Solved Complains</h6>
                                                             </div>
                                                         </div>
                                                         <div class="card-amount">
@@ -146,7 +146,7 @@ require_once('../partials/backoffice_head.php');
                                                     <div class="card-inner">
                                                         <div class="card-title-group align-start mb-0">
                                                             <div class="card-title">
-                                                                <h6 class="subtitle">Unverified Application Payments</h6>
+                                                                <h6 class="subtitle">Pending Complains</h6>
                                                             </div>
                                                         </div>
                                                         <div class="card-amount">
@@ -157,6 +157,27 @@ require_once('../partials/backoffice_head.php');
                                                     </div>
                                                 </div><!-- .card -->
                                             </a>
+                                        </div><!-- .col -->
+                                        <div class="col-xl-12 col-md-12 col-xxl-12 col-lg-12 col-sm-12">
+                                            <div class="card card-bordered card-full">
+                                                <div class="card-inner border-bottom">
+                                                    <div class="card-title-group">
+                                                        <div class="card-title">
+                                                            <h6 class="title">Departmental Complaint Resolutions </h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="nk-tb-list">
+                                                    <div class="nk-tb-item nk-tb-head">
+                                                        <div class="nk-tb-col tb-col-sm"><span>Department</span></div>
+                                                        <div class="nk-tb-col"><span>Resolved complains</span></div>
+                                                        <div class="nk-tb-col tb-col-lg"><span>In progress</span></div>
+                                                        <div class="nk-tb-col"><span>Pending resolution</span></div>
+                                                        <div class="nk-tb-col"><span>Totals</span></div>
+                                                    </div>
+
+                                                </div>
+                                            </div><!-- .card -->
                                         </div><!-- .col -->
 
                                         <div class="col-xl-4 col-md-4 col-xxl-4 col-lg-4 col-sm-12">
