@@ -130,7 +130,7 @@ require_once('../helpers/users.php');
                                             <div class="modal-body">
                                                 <form method="post" enctype="multipart/form-data">
                                                     <div class="form-row">
-                                                        <div class="form-group col-md-12">
+                                                        <div class="form-group col-md-6">
                                                             <label>Full names<span class="text-danger">*</span></label>
                                                             <input type="text" name="user_names" required class="form-control">
                                                         </div>
@@ -193,16 +193,16 @@ require_once('../helpers/users.php');
                                                                     <td><?php echo $rows['user_phone']; ?></td>
                                                                     <td>
                                                                         <a data-toggle="modal" href="#update_<?php echo $rows['user_id']; ?>" class="badge badge-dim badge-pill badge-outline-secondary"><em class="icon ni ni-edit"></em> Edit</a>
-                                                                        <a data-toggle="modal" href="#password_<?php echo $rows['user_id']; ?>" class="badge badge-dim badge-pill badge-outline-danger"><em class="icon ni ni-lock"></em> Reset password</a>
+                                                                        <a data-toggle="modal" href="#password_<?php echo $rows['user_id']; ?>" class="badge badge-dim badge-pill badge-outline-warning"><em class="icon ni ni-lock"></em> Reset password</a>
                                                                         <?php if ($rows['user_account_status'] == '0') { ?>
                                                                             <!-- Disable Account Button -->
                                                                             <a data-toggle="modal" href="#disable_<?php echo $rows['user_id']; ?>" class="badge badge-dim badge-pill badge-outline-danger">
-                                                                                <em class="icon ni ni-times"></em> Disable account
+                                                                                <em class="icon ni ni-user-cross"></em> Disable account
                                                                             </a>
                                                                         <?php } else { ?>
                                                                             <!-- Activate Account Button -->
                                                                             <a data-toggle="modal" href="#activate_<?php echo $rows['user_id']; ?>" class="badge badge-dim badge-pill badge-outline-success">
-                                                                                <em class="icon ni ni-check-circle"></em> Activate account
+                                                                                <em class="icon ni ni-user-check"></em> Activate account
                                                                             </a>
                                                                         <?php } ?>
                                                                     </td>

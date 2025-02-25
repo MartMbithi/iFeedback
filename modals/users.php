@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <form method="post" enctype="multipart/form-data">
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label>Full names<span class="text-danger">*</span></label>
                             <input type="text" name="user_names" value="<?php echo $rows['user_names']; ?>" required class="form-control">
                         </div>
@@ -43,7 +43,7 @@
         <div class="modal-content">
             <form method="POST">
                 <div class="modal-body text-center text-danger">
-                    <img src='../public/images/merged_logos.png' height="80px">
+                    <img src='../public/images/logo.png' height="80px">
                     <h4>Force Password Reset?</h4>
                     <p>
                         Are you sure you want to force <?php echo $rows['user_names']; ?>'s password reset?
@@ -66,7 +66,7 @@
         <div class="modal-content">
             <form method="POST">
                 <div class="modal-body text-center text-danger">
-                    <img src='../public/images/merged_logos.png' height="80px">
+                    <img src='../public/images/logo.png' height="80px">
                     <h4>Disable Account</h4>
                     <p>Are you sure you want to disable <?php echo $rows['user_names']; ?>'s account?</p>
                     <input type="hidden" name="user_id" value="<?php echo $rows['user_id']; ?>">
@@ -84,7 +84,7 @@
         <div class="modal-content">
             <form method="POST">
                 <div class="modal-body text-center text-success">
-                    <img src='../public/images/merged_logos.png' height="80px">
+                    <img src='../public/images/logo.png' height="80px">
                     <h4>Activate Account</h4>
                     <p>Are you sure you want to activate <?php echo $rows['user_names']; ?>'s account?</p>
                     <input type="hidden" name="user_id" value="<?php echo $rows['user_id']; ?>">
@@ -95,4 +95,3 @@
         </div>
     </div>
 </div>
-
