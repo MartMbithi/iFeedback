@@ -2,8 +2,8 @@
     <div class="nk-sidebar-element nk-sidebar-head">
         <div class="nk-sidebar-brand">
             <a href="dashboard" class="logo-link nk-sidebar-logo">
-                <img class="logo-light logo-img" src="../public/images/merged_logos.png" srcset="../public/images/merged_logos.png 2x" alt="logo">
-                <img class="logo-dark logo-img" src="../public/images/merged_logos.png" srcset="../public/images/merged_logos.png 2x" alt="logo-dark">
+                <img class="logo-light logo-img" src="../public/images/logo.png" srcset="../public/images/logo.png 2x" alt="logo">
+                <img class="logo-dark logo-img" src="../public/images/logo.png" srcset="../public/images/logo.png 2x" alt="logo-dark">
             </a>
         </div>
         <div class="nk-menu-trigger mr-n2">
@@ -21,9 +21,9 @@
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="dealers" class="nk-menu-link">
+                        <a href="complains?type=all&directorate=all" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
-                            <span class="nk-menu-text">Registered Dealers</span>
+                            <span class="nk-menu-text">All Complains</span>
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
@@ -33,34 +33,17 @@
                         </a>
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
-                        <a href="payment_confirmations" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-wallet-in"></em></span>
-                            <span class="nk-menu-text">Payments</span>
-                            <span class="nk-menu-badge">v1.0 Beta</span>
-                        </a>
-                    </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item">
                         <a href="api_settings" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-network"></em></span>
-                            <span class="nk-menu-text">API Settings</span>
+                            <span class="nk-menu-icon"><em class="icon ni ni-plug"></em></span>
+                            <span class="nk-menu-text">Mailer API Settings</span>
                         </a>
                     </li>
-                    <li class="nk-menu-item has-sub">
-                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                    <li class="nk-menu-item">
+                        <a href="#" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-file"></em></span>
                             <span class="nk-menu-text">Reports</span>
+                            <span class="nk-menu-badge">Coming Soon</span>
                         </a>
-                        <ul class="nk-menu-sub">
-                            <li class="nk-menu-item">
-                                <a href="reports_all_dealers" class="nk-menu-link"><span class="nk-menu-text">All applied dealers</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="reports_verified_payments" class="nk-menu-link"><span class="nk-menu-text">Verified payments</span></a>
-                            </li>
-                            <li class="nk-menu-item">
-                                <a href="reports_pending_verification" class="nk-menu-link"><span class="nk-menu-text">Pending verification</span></a>
-                            </li>
-                        </ul><!-- .nk-menu-sub -->
                     </li><!-- .nk-menu-item -->
                     <li class="nk-menu-item">
                         <a data-toggle="modal" href="#end_session" class="nk-menu-link">
