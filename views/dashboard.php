@@ -339,7 +339,7 @@ require_once('../partials/backoffice_head.php');
                                                                 </div>
                                                                 <div class="nk-tb-col">
                                                                     <span class="tb-sub tb-amount">
-                                                                        <a href="backoffice_feedback?view=<?php echo $return_results['feedback_id']; ?>" class="btn btn-sm btn-primary">View</a>
+                                                                        <a href="complain?view=<?php echo $return_results['feedback_id']; ?>" class="btn btn-sm btn-primary">View</a>
                                                                     </span>
                                                                 </div>
                                                             </div>

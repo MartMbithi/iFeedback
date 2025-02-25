@@ -116,7 +116,7 @@ require_once('../partials/backoffice_head.php');
                                                         <div class="toggle-expand-content" data-content="pageMenu">
                                                             <ul class="nk-block-tools g-3">
                                                                 <li>
-                                                                    <a href="backoffice_feedbacks" data-toggle="modal" class="btn btn-white btn-outline-light">
+                                                                    <a href="javascript:history.back()" data-toggle="modal" class="btn btn-white btn-outline-light">
                                                                         <em class="icon ni ni-first"></em>
                                                                         <span>Back</span>
                                                                     </a>
