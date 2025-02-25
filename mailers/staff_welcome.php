@@ -1,67 +1,67 @@
 <?php
 /*
- *   Crafted On Sun Apr 07 2024
- *   Author Martin Mbithi (martin.mbithi@makueni.go.ke)
- * 
- *   www.makueni.go.ke
- *   info@makueni.go.ke
+ *   Crafted On Tue Feb 25 2025
+ *   From his finger tips, through his IDE to your deployment environment at full throttle with no bugs, loss of data,
+ *   fluctuations, signal interference, or doubt—it can only be
+ *   the legendary coding wizard, Martin Mbithi (martin@devlan.co.ke, www.martmbithi.github.io)
+ *   
+ *   www.devlan.co.ke
+ *   hello@devlan.co.ke
  *
  *
- *   The Government of Makueni County Applications Development Section End User License Agreement
- *   Copyright (c) 2023 Government of Makueni County 
+ *   The Devlan Solutions LTD Super Duper User License Agreement
+ *   Copyright (c) 2022 Devlan Solutions LTD
  *
  *
- *   1. GRANT OF LICENSE 
- *   GoMC Applications Development Section hereby grants to you (an individual) the revocable, personal, non-exclusive, and nontransferable right to
- *   install and activate this system on one computer solely for your official and non-commercial use,
- *   unless you have purchased a commercial license from GoMC Applications Development Section. Sharing this Software with other individuals, 
- *   or allowing other individuals to view the contents of this Software, is in violation of this license.
- *   You may not make the Software available on a network, or in any way provide the Software to multiple users
- *   unless you have first purchased at least a multi-user license from GoMC Applications Development Section
+ *   1. LICENSE TO BE AWESOME
+ *   Congrats, you lucky human! Devlan Solutions LTD hereby bestows upon you the magical,
+ *   revocable, personal, non-exclusive, and totally non-transferable right to install this epic system
+ *   on not one, but TWO separate computers for your personal, non-commercial shenanigans.
+ *   Unless, of course, you've leveled up with a commercial license from Devlan Solutions LTD.
+ *   Sharing this software with others or letting them even peek at it? Nope, that's a big no-no.
+ *   And don't even think about putting this on a network or letting a crowd join the fun unless you
+ *   first scored a multi-user license from us. Sharing is caring, but rules are rules!
  *
- *   2. COPYRIGHT 
- *   The Software is owned by GoMC Applications Development Section and protected by copyright law and international copyright treaties. 
- *   You may not remove or conceal any proprietary notices, labels or marks from the Software.
- *
- *
- *   3. RESTRICTIONS ON USE
- *   You may not, and you may not permit others to
- *   (a) reverse engineer, decompile, decode, decrypt, disassemble, or in any way derive source code from, the Software;
- *   (b) modify, distribute, or create derivative works of the Software;
- *   (c) copy (other than one back-up copy), distribute, publicly display, transmit, sell, rent, lease or 
- *   otherwise exploit the Software. 
+ *   2. COPYRIGHT POWER-UP
+ *   This Software is the prized possession of Devlan Solutions LTD and is shielded by copyright law
+ *   and the forces of international copyright treaties. You better not try to hide or mess with
+ *   any of our awesome proprietary notices, labels, or marks. Respect the swag!
  *
  *
- *   4. TERM
- *   This License is effective until terminated. 
- *   You may terminate it at any time by destroying the Software, together with all copies thereof.
- *   This License will also terminate if you fail to comply with any term or condition of this Agreement.
- *   Upon such termination, you agree to destroy the Software, together with all copies thereof.
+ *   3. RESTRICTIONS, NO CHEAT CODES ALLOWED
+ *   You may not, and you shall not let anyone else:
+ *   (a) reverse engineer, decompile, decode, decrypt, disassemble, or do any sneaky stuff to
+ *   figure out the source code of this software;
+ *   (b) modify, remix, distribute, or create your own funky version of this masterpiece;
+ *   (c) copy (except for that one precious backup), distribute, show off in public, transmit, sell, rent,
+ *   lease, or otherwise exploit the Software like it's your own.
  *
  *
- *   5. NO OTHER WARRANTIES. 
- *   GoMC APPLICATIONS DEVELOPMENT SECTION DOES NOT WARRANT THAT THE SOFTWARE IS ERROR FREE. 
- *   GoMC APPLICATIONS DEVELOPMENT SECTION SOFTWARE DISCLAIMS ALL OTHER WARRANTIES WITH RESPECT TO THE SOFTWARE, 
- *   EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, 
- *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF THIRD PARTY RIGHTS. 
- *   SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES OR LIMITATIONS
- *   ON HOW LONG AN IMPLIED WARRANTY MAY LAST, OR THE EXCLUSION OR LIMITATION OF 
- *   INCIDENTAL OR CONSEQUENTIAL DAMAGES,
- *   SO THE ABOVE LIMITATIONS OR EXCLUSIONS MAY NOT APPLY TO YOU. 
- *   THIS WARRANTY GIVES YOU SPECIFIC LEGAL RIGHTS AND YOU MAY ALSO 
- *   HAVE OTHER RIGHTS WHICH VARY FROM JURISDICTION TO JURISDICTION.
+ *   4. THE ENDGAME
+ *   This License lasts until one of us says 'Game Over'. You can call it quits anytime by
+ *   destroying the Software and all the copies you made (no hiding them under your bed).
+ *   If you break any of these sacred rules, this License self-destructs, and you must obliterate
+ *   every copy of the Software, no questions asked.
  *
  *
- *   6. SEVERABILITY
- *   In the event of invalidity of any provision of this license, the parties agree that such invalidity shall not
- *   affect the validity of the remaining portions of this license.
+ *   5. NO GUARANTEES, JUST PIXELS
+ *   DEVLAN SOLUTIONS LTD doesn’t guarantee this Software is flawless—it might have a few
+ *   quirks, but who doesn’t? DEVLAN SOLUTIONS LTD washes its hands of any other warranties,
+ *   implied or otherwise. That means no promises of perfect performance, marketability, or
+ *   non-infringement. Some places have different rules, so you might have extra rights, but don’t
+ *   count on us for backup if things go sideways. Use at your own risk, brave adventurer!
  *
  *
- *   7. NO LIABILITY FOR CONSEQUENTIAL DAMAGES IN NO EVENT SHALL GoMC APPLICATIONS DEVELOPMENT SECTION OR ITS SUPPLIERS BE LIABLE TO YOU FOR ANY
- *   CONSEQUENTIAL, SPECIAL, INCIDENTAL OR INDIRECT DAMAGES OF ANY KIND ARISING OUT OF THE DELIVERY, PERFORMANCE OR 
- *   USE OF THE SOFTWARE, EVEN IF GoMC APPLICATIONS DEVELOPMENT SECTION HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES
- *   IN NO EVENT WILL GoMC APPLICATIONS DEVELOPMENT SECTION LIABILITY FOR ANY CLAIM, WHETHER IN CONTRACT 
- *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
+ *   6. SEVERABILITY—KEEP THE GOOD STUFF
+ *   If any part of this License gets tossed out by a judge, don’t worry—the rest of the agreement
+ *   still stands like a boss. Just because one piece fails doesn’t mean the whole thing crumbles.
+ *
+ *
+ *   7. NO DAMAGE, NO DRAMA
+ *   Under no circumstances will Devlan Solutions LTD or its squad be held responsible for any wild,
+ *   indirect, or accidental chaos that might come from using this software—even if we warned you!
+ *   And if you ever think you’ve got a claim, the most you’re getting out of us is the license fee you
+ *   paid—if any. No drama, no big payouts, just pixels and code.
  *
  */
 
@@ -94,7 +94,7 @@ while ($mailer = $res->fetch_object()) {
         $mail->Port = $mailer->mailer_port;
         $mail->Username = $mailer->mailer_username;
         $mail->Password = $mailer->mailer_password;
-        $mail->Subject = 'Welcome to Projects Monitoring and Tracking System';
+        $mail->Subject = 'Welcome to Our Feedback System';
         /* Custom Mail Body */
         $mail->Body = '
         <!doctype html>
@@ -132,29 +132,27 @@ while ($mailer = $res->fetch_object()) {
                                         </tr>
                                         <tr>
                                             <td style="padding:0 35px;">
-                                                <img src="https://agpo.makueni.go.ke/public/images/small-logo.jpg"  alt="logo">
                                                 <h4 style="color:#1e1e2d; font-weight:500; margin:0;font-size:39px;font-family:"Rubik",sans-serif;">
-                                                    Government Of Makueni County<br> 
-                                                    Projects Monitoring and Tracking System <br>
-                                                </h4>
+                                                        Pharmacy and Poisons Board <br>
+                                                        Feedback Portal
+                                                    </h4>
                                                 <span
                                                     style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
                                                 <p style="color:#455056; font-size:15px;line-height:24px; margin:0;" align="justify">
                                                     Greetings, ' . $user_names . '.<br>
-                                                    Welcome to Projects Monitoring and Tracking System. 
+                                                    Welcome to Feedback portal. 
                                                     Your account has been set up. You can now login to the ' . $user_access_level . ' portal using the following credentials <br>
                                                     <b>
 
-                                                        Login url: <a target="_blank" href="https://pmts.makueni.go.ke">https://pmts.makueni.go.ke</a> <br>
                                                         Login email: ' . $user_email . ' <br>
-                                                        Login password: Makueni102 <br>
+                                                        Login password: ' . $generated_password . ' <br>
                                                 </p>
                                                 <p align="center" style="color:#455056; font-size:15px;line-height:24px; margin:0;">
                                                 <br>
                                                 Yours Sincerely<br>
                                                     <b>
-                                                        Government of Makueni County <br>
-                                                        <i>Wauni wa kwika nesa na ulungalu</i>
+                                                        Pharmacy and Poisons Board <br>
+                                                        <i>Powered by Devlan Solutions LTD</i>
                                                     <br>
                                                 </b>
                                                 </p>
@@ -222,30 +220,27 @@ while ($mailer = $res->fetch_object()) {
                                             </tr>
                                             <tr>
                                                 <td style="padding:0 35px;">
-                                                    <img src="https://agpo.makueni.go.ke/public/images/small-logo.jpg"  alt="logo">
                                                     <h4 style="color:#1e1e2d; font-weight:500; margin:0;font-size:39px;font-family:"Rubik",sans-serif;">
-                                                        Government Of Makueni County<br> 
-                                                        Projects Monitoring and Tracking System <br>
-                                                    </h4>
+                                                            Pharmacy and Poisons Board <br>
+                                                            Feedback Portal
+                                                        </h4>
                                                     <span
                                                         style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
                                                     <p style="color:#455056; font-size:15px;line-height:24px; margin:0;" align="justify">
                                                         Greetings, ' . $user_names . '.<br>
-                                                        Welcome to Projects Monitoring and Tracking System. 
+                                                        Welcome to Feedback portal. 
                                                         Your account has been set up. You can now login to the ' . $user_access_level . ' portal using the following credentials <br>
                                                         <b>
 
-                                                            Login url: <a target="_blank" href="https://pmts.makueni.go.ke">https://pmts.makueni.go.ke</a> <br>
                                                             Login email: ' . $user_email . ' <br>
-                                                            Login password: Makueni102 <br>
-                                                        </b>
+                                                            Login password: ' . $generated_password . ' <br>
                                                     </p>
                                                     <p align="center" style="color:#455056; font-size:15px;line-height:24px; margin:0;">
                                                     <br>
                                                     Yours Sincerely<br>
                                                         <b>
-                                                            Government of Makueni County <br>
-                                                            <i>Wauni wa kwika nesa na ulungalu</i>
+                                                            Pharmacy and Poisons Board <br>
+                                                            <i>Powered by Devlan Solutions LTD</i>
                                                         <br>
                                                     </b>
                                                     </p>
