@@ -175,7 +175,39 @@ require_once('../partials/backoffice_head.php');
                                                         <div class="nk-tb-col"><span>Pending resolution</span></div>
                                                         <div class="nk-tb-col"><span>Totals</span></div>
                                                     </div>
+                                                    <?php
+                                                    $departments = array('Transport', 'Security', 'Finance', 'Testing', 'Analysis');
+                                                    foreach ($departments as $department) {
+                                                    ?>
+                                                        <div class="nk-tb-item">
+                                                            <div class="nk-tb-col tb-col-sm">
+                                                                <div class="user-card">
+                                                                    <div class="user-avatar user-avatar-xs bg-pink-dim">
+                                                                        <span>
+                                                                            <?php echo substr($department, 0, 2); ?>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="user-name">
+                                                                        <span class="tb-lead"><?php echo $department; ?></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="nk-tb-col">
+                                                                <span class="tb-sub tb-amount"></span>
+                                                            </div>
+                                                            <div class="nk-tb-col">
+                                                                <span class="tb-sub tb-amount"></span>
+                                                            </div>
+                                                            <div class="nk-tb-col">
+                                                                <span class="tb-sub tb-amount"></span>
+                                                            </div>
+                                                            <div class="nk-tb-col">
+                                                                <span class="tb-sub tb-amount">
 
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    <?php } ?>
                                                 </div>
                                             </div><!-- .card -->
                                         </div><!-- .col -->
