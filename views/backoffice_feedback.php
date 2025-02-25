@@ -100,8 +100,9 @@ require_once('../partials/backoffice_head.php');
                                         <div class="nk-block-head nk-block-head-sm">
                                             <div class="nk-block-between">
                                                 <div class="nk-block-head-content">
-                                                    <h3 class="nk-block-title page-title"></h3>
-                                                    Complain Details - Submitted on <?php echo  date('d M Y g:ia', strtotime($return_results['feedback_sumbitted_on'])); ?>
+                                                    <h3 class="nk-block-title page-title">
+                                                        Complain Details - Submitted on <?php echo  date('d M Y g:ia', strtotime($return_results['feedback_sumbitted_on'])); ?>
+                                                    </h3>
                                                     <div class="nk-block-des text-soft">
                                                         <p>
                                                             This module enables you to review and update complaint status <br>
@@ -115,7 +116,7 @@ require_once('../partials/backoffice_head.php');
                                                             <ul class="nk-block-tools g-3">
                                                                 <li>
                                                                     <a href="backoffice_feedbacks" data-toggle="modal" class="btn btn-white btn-outline-light">
-                                                                        <em class="icon ni ni-last"></em>
+                                                                        <em class="icon ni ni-first"></em>
                                                                         <span>Back</span>
                                                                     </a>
                                                                 </li>
