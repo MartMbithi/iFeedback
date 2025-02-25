@@ -26,25 +26,21 @@
                             <span class="nk-menu-text">All Complains</span>
                         </a>
                     </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item">
-                        <a href="system_users" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                            <span class="nk-menu-text">System Users</span>
-                        </a>
-                    </li><!-- .nk-menu-item -->
-                    <li class="nk-menu-item">
-                        <a href="api_settings" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-setting-alt"></em></span>
-                            <span class="nk-menu-text">Mailer API Settings</span>
-                        </a>
-                    </li>
-                    <li class="nk-menu-item">
-                        <a href="#" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-file"></em></span>
-                            <span class="nk-menu-text">Reports</span>
-                            <span class="nk-menu-badge">Coming Soon</span>
-                        </a>
-                    </li><!-- .nk-menu-item -->
+                    <?php
+                    if ($_SESSION['user_access_level'] == 'System Administrator') { ?>
+                        <li class="nk-menu-item">
+                            <a href="system_users" class="nk-menu-link">
+                                <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
+                                <span class="nk-menu-text">System Users</span>
+                            </a>
+                        </li><!-- .nk-menu-item -->
+                        <li class="nk-menu-item">
+                            <a href="api_settings" class="nk-menu-link">
+                                <span class="nk-menu-icon"><em class="icon ni ni-setting-alt"></em></span>
+                                <span class="nk-menu-text">Mailer API Settings</span>
+                            </a>
+                        </li>
+                    <?php } ?>
                     <li class="nk-menu-item">
                         <a data-toggle="modal" href="#end_session" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-power"></em></span>
