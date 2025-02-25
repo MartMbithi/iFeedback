@@ -280,7 +280,8 @@
                                                 <label class="text-danger"> <?php echo $return_results['feedback_is5']; ?> </label>
                                             </div>
                                         </div>
-                                        <br>
+                                        <hr>
+                                        <p class="text-center text-primary">Complain Submitted By</p>
                                         <?php if (!empty($return_results['feedback_owner_name']) && !empty($return_results['feedback_owner_email']) && !empty($return_results['feedback_owner_contact'])) { ?>
                                             <table class="table">
                                                 <thead>
