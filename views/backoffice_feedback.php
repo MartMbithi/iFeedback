@@ -427,10 +427,12 @@ require_once('../partials/backoffice_head.php');
                                                                                 <?php } ?>
                                                                             </fieldset>
                                                                             <br>
-                                                                            <a href="#status_change" data-toggle="modal" class="btn btn-white btn-outline-light">
-                                                                                <em class="icon ni ni-grid-add-c"></em>
-                                                                                <span>Change Status</span>
-                                                                            </a>
+                                                                            <div class="d-flex justify-content-end">
+                                                                                <a href="#status_change" data-toggle="modal" class="btn btn-white btn-outline-primary">
+                                                                                    <em class="icon ni ni-grid-add-c"></em>
+                                                                                    <span>Change Status</span>
+                                                                                </a>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -446,7 +448,7 @@ require_once('../partials/backoffice_head.php');
                         </div>
                         <!-- Status Modal -->
                         <div class="modal fade" id="status_change">
-                            <div class="modal-dialog  modal-xl">
+                            <div class="modal-dialog  modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h4 class="modal-title">Kindly indicate the status of this complain</h4>
@@ -460,11 +462,10 @@ require_once('../partials/backoffice_head.php');
                                                 <input type="hidden" name="feedback_id" value="<?php echo $return_results['feedback_id']; ?>">
                                                 <div class="form-group col-md-12">
                                                     <label>Current status<span class="text-danger">*</span></label>
-                                                    <select name="" required class="form-control">
-                                                        <option value="">Select status</option>
-                                                        <option>Queued</option>
-                                                        <option>In Progress</option>
-                                                        <option>Resolved</option>
+                                                    <select name="feedback_status" required class="form-control">
+                                                        <option <?= ($return_results['feedback_status'] == 'Queued') ? 'selected' : '' ?>>Queued</option>
+                                                        <option <?= ($return_results['feedback_status'] == 'In Progress') ? 'selected' : '' ?>>In Progress</option>
+                                                        <option <?= ($return_results['feedback_status'] == 'Resolved') ? 'selected' : '' ?>>Resolved</option>
                                                     </select>
                                                 </div>
                                             </div>
