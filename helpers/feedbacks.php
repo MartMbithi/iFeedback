@@ -67,22 +67,26 @@
 
 /* Step One */
 if (isset($_POST['Step_One'])) {
-    $feedback_type = mysqli_real_escape_string($mysqli, $_POST['feedback_type']);
-    $feedback_directorate = mysqli_real_escape_string($mysqli, $_POST['feedback_directorate']);
-    $feedback_department = mysqli_real_escape_string($mysqli, $_POST['feedback_department']);
-
-    /* Persist This And Set The Mood Right */
-    if (mysqli_query(
-        $mysqli,
-        "INSERT INTO feedbacks (feedback_type, feedback_directorate, feedback_department) 
-        VALUES ('{$feedback_type}', '{$feedback_directorate}', '{$feedback_department}')"
-    )) {
-        $feedback_id = mysqli_insert_id($mysqli);
-        $_SESSION['feedback_id'] = $feedback_id;
-        header('Location: feedback_questionnaire?page=1');
-        exit;
+    if (empty($_POST['feedback_directorate']) || empty($_POST['feedback_department'])) {
+        $err = "Kindly select directorate and department";
     } else {
-        $err = "Failed, please try again";
+        $feedback_type = mysqli_real_escape_string($mysqli, $_POST['feedback_type']);
+        $feedback_directorate = mysqli_real_escape_string($mysqli, $_POST['feedback_directorate']);
+        $feedback_department = mysqli_real_escape_string($mysqli, $_POST['feedback_department']);
+
+        /* Persist This And Set The Mood Right */
+        if (mysqli_query(
+            $mysqli,
+            "INSERT INTO feedbacks (feedback_type, feedback_directorate, feedback_department) 
+        VALUES ('{$feedback_type}', '{$feedback_directorate}', '{$feedback_department}')"
+        )) {
+            $feedback_id = mysqli_insert_id($mysqli);
+            $_SESSION['feedback_id'] = $feedback_id;
+            header('Location: feedback_questionnaire?page=1');
+            exit;
+        } else {
+            $err = "Failed, please try again";
+        }
     }
 }
 
