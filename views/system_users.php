@@ -180,7 +180,7 @@ require_once('../helpers/users.php');
                                                         <?php
                                                         $fetch_records_sql = mysqli_query(
                                                             $mysqli,
-                                                            "SELECT * FROM users WHERE user_access_level != 'User'"
+                                                            "SELECT * FROM users"
                                                         );
                                                         if (mysqli_num_rows($fetch_records_sql) > 0) {
                                                             $cnt =  1;
