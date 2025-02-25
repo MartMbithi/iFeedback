@@ -294,21 +294,59 @@ require_once('../partials/backoffice_head.php');
                                                         <div class="card-title">
                                                             <h6 class="title">Pending Complaints Awaiting Escalation and Resolution</h6>
                                                         </div>
-                                                        <div class="card-tools">
-                                                            <a href="../views/payment_confirmations.php" class="link">View All</a>
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="nk-tb-list">
                                                     <div class="nk-tb-item nk-tb-head">
-                                                        <div class="nk-tb-col tb-col-sm"><span>Applicant Name</span></div>
-                                                        <div class="nk-tb-col"><span>Application REF</span></div>
-                                                        <div class="nk-tb-col tb-col-lg"><span>Applicant Contacts</span></div>
-                                                        <div class="nk-tb-col"><span>Payment Ref</span></div>
-                                                        <div class="nk-tb-col"><span>Date</span></div>
+                                                        <div class="nk-tb-col tb-col-sm"><span>Complain By</span></div>
+                                                        <div class="nk-tb-col"><span>Date Submitted</span></div>
+                                                        <div class="nk-tb-col tb-col-lg"><span>Directorate</span></div>
+                                                        <div class="nk-tb-col"><span>Department</span></div>
                                                         <div class="nk-tb-col"><span>Action</span></div>
                                                     </div>
-
+                                                    <?php
+                                                    $fetch_records_sql = mysqli_query(
+                                                        $mysqli,
+                                                        "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_status = 'Queued' ORDER BY feedback_id"
+                                                    );
+                                                    if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                                        while ($return_results = mysqli_fetch_array($fetch_records_sql)) {
+                                                            if (empty($return_results['feedback_owner_name'])) {
+                                                                $feedback_by = "Anonymous";
+                                                            } else {
+                                                                $feedback_by = $return_results['feedback_owner_name'];
+                                                            }
+                                                    ?>
+                                                            <div class="nk-tb-item">
+                                                                <div class="nk-tb-col tb-col-sm">
+                                                                    <div class="user-card">
+                                                                        <div class="user-avatar user-avatar-xs bg-pink-dim">
+                                                                            <span><?php echo substr($feedback_by, 0, 2); ?></span>
+                                                                        </div>
+                                                                        <div class="user-name">
+                                                                            <span class="tb-lead"><?php echo $feedback_by; ?></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nk-tb-col">
+                                                                    <span class="tb-sub tb-amount"><?php echo date('d M Y g:ia', strtotime($return_results['feedback_sumbitted_on'])); ?></span>
+                                                                </div>
+                                                                <div class="nk-tb-col">
+                                                                    <span class="tb-sub tb-amount"><?php echo $return_results['feedback_directorate']; ?></span>
+                                                                </div>
+                                                                <div class="nk-tb-col">
+                                                                    <span class="tb-sub tb-amount"><?php echo $return_results['feedback_department']; ?></span>
+                                                                </div>
+                                                                <div class="nk-tb-col">
+                                                                    <span class="tb-sub tb-amount">
+                                                                        <a data-toggle="modal" href="#view_<?php echo $return_results['feedback_id']; ?>" class="btn btn-sm btn-primary">View</a>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                    <?php
+                                                            include('../modals/feedbacks.php');
+                                                        }
+                                                    } ?>
                                                 </div>
                                             </div><!-- .card -->
                                         </div><!-- .col -->
