@@ -230,28 +230,38 @@ require_once('../partials/backoffice_head.php');
                                                     ?>
                                                         <div class="nk-tb-item">
                                                             <div class="nk-tb-col tb-col-sm">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar user-avatar-xs bg-pink-dim">
-                                                                        <span><?php echo substr($department, 0, 2); ?></span>
+                                                                <a href="complains?type=All&directorate=<?php echo $department; ?>">
+                                                                    <div class="user-card">
+                                                                        <div class="user-avatar user-avatar-xs bg-pink-dim">
+                                                                            <span><?php echo substr($department, 0, 2); ?></span>
+                                                                        </div>
+                                                                        <div class="user-name">
+                                                                            <span class="tb-lead"><?php echo $department; ?></span>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="user-name">
-                                                                        <span class="tb-lead"><?php echo $department; ?></span>
-                                                                    </div>
-                                                                </div>
+                                                                </a>
                                                             </div>
                                                             <div class="nk-tb-col">
-                                                                <span class="tb-sub tb-amount"><?php echo $resolved; ?></span>
+                                                                <a href="complains?type=All&directorate=<?php echo $department; ?>">
+                                                                    <span class="tb-sub tb-amount"><?php echo $resolved; ?></span>
+                                                                </a>
                                                             </div>
                                                             <div class="nk-tb-col">
-                                                                <span class="tb-sub tb-amount"><?php echo $inprogress; ?></span>
+                                                                <a href="complains?type=All&directorate=<?php echo $department; ?>">
+                                                                    <span class="tb-sub tb-amount"><?php echo $inprogress; ?></span>
+                                                                </a>
                                                             </div>
                                                             <div class="nk-tb-col">
-                                                                <span class="tb-sub tb-amount"><?php echo $pending; ?></span>
+                                                                <a href="complains?type=All&directorate=<?php echo $department; ?>">
+                                                                    <span class="tb-sub tb-amount"><?php echo $pending; ?></span>
+                                                                </a>
                                                             </div>
                                                             <div class="nk-tb-col">
-                                                                <span class="tb-sub tb-amount">
-                                                                    <?php echo $resolved + $inprogress + $pending; ?>
-                                                                </span>
+                                                                <a href="complains?type=All&directorate=<?php echo $department; ?>">
+                                                                    <span class="tb-sub tb-amount">
+                                                                        <?php echo $resolved + $inprogress + $pending; ?>
+                                                                    </span>
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     <?php } ?>
