@@ -245,6 +245,7 @@ require_once('../partials/backoffice_head.php');
                                     <div class="d-flex justify-content-end">
                                         <button type="submit" name="Step_Four" class="btn btn-primary mt-3">Save and proceed <em class="icon ni ni-last"></em> </button>
                                     </div>
+                                    <br><br>
                                 </div>
                             </form>
                         <?php } else if ($_GET['page'] == '3') { ?>
@@ -324,6 +325,7 @@ require_once('../partials/backoffice_head.php');
                                     <div class="d-flex justify-content-end">
                                         <button type="submit" name="Step_Five" class="btn btn-primary mt-3">Save and proceed <em class="icon ni ni-last"></em> </button>
                                     </div>
+                                    <br><br>
                                 </div>
                             </form>
                         <?php } else if ($_GET['page'] == '4') { ?>
@@ -407,6 +409,7 @@ require_once('../partials/backoffice_head.php');
                                     <div class="d-flex justify-content-end">
                                         <button type="submit" name="Step_Six" class="btn btn-primary mt-3">Save and proceed <em class="icon ni ni-last"></em> </button>
                                     </div>
+                                    <br><br>
                                 </div>
                             </form>
                         <?php } else if ($_GET['page'] == '5') { ?>
@@ -477,6 +480,7 @@ require_once('../partials/backoffice_head.php');
                                     <div class="d-flex justify-content-end">
                                         <button type="submit" name="Step_Seven" class="btn btn-primary mt-3">Save and Submit <em class="icon ni ni-last"></em> </button>
                                     </div>
+                                    <br><br>
                                 </div>
                             </form>
                         <?php }  ?>
