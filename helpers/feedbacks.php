@@ -270,3 +270,20 @@ if (isset($_POST['Step_Seven'])) {
         }
     }
 }
+
+
+/* Update Status */
+if (isset($_POST['Update_Status'])) {
+    $feedback_id = mysqli_real_escape_string($mysqli, $_POST['feedback_id']);
+    $feedback_status = mysqli_real_escape_string($mysqli, $_POST['feedback_status']);
+
+    /* Persist */
+    if (mysqli_query(
+        $mysqli,
+        "UPDATE feedbacks SET feedback_status = '{$feedback_status}' WHERE feedback_id = '{$feedback_id}'"
+    )) {
+        $success = "Complain status updated to {$feedback_status}";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
