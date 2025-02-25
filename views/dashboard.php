@@ -339,12 +339,11 @@ require_once('../partials/backoffice_head.php');
                                                                 </div>
                                                                 <div class="nk-tb-col">
                                                                     <span class="tb-sub tb-amount">
-                                                                        <a data-toggle="modal" href="#view_<?php echo $return_results['feedback_id']; ?>" class="btn btn-sm btn-primary">View</a>
+                                                                        <a  href="backoffice_feedback?view=<?php echo $return_results['feedback_id']; ?>" class="btn btn-sm btn-primary">View</a>
                                                                     </span>
                                                                 </div>
                                                             </div>
                                                     <?php
-                                                            include('../modals/feedbacks.php');
                                                         }
                                                     } ?>
                                                 </div>
