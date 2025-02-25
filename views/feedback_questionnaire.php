@@ -474,17 +474,21 @@ require_once('../partials/backoffice_head.php');
                                                         </div>
                                                     </div>
                                                     <br>
+                                                    <div class="form-group form-check">
+                                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                        <label class="form-check-label" for="exampleCheck1">Submit my response anonymously</label>
+                                                    </div>
 
                                                     <div class="row" id="Personal_Data">
-                                                        <div class="form-group col-md-4">
+                                                        <div class="form-group col-md-12">
                                                             <label>Full names<span class="text-danger">*</span></label>
                                                             <input type="text" name="feedback_owner_name" class="form-control">
                                                         </div>
-                                                        <div class="form-group col-md-4">
+                                                        <div class="form-group col-md-12">
                                                             <label>Email address<span class="text-danger">*</span></label>
                                                             <input type="email" name="feedback_owner_email" class="form-control">
                                                         </div>
-                                                        <div class="form-group col-md-4">
+                                                        <div class="form-group col-md-12">
                                                             <label>Contacts / Phone Number<span class="text-danger">*</span></label>
                                                             <input type="text" name="feedback_owner_contact" placeholder="0712345678" class="form-control" pattern="07[0-9]{8}" title="Phone number must be in the format 0712345678">
                                                         </div>
@@ -509,6 +513,12 @@ require_once('../partials/backoffice_head.php');
     <!-- app-root @e -->
     <!-- JavaScript -->
     <?php require_once('../partials/backoffice_scripts.php'); ?>
+    <script>
+        document.getElementById("exampleCheck1").addEventListener("change", function() {
+            const personalData = document.getElementById("Personal_Data");
+            personalData.style.display = this.checked ? "none" : "block";
+        });
+    </script>
 </body>
 
 
