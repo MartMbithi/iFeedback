@@ -214,7 +214,7 @@ require_once('../helpers/mailer.php');
                                                                     </div>
                                                                     <br><br>
                                                                     <div class="text-right">
-                                                                        <button name="Update_Mailer_Settings" class="btn btn-primary" type="submit">
+                                                                        <button name="POSTFIX" class="btn btn-primary" type="submit">
                                                                             <em class="icon ni ni-save"></em> Save
                                                                         </button>
                                                                     </div>
