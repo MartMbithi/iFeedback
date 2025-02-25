@@ -427,12 +427,10 @@ require_once('../partials/backoffice_head.php');
                                                                                 <?php } ?>
                                                                             </fieldset>
                                                                             <br>
-                                                                            <form method="post">
-                                                                                <input type="hidden" name="feedback_id" value="<?php echo $return_results['feedback_id']; ?>">
-                                                                                <div class="d-flex justify-content-end">
-                                                                                    <button type="submit" name="Step_Seven" class="btn btn-primary mt-3">Mark As Resolved <em class="icon ni ni-last"></em> </button>
-                                                                                </div>
-                                                                            </form>
+                                                                            <a href="#status_change" data-toggle="modal" class="btn btn-white btn-outline-light">
+                                                                                <em class="icon ni ni-grid-add-c"></em>
+                                                                                <span>Change Status</span>
+                                                                            </a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -446,6 +444,42 @@ require_once('../partials/backoffice_head.php');
                                 </div>
                             </div>
                         </div>
+                        <!-- Status Modal -->
+                        <div class="modal fade" id="status_change">
+                            <div class="modal-dialog  modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Kindly indicate the status of this complain</h4>
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <span>&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" enctype="multipart/form-data">
+                                            <div class="form-row">
+                                                <input type="hidden" name="feedback_id" value="<?php echo $return_results['feedback_id']; ?>">
+                                                <div class="form-group col-md-12">
+                                                    <label>Current status<span class="text-danger">*</span></label>
+                                                    <select name="" required class="form-control">
+                                                        <option value="">Select status</option>
+                                                        <option>Queued</option>
+                                                        <option>In Progress</option>
+                                                        <option>Resolved</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                            <div class="text-right">
+                                                <button name="Update_Status" class="btn btn-primary" type="submit">
+                                                    <em class="icon ni ni-save"></em> Save
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Modal -->
                 <?php  }
                 } ?>
                 <!-- content @e -->
