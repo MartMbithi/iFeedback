@@ -65,8 +65,8 @@
  *
  */
 
-/* Update Mailer */
-if (isset($_POST['Update_Mailer_Settings'])) {
+if (isset($_POST['STMP'])) {
+    $id = mysqli_real_escape_string($mysqli, $_POST['id']);
     $mailer_host = mysqli_real_escape_string($mysqli, $_POST['mailer_host']);
     $mailer_port = mysqli_real_escape_string($mysqli, $_POST['mailer_port']);
     $mailer_protocol = mysqli_real_escape_string($mysqli, $_POST['mailer_protocol']);
@@ -74,15 +74,85 @@ if (isset($_POST['Update_Mailer_Settings'])) {
     $mailer_mail_from_name = mysqli_real_escape_string($mysqli, $_POST['mailer_mail_from_name']);
     $mailer_mail_from_email = mysqli_real_escape_string($mysqli, $_POST['mailer_mail_from_email']);
     $mailer_password = mysqli_real_escape_string($mysqli, $_POST['mailer_password']);
+    $mailer_status = mysqli_real_escape_string($mysqli, $_POST['mailer_status']);
 
-    /* Fine tune stmp mailer silently */
-    $tune_sql = "UPDATE mailer_settings SET mailer_host  = '{$mailer_host}', mailer_port = '{$mailer_port}', 
-    mailer_protocol = '{$mailer_protocol}', mailer_username = '{$mailer_username}', mailer_mail_from_name = '{$mailer_mail_from_name}',
-    mailer_mail_from_email = '{$mailer_mail_from_email}', mailer_password = '{$mailer_password}'";
+    if ($mailer_status == 'Active') {
+        /* Before fine tuning this sucker, check if postfix still active */
+        $fetch_records_sql = mysqli_query(
+            $mysqli,
+            "SELECT * FROM postfix_mailer_configs"
+        );
+        if (mysqli_num_rows($fetch_records_sql) > 0) {
+            while ($rows = mysqli_fetch_array($fetch_records_sql)) {
+                $postfix_mailer_status = $rows['postfix_mailer_status'];
+                if ($postfix_mailer_status == 'Active') {
+                    $err = "Please disable the postfix mailer before activating the STMP mailer";
+                } else {
+                    /* Fine Tune */
+                    $tune_sql = "UPDATE mailer_settings SET mailer_host  = '{$mailer_host}', mailer_port = '{$mailer_port}', 
+                    mailer_protocol = '{$mailer_protocol}', mailer_username = '{$mailer_username}', mailer_mail_from_name = '{$mailer_mail_from_name}',
+                    mailer_mail_from_email = '{$mailer_mail_from_email}', mailer_password = '{$mailer_password}', mailer_status = '{$mailer_status}' WHERE id = '{$id}'";
 
-    if (mysqli_query($mysqli, $tune_sql)) {
-        $success = "STMP settings updated";
+                    if (mysqli_query($mysqli, $tune_sql)) {
+                        $success = "STMP settings updated";
+                    } else {
+                        $err  = "Failed, please try again";
+                    }
+                }
+            }
+        }
     } else {
-        $err  = "Failed, please try again";
+        /* Fine tune stmp mailer silently */
+        $tune_sql = "UPDATE mailer_settings SET mailer_host  = '{$mailer_host}', mailer_port = '{$mailer_port}', 
+        mailer_protocol = '{$mailer_protocol}', mailer_username = '{$mailer_username}', mailer_mail_from_name = '{$mailer_mail_from_name}',
+        mailer_mail_from_email = '{$mailer_mail_from_email}', mailer_password = '{$mailer_password}', mailer_status = '{$mailer_status}' WHERE id = '{$id}'";
+
+        if (mysqli_query($mysqli, $tune_sql)) {
+            $success = "STMP settings updated";
+        } else {
+            $err  = "Failed, please try again";
+        }
+    }
+}
+/* postfix */
+if (isset($_POST['POSTFIX'])) {
+    $postfix_mailer_from_name = mysqli_real_escape_string($mysqli, $_POST['postfix_mailer_from_name']);
+    $postfix_mailer_from_email = mysqli_real_escape_string($mysqli, $_POST['postfix_mailer_from_email']);
+    $postfix_mailer_status = mysqli_real_escape_string($mysqli, $_POST['postfix_mailer_status']);
+
+    if ($postfix_mailer_status == 'Active') {
+        /* Determine If the stmp mailer is set to active, only one mailer must be active */
+        $fetch_records_sql = mysqli_query(
+            $mysqli,
+            "SELECT * FROM mailer_settings"
+        );
+        if (mysqli_num_rows($fetch_records_sql) > 0) {
+            while ($rows = mysqli_fetch_array($fetch_records_sql)) {
+                $mailer_status = $rows['mailer_status'];
+                if ($mailer_status == 'Active') {
+                    $err = "Please disable the STMP mailer before activating the postfix mailer";
+                } else {
+                    /* Fine Tune */
+                    $tune_sql = "UPDATE postfix_mailer_configs SET postfix_mailer_from_name = '{$postfix_mailer_from_name}', postfix_mailer_from_email = '{$postfix_mailer_from_email}',  
+                    postfix_mailer_status = '{$postfix_mailer_status}'";
+
+                    if (mysqli_query($mysqli, $tune_sql)) {
+                        $success = "Postfix mailer settings updated";
+                    } else {
+                        $err = "Failed, please try again";
+                    }
+                }
+            }
+        }
+    } else {
+        /* Fine tune postfix silently */
+        $tune_sql = "UPDATE postfix_mailer_configs SET postfix_mailer_from_name = '{$postfix_mailer_from_name}', postfix_mailer_from_email = '{$postfix_mailer_from_email}',  
+        postfix_mailer_status = '{$postfix_mailer_status}'";
+
+        if (mysqli_query($mysqli, $tune_sql)) {
+            $success = "Postfix mailer settings updated";
+        } else {
+            $err = "Failed, please try again";
+        }
     }
 }

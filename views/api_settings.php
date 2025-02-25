@@ -106,7 +106,124 @@ require_once('../helpers/mailer.php');
                                     <div class="row">
                                         <div class="card mb-3 col-md-12 border border-success">
                                             <div class="card-body">
-
+                                                <ul class="nav nav-tabs nav-tabs-s2">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" data-toggle="tab" href="#tabItem9">STMP Mailer API Configs</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="tab" href="#tabItem10">Postfix Mailer API Configs</a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active" id="tabItem9">
+                                                        <?php
+                                                        $fetch_records_sql = mysqli_query(
+                                                            $mysqli,
+                                                            "SELECT * FROM mailer_settings"
+                                                        );
+                                                        if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                                            while ($rows = mysqli_fetch_array($fetch_records_sql)) {
+                                                        ?>
+                                                                <form method="post" enctype="multipart/form-data">
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-6">
+                                                                            <label>Host <span class="text-danger">*</span></label>
+                                                                            <input type="hidden" name="id" value="<?php echo $rows['id']; ?>" required class="form-control">
+                                                                            <input type="text" name="mailer_host" value="<?php echo $rows['mailer_host']; ?>" required class="form-control">
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <label>Port <span class="text-danger">*</span></label>
+                                                                            <input type="text" name="mailer_port" value="<?php echo $rows['mailer_port']; ?>" required class="form-control">
+                                                                        </div>
+                                                                        <div class="form-group col-md-3">
+                                                                            <label>Protocol <span class="text-danger">*</span></label>
+                                                                            <input type="text" name="mailer_protocol" value="<?php echo $rows['mailer_protocol']; ?>" required class="form-control">
+                                                                        </div>
+                                                                        <div class="form-group col-md-6">
+                                                                            <label>STMP Username <span class="text-danger">*</span></label>
+                                                                            <input type="text" name="mailer_username" value="<?php echo $rows['mailer_username']; ?>" required class="form-control">
+                                                                        </div>
+                                                                        <div class="form-group col-md-6">
+                                                                            <label>STMP Password <span class="text-danger">*</span></label>
+                                                                            <input type="password" name="mailer_password" value="<?php echo $rows['mailer_password']; ?>" required class="form-control">
+                                                                        </div>
+                                                                        <div class="form-group col-md-4">
+                                                                            <label>Mailer Name <span class="text-danger">*</span></label>
+                                                                            <input type="text" name="mailer_mail_from_name" value="<?php echo $rows['mailer_mail_from_name']; ?>" required class="form-control">
+                                                                        </div>
+                                                                        <div class="form-group col-md-4">
+                                                                            <label>Mailer Email <span class="text-danger">*</span></label>
+                                                                            <input type="text" name="mailer_mail_from_email" value="<?php echo $rows['mailer_mail_from_email']; ?>" required class="form-control">
+                                                                        </div>
+                                                                        <div class="form-group col-md-4">
+                                                                            <label>Mailer status <span class="text-danger">*</span></label>
+                                                                            <select type="text" name="mailer_status" required class="form-control">
+                                                                                <?php if ($rows['mailer_status'] == 'Active') { ?>
+                                                                                    <option value="Active">Active</option>
+                                                                                    <option value="Inactive">Inactive</option>
+                                                                                <?php } else { ?>
+                                                                                    <option value="Inactive">Inactive</option>
+                                                                                    <option value="Active">Active</option>
+                                                                                <?php } ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br><br>
+                                                                    <div class="text-right">
+                                                                        <button name="STMP" class="btn btn-primary" type="submit">
+                                                                            <em class="icon ni ni-save"></em> Save
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                        <?php }
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                    <div class="tab-pane" id="tabItem10">
+                                                        <?php
+                                                        $fetch_records_sql = mysqli_query(
+                                                            $mysqli,
+                                                            "SELECT * FROM postfix_mailer_configs"
+                                                        );
+                                                        if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                                            while ($rows = mysqli_fetch_array($fetch_records_sql)) {
+                                                        ?>
+                                                                <form method="post" enctype="multipart/form-data">
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-12">
+                                                                            <label>Mail from name <span class="text-danger">*</span></label>
+                                                                            <input type="hidden" name="postfix_mailer_id" value="<?php echo $rows['postfix_mailer_id']; ?>" required class="form-control">
+                                                                            <input type="text" name="postfix_mailer_from_name" value="<?php echo $rows['postfix_mailer_from_name']; ?>" required class="form-control">
+                                                                        </div>
+                                                                        <div class="form-group col-md-6">
+                                                                            <label>Mail from name <span class="text-danger">*</span></label>
+                                                                            <input type="text" name="postfix_mailer_from_email" value="<?php echo $rows['postfix_mailer_from_email']; ?>" required class="form-control">
+                                                                        </div>
+                                                                        <div class="form-group col-md-6">
+                                                                            <label>Mailer status <span class="text-danger">*</span></label>
+                                                                            <select type="text" name="postfix_mailer_status" required class="form-control">
+                                                                                <?php if ($rows['postfix_mailer_status'] == 'Active') { ?>
+                                                                                    <option value="Active">Active</option>
+                                                                                    <option value="Inactive">Inactive</option>
+                                                                                <?php } else { ?>
+                                                                                    <option value="Inactive">Inactive</option>
+                                                                                    <option value="Active">Active</option>
+                                                                                <?php } ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br><br>
+                                                                    <div class="text-right">
+                                                                        <button name="Update_Mailer_Settings" class="btn btn-primary" type="submit">
+                                                                            <em class="icon ni ni-save"></em> Save
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                        <?php }
+                                                        }
+                                                        ?>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
