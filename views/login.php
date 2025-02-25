@@ -83,8 +83,8 @@ require_once('../partials/backoffice_head.php');
                 <div class="nk-block nk-block-middle nk-auth-body">
                     <div class="brand-logo pb-5">
                         <a href="#" class="logo-link">
-                            <img class="logo-light logo-img logo-img-lg" src="../public/images/merged_logos.png" srcset="../public/images/merged_logos.png 2x" alt="logo">
-                            <img class="logo-dark logo-img logo-img-lg" src="../public/images/merged_logos.png" srcset="../public/images/merged_logos.png 2x" alt="logo-dark">
+                            <img class="logo-light logo-img logo-img-lg" src="../public/images/logo.png" srcset="../public/images/logo.png 2x" alt="logo">
+                            <img class="logo-dark logo-img logo-img-lg" src="../public/images/logo.png" srcset="../public/images/logo.png 2x" alt="logo-dark">
                         </a>
                     </div>
                     <div class="nk-block-head">
@@ -92,8 +92,7 @@ require_once('../partials/backoffice_head.php');
                             <h5 class="nk-block-title">Login</h5>
                             <div class="nk-block-des">
                                 <p>
-                                    Horticulture Produce & Products Dealers
-                                    Registration Portal
+                                    Welcome to our Feedback Portal. Please login to your account.
                                 </p>
                             </div>
                         </div>
@@ -122,12 +121,9 @@ require_once('../partials/backoffice_head.php');
                             <button type="submit" class="btn btn-lg btn-primary btn-block" name="Login">Login</button>
                         </div>
                     </form><!-- form -->
-                    <div class="form-note-s2 pt-4 text-center">
-                        Do not have produce or products dealer account ? <br><a href="register"><strong> Register account</strong></a>
-                    </div>
                 </div><!-- .nk-block -->
             </div><!-- nk-split-content -->
-            <div style="background-image: url('https://makueni.go.ke/sandbox/site/files/2023/01/Kalamba-Mangoes-Makueni1.jpeg'); background-repeat: no-repeat;  background-position: center;   background-size: cover;" class="nk-split-content nk-split-stretch bg-lighter d-flex toggle-break-lg toggle-slide toggle-slide-right" data-content="athPromo" data-toggle-screen="lg" data-toggle-overlay="true">
+            <div style="background-image: url('https://web.pharmacyboardkenya.org/wp-content/uploads/elementor/thumbs/nathaniel-yeo-747NDboAWNY-unsplash-scaled-pgr8llwfm9uzqz0q08ydmwceka6a5tf73qzt1rkn9w.jpg'); background-repeat: no-repeat;  background-position: center;   background-size: cover;" class="nk-split-content nk-split-stretch bg-lighter d-flex toggle-break-lg toggle-slide toggle-slide-right" data-content="athPromo" data-toggle-screen="lg" data-toggle-overlay="true">
 
             </div><!-- nk-split-content -->
         </div><!-- nk-split -->
