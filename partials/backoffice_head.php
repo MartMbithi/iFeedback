@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="@@page-discription">
     <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="../public/images/small-logo.png" type="image/x-icon">
-    <link rel="icon" href="../public/images/small-logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://web.pharmacyboardkenya.org/wp-content/uploads/2021/11/cropped-logo-1-150x150.png" type="image/x-icon">
+    <link rel="icon" href="https://web.pharmacyboardkenya.org/wp-content/uploads/2021/11/cropped-logo-1-150x150.png" type="image/x-icon">
     <!-- Page Title  -->
     <title>
         Pharmacy and Poisons Board - Feedback MIS
