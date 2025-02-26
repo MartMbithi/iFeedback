@@ -67,7 +67,7 @@
 
 
 /* All Complains */
-$query = "SELECT COUNT(*) FROM feedbacks WHERE feedback_type = 'Complain'";
+$query = "SELECT COUNT(*) FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_iscomplete = '1'";
 $stmt = $mysqli->prepare($query);
 $stmt->execute();
 $stmt->bind_result($all_complains);
@@ -76,7 +76,7 @@ $stmt->close();
 
 /* All SOlved */
 $query = "SELECT COUNT(*) FROM feedbacks 
-WHERE feedback_type = 'Complain' AND feedback_status = 'Resolved'";
+WHERE feedback_type = 'Complain' AND feedback_status = 'Resolved' AND feedback_iscomplete = '1'";
 $stmt = $mysqli->prepare($query);
 $stmt->execute();
 $stmt->bind_result($all_solved);
@@ -85,7 +85,7 @@ $stmt->close();
 
 /* in_progress */
 $query = "SELECT COUNT(*) FROM feedbacks 
-WHERE feedback_type = 'Complain' AND feedback_status = 'In Progress'";
+WHERE feedback_type = 'Complain' AND feedback_status = 'In Progress' AND feedback_iscomplete = '1'";
 $stmt = $mysqli->prepare($query);
 $stmt->execute();
 $stmt->bind_result($in_progress);
@@ -94,7 +94,7 @@ $stmt->close();
 
 /* All Pending */
 $query = "SELECT COUNT(*) FROM feedbacks 
- WHERE feedback_type = 'Complain' AND feedback_status = 'Queued'";
+ WHERE feedback_type = 'Complain' AND feedback_status = 'Queued' AND feedback_iscomplete = '1'";
 $stmt = $mysqli->prepare($query);
 $stmt->execute();
 $stmt->bind_result($all_pending);

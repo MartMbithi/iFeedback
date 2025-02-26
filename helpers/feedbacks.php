@@ -258,7 +258,7 @@ if (isset($_POST['Step_Seven'])) {
             "UPDATE feedbacks SET feedback_is1 = '{$feedback_is1}', feedback_is2 = '{$feedback_is2}',
         feedback_is3 = '{$feedback_is3}', feedback_is4 = '{$feedback_is4}', feedback_is5 = '{$feedback_is5}',
         feedback_owner_name = '{$feedback_owner_name}', feedback_owner_email = '{$feedback_owner_email}',
-        feedback_owner_contact = '{$feedback_owner_contact}'
+        feedback_owner_contact = '{$feedback_owner_contact}', feedback_iscomplete = '1'
         WHERE feedback_id = '{$feedback_id}'"
         )) {
             $_SESSION['feedback_id'] = $feedback_id;
