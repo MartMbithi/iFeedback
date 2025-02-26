@@ -254,10 +254,10 @@ if (isset($_POST['Step_Seven'])) {
         $feedback_owner_name = mysqli_real_escape_string($mysqli, $_POST['feedback_owner_name']);
         $feedback_owner_email = mysqli_real_escape_string($mysqli, $_POST['feedback_owner_email']);
         $feedback_owner_contact = mysqli_real_escape_string($mysqli, $_POST['feedback_owner_contact']);
-        $_SESSION['feedback_id'] = $feedback_id;
-        $_SESSION['feedback_type'] = $feedback_type;
-        $_SESSION['feedback_directorate'] = $feedback_directorate;
-        $_SESSION['feedback_department'] = $feedback_department;
+        $feedback_type = mysqli_real_escape_string($mysqli, $_POST['feedback_type']);
+        $feedback_directorate = mysqli_real_escape_string($mysqli, $_POST['feedback_directorate']);
+        $feedback_department = mysqli_real_escape_string($mysqli, $_POST['feedback_department']);
+        $_SESSION['feedback_id'] = $feedback_id; 
 
         /* Persist */
         if (mysqli_query(
@@ -269,11 +269,7 @@ if (isset($_POST['Step_Seven'])) {
         WHERE feedback_id = '{$feedback_id}'"
         )) {
             include('../mailers/notification_mailer.php');
-            /* Unset All Sessions */
-            unset($_SESSION['feedback_id']);
-            unset($_SESSION['feedback_type']);
-            unset($_SESSION['feedback_directorate']);
-            unset($_SESSION['feedback_department']);
+           
             $_SESSION['success'] = 'Your feedback has been submitted successfully, we appreciate your time';
             header('Location: ../');
             exit;
