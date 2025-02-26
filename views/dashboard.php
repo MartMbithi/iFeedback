@@ -209,7 +209,8 @@ require_once('../partials/backoffice_head.php');
                                                         COALESCE(SUM(CASE WHEN feedback_status = 'Queued' THEN 1 ELSE 0 END), 0) AS pending
                                                         FROM feedbacks 
                                                         WHERE feedback_type = 'Complain' 
-                                                        AND feedback_department = ?";
+                                                        AND feedback_department = ?
+                                                        AND feedback_iscomplete = '1'";
 
                                                         $stmt = $mysqli->prepare($query);
                                                         $stmt->bind_param("s", $department);
@@ -336,7 +337,10 @@ require_once('../partials/backoffice_head.php');
                                                     <?php
                                                     $fetch_records_sql = mysqli_query(
                                                         $mysqli,
-                                                        "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_status = 'Queued' ORDER BY feedback_id"
+                                                        "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' 
+                                                        AND feedback_status = 'Queued' 
+                                                        AND feedback_iscomplete = '1'
+                                                        ORDER BY feedback_id"
                                                     );
                                                     if (mysqli_num_rows($fetch_records_sql) > 0) {
                                                         while ($return_results = mysqli_fetch_array($fetch_records_sql)) {
