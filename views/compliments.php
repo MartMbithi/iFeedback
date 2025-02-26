@@ -121,7 +121,7 @@ require_once('../helpers/users.php');
                                                         <?php
                                                         $fetch_records_sql = mysqli_query(
                                                             $mysqli,
-                                                            "SELECT * FROM feedbacks WHERE feedback_type = 'Compliment'"
+                                                            "SELECT * FROM feedbacks WHERE feedback_type = 'Compliment' AND feedback_iscomplete = '1'"
                                                         );
                                                         $cnt = 1;
                                                         if (mysqli_num_rows($fetch_records_sql) > 0) {

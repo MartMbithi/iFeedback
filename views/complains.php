@@ -114,7 +114,7 @@ require_once('../helpers/users.php');
                                                                 <?php
                                                                 $fetch_records_sql = mysqli_query(
                                                                     $mysqli,
-                                                                    "SELECT * FROM feedbacks WHERE feedback_type = 'Complain'"
+                                                                    "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_iscomplete = '1'"
                                                                 );
                                                                 $cnt = 1;
                                                                 if (mysqli_num_rows($fetch_records_sql) > 0) {
@@ -166,7 +166,7 @@ require_once('../helpers/users.php');
                                                                 <?php
                                                                 $fetch_records_sql = mysqli_query(
                                                                     $mysqli,
-                                                                    "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_status = 'Resolved'"
+                                                                    "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_status = 'Resolved' AND feedback_iscomplete = '1'"
                                                                 );
                                                                 $cnt = 1;
                                                                 if (mysqli_num_rows($fetch_records_sql) > 0) {
@@ -218,7 +218,7 @@ require_once('../helpers/users.php');
                                                                 <?php
                                                                 $fetch_records_sql = mysqli_query(
                                                                     $mysqli,
-                                                                    "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_status = 'In Progress'"
+                                                                    "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_status = 'In Progress' AND feedback_iscomplete = '1'"
                                                                 );
                                                                 $cnt = 1;
                                                                 if (mysqli_num_rows($fetch_records_sql) > 0) {
@@ -270,7 +270,7 @@ require_once('../helpers/users.php');
                                                                 <?php
                                                                 $fetch_records_sql = mysqli_query(
                                                                     $mysqli,
-                                                                    "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_status = 'Queued'"
+                                                                    "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_status = 'Queued' AND feedback_iscomplete = '1'"
                                                                 );
                                                                 $cnt = 1;
                                                                 if (mysqli_num_rows($fetch_records_sql) > 0) {
@@ -352,7 +352,7 @@ require_once('../helpers/users.php');
                                                             <?php
                                                             $fetch_records_sql = mysqli_query(
                                                                 $mysqli,
-                                                                "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_department = '{$_GET['directorate']}'"
+                                                                "SELECT * FROM feedbacks WHERE feedback_type = 'Complain' AND feedback_department = '{$_GET['directorate']}' AND feedback_iscomplete = '1'"
                                                             );
                                                             $cnt = 1;
                                                             if (mysqli_num_rows($fetch_records_sql) > 0) {
