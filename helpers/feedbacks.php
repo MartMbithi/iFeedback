@@ -268,8 +268,12 @@ if (isset($_POST['Step_Seven'])) {
         feedback_owner_contact = '{$feedback_owner_contact}', feedback_iscomplete = '1'
         WHERE feedback_id = '{$feedback_id}'"
         )) {
-            include('mails/notification_mailer.php');
-            $_SESSION['feedback_id'] = $feedback_id;
+            include('../mailers/notification_mailer.php');
+            /* Unset All Sessions */
+            unset($_SESSION['feedback_id']);
+            unset($_SESSION['feedback_type']);
+            unset($_SESSION['feedback_directorate']);
+            unset($_SESSION['feedback_department']);
             $_SESSION['success'] = 'Your feedback has been submitted successfully, we appreciate your time';
             header('Location: ../');
             exit;
