@@ -132,7 +132,7 @@ require_once('../helpers/users.php');
                                                                     $feedback_by = $return_results['feedback_owner_name'];
                                                                 }
                                                         ?>
-                                                                <tr style='cursor: pointer; cursor: hand;' onclick="window.location='compliment?view=<?php echo $return_results['feedback_id']; ?>';">
+                                                                <tr style='cursor: pointer; cursor: hand;' onclick="window.location='compliment_details?view=<?php echo $return_results['feedback_id']; ?>';">
                                                                     <td><?php echo $cnt; ?></td>
                                                                     <td>
                                                                         <?php echo $feedback_by; ?>
