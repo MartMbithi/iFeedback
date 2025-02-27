@@ -37,10 +37,10 @@
                     <img src='../public/images/logo.png' height="80px">
                     <h4>Delete?</h4>
                     <p>
-                        Are you sure you want to delete <?php echo $rows['directorate_name']; ?>?
+                        Are you sure you want to delete <?php echo $rows['directorate_name']; ?> Directorate?
                     </p>
                     <input type="hidden" name="directorate_id" value="<?php echo $rows['directorate_id']; ?>">
-                    <button type="button" class="text-center btn btn-success" data-dismiss="modal">No, </button>
+                    <button type="button" class="text-center btn btn-success" data-dismiss="modal">No</button>
                     <input type="submit" name="Delete_Directorate" value="Yes, Delete" class="text-center btn btn-warning">
                 </div>
             </form>
