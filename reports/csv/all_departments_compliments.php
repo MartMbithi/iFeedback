@@ -81,6 +81,7 @@ $fields = array(
     'SNo',
     'Directorate',
     'Department',
+    'Compliment',
     'Compliment Date',
     'Compliment Status',
     'Compliement By'
@@ -90,7 +91,7 @@ $fields = array(
 $excelData = implode("\t", array_values($fields)) . "\n";
 
 /* Fetch All Records From The Database */
-$query = $mysqli->query("SELECT * FROM feedbacks WHERE feedback_type = 'Compliment' ORDER BY feedback_id DESC");
+$query = $mysqli->query("SELECT * FROM feedbacks WHERE feedback_type = 'Compliment' AND  feedback_iscomplete = '1' ORDER BY feedback_id DESC");
 $cnt = 1;
 if ($query->num_rows > 0) {
     /* Load All Fetched Rows */
@@ -98,13 +99,14 @@ if ($query->num_rows > 0) {
         if (empty($row['feedback_owner_name'])) {
             $feedback_by = "Anonymous";
         } else {
-            $feedback_by = $row['feedback_owner_name'] . ' '. $row['feedback_owner_contact'];
+            $feedback_by = $row['feedback_owner_name'] . ' ' . $row['feedback_owner_contact'];
         }
         $lineData = array(
             $cnt,
             $row['feedback_directorate'],
             $row['feedback_department'],
-            $row['feedback_sumbitted_on'],
+            $row['feedback_is1'],
+            date('d M Y g:ia', strtotime($row['feedback_sumbitted_on'])),
             $row['feedback_status'],
             $feedback_by
         );
