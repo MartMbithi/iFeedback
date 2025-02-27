@@ -70,14 +70,14 @@ if (isset($_POST['Add_Directorate'])) {
     $directorate_name = mysqli_real_escape_string($mysqli, $_POST['directorate_name']);
 
     /* Prevent Duplications */
-    $check = "SELECT * FROM directorate WHERE directorate_name = '{$directorate_name}'";
+    $check = "SELECT * FROM directorates WHERE directorate_name = '{$directorate_name}'";
     $check_result = mysqli_query($mysqli, $check);
     if (mysqli_num_rows($check_result) > 0) {
         $err = "Directorate already exists";
     } else {
         if (mysqli_query(
             $mysqli,
-            "INSERT INTO directorate (directorate_name) VALUES ('{$directorate_name}')"
+            "INSERT INTO directorates (directorate_name) VALUES ('{$directorate_name}')"
         )) {
             $success = "Directorate added successfully";
         } else {
@@ -91,7 +91,7 @@ if (isset($_POST['Update_Directorate'])) {
     $directorate_id = mysqli_real_escape_string($mysqli, $_POST['directorate_id']);
     $directorate_name = mysqli_real_escape_string($mysqli, $_POST['directorate_name']);
 
-    if (mysqli_query($mysqli, "UPDATE directorate SET directorate_name = '{$directorate_name}' WHERE directorate_id = '{$directorate_id}'")) {
+    if (mysqli_query($mysqli, "UPDATE directorates SET directorate_name = '{$directorate_name}' WHERE directorate_id = '{$directorate_id}'")) {
         $success = "Directorate updated successfully";
     } else {
         $err = "Failed to update Directorate";
@@ -103,7 +103,7 @@ if (isset($_POST['Update_Directorate'])) {
 if (isset($_POST['Delete_Directorate'])) {
     $directorate_id = mysqli_real_escape_string($mysqli, $_POST['directorate_id']);
 
-    if (mysqli_query($mysqli, "DELETE FROM directorate WHERE directorate_id = '{$directorate_id}'")) {
+    if (mysqli_query($mysqli, "DELETE FROM directorates WHERE directorate_id = '{$directorate_id}'")) {
         $success = "Directorate deleted successfully";
     } else {
         $err = "Failed to delete Directorate";
