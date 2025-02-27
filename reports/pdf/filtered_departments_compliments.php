@@ -163,7 +163,7 @@ $html =
                         <h3>
                             <img src="' . $base64 . '" style="width:40%" alt="Logo">  <br>
                             <hr style="width:100%" , color=black> <br>
-                            '.$department.' Departmental Compliments
+                            '.$department.' Department Compliments
                         </h3>                        
                     </div>
                     <table border="1" cellspacing="0" width="100%" style="font-size:9pt">
