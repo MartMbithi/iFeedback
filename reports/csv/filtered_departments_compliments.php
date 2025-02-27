@@ -83,7 +83,7 @@ $fields = array(
     'Department',
     'Compliment Date',
     'Compliment Status',
-    'Compliement By'
+    'Compliment By'
 );
 
 
@@ -104,7 +104,7 @@ if ($query->num_rows > 0) {
             $cnt,
             $row['feedback_directorate'],
             $row['feedback_department'],
-            $row['feedback_sumbitted_on'],
+            date('d M Y g:ia', strtotime($row['feedback_sumbitted_on'])),
             $row['feedback_status'],
             $feedback_by
         );
