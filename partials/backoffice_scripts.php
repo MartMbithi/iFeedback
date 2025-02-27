@@ -16,3 +16,48 @@
         window.history.replaceState(null, null, window.location.href);
     }
 </script>
+<script>
+    function updateDepartments() {
+        let directorate = document.getElementById("directorate").value;
+        let departmentDropdown = document.getElementById("department");
+
+        if (directorate === "") {
+            departmentDropdown.innerHTML = '<option value="">Select department</option>';
+            return;
+        }
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "fetch_departments.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                departmentDropdown.innerHTML = xhr.responseText;
+            }
+        };
+
+        xhr.send("directorate=" + encodeURIComponent(directorate));
+    }
+
+    function updateEmail() {
+        let department = document.getElementById("department").value;
+        let emailInput = document.getElementById("department_email");
+
+        if (department === "") {
+            emailInput.value = "";
+            return;
+        }
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "fetch_department_email.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                emailInput.value = xhr.responseText;
+            }
+        };
+
+        xhr.send("department=" + encodeURIComponent(department));
+    }
+</script>

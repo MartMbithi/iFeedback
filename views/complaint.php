@@ -97,21 +97,20 @@ require_once('../partials/backoffice_head.php');
                                             <select id="directorate" name="feedback_directorate" class="form-select" onchange="updateDepartments()">
                                                 <option value="">Select directorate</option>
                                                 <?php
-                                                $fetch_records_sql = mysqli_query(
-                                                    $mysqli,
-                                                    "SELECT * FROM directorates"
-                                                );
-                                                if (mysqli_num_rows($fetch_records_sql) > 0) {
-                                                    while ($rows = mysqli_fetch_array($fetch_records_sql)) {
+                                                $fetch_directorates_sql = mysqli_query($mysqli, "SELECT * FROM directorates");
+                                                if (mysqli_num_rows($fetch_directorates_sql) > 0) {
+                                                    while ($row = mysqli_fetch_array($fetch_directorates_sql)) {
                                                 ?>
-                                                        <option value="<?php echo $rows['directorate_name']; ?>"><?php echo $rows['directorate_name']; ?></option>
+                                                        <option value="<?php echo $row['directorate_name']; ?>"><?php echo $row['directorate_name']; ?></option>
                                                 <?php }
                                                 } ?>
                                             </select>
                                         </div>
                                         <div class="col-md-12">
                                             <label for="department" class="form-label">Choose Department:</label>
-                                            <select id="department" name="feedback_department" class="form-select"></select>
+                                            <select id="department" name="feedback_department" class="form-select" onchange="updateEmail()">
+                                                <option value="">Select department</option>
+                                            </select>
                                             <input type="hidden" name="department_email" id="department_email" value="">
                                         </div>
                                     </div>
