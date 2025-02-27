@@ -422,7 +422,7 @@ require_once('../partials/backoffice_head.php');
                                                 <input type="hidden" name="feedback_type" value="<?php echo $_SESSION['feedback_type']; ?>">
                                                 <input type="hidden" name="feedback_directorate" value="<?php echo $_SESSION['feedback_directorate']; ?>">
                                                 <input type="hidden" name="feedback_department" value="<?php echo $_SESSION['feedback_department']; ?>">
-                                                <input type="text" name="department_email" value="<?php echo $_SESSION['department_email']; ?>">
+                                                <input type="hidden" name="department_email" value="<?php echo $_SESSION['department_email']; ?>">
                                                 <fieldset class="border col-12 border p-3 rounded ">
                                                     <legend class="w-auto text-danger">Section 5: Improvement Suggestions</legend>
                                                     <div class="row">
