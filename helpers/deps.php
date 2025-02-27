@@ -85,6 +85,18 @@ if (isset($_POST['Add_Directorate'])) {
         }
     }
 }
- /* Update Directorate */
+
+/* Update Directorate */
+if (isset($_POST['Update_Directorate'])) {
+    $directorate_id = mysqli_real_escape_string($mysqli, $_POST['directorate_id']);
+    $directorate_name = mysqli_real_escape_string($mysqli, $_POST['directorate_name']);
+
+    if (mysqli_query($mysqli, "UPDATE directorate SET directorate_name = '{$directorate_name}' WHERE directorate_id = '{$directorate_id}'")) {
+        $success = "Directorate updated successfully";
+    } else {
+        $err = "Failed to update Directorate";
+    }
+}
+
 
 /* Delete Directorate */
