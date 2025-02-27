@@ -153,3 +153,12 @@ if (isset($_POST['Update_Department'])) {
 }
 
 /* Delete Department */
+if (isset($_POST['Delete_Department'])) {
+    $department_id = mysqli_real_escape_string($mysqli, $_POST['department_id']);
+
+    if (mysqli_query($mysqli, "DELETE FROM departments WHERE department_id = '{$department_id}'")) {
+        $success = "Department deleted successfully";
+    } else {
+        $err = "Failed to delete Department";
+    }
+}
