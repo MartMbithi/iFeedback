@@ -140,7 +140,7 @@ $html =
                         .watermark {
                             position: fixed; /* Change to fixed */
                             top: 50%; /* Center vertically */
-                            left: 55%; /* Center horizontally */
+                            left: 90%; /* Center horizontally */
                             transform: translate(-50%, -50%); /* Adjust to center the element */
                             opacity: 0.1; /* Adjust transparency */
                             z-index: -1; /* Send behind content */
@@ -161,7 +161,7 @@ $html =
                     </div>
                     <div class="list_header" align="center">
                         <h3>
-                            <img src="' . $base64 . '" style="width:75%" alt="Logo">  <br>
+                            <img src="' . $base64 . '" style="width:40%" alt="Logo">  <br>
                             <hr style="width:100%" , color=black> <br>
                             All Departmental Compliments Reports
                         </h3>                        
