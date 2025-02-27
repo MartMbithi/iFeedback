@@ -152,6 +152,7 @@ if (isset($_POST['Update_Department'])) {
     }
 }
 
+
 /* Delete Department */
 if (isset($_POST['Delete_Department'])) {
     $department_id = mysqli_real_escape_string($mysqli, $_POST['department_id']);

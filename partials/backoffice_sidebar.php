@@ -41,6 +41,18 @@
                             </a>
                         </li><!-- .nk-menu-item -->
                         <li class="nk-menu-item">
+                            <a href="directorates" class="nk-menu-link">
+                                <span class="nk-menu-icon"><em class="icon ni ni-tag"></em></span>
+                                <span class="nk-menu-text">Directorates</span>
+                            </a>
+                        </li>
+                        <li class="nk-menu-item">
+                            <a href="departments" class="nk-menu-link">
+                                <span class="nk-menu-icon"><em class="icon ni ni-bookmark"></em></span>
+                                <span class="nk-menu-text">Departments</span>
+                            </a>
+                        </li>
+                        <li class="nk-menu-item">
                             <a href="api_settings" class="nk-menu-link">
                                 <span class="nk-menu-icon"><em class="icon ni ni-setting-alt"></em></span>
                                 <span class="nk-menu-text">Mailer API Settings</span>
