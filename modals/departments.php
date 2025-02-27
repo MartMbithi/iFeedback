@@ -12,9 +12,10 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Department Name<span class="text-danger">*</span></label>
+                            <input type="hidden" value="<?php echo $rows['department_id']; ?>" name="department_id" required class="form-control">
                             <input type="text" value="<?php echo $rows['department_name']; ?>" name="department_name" required class="form-control">
                         </div>
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label>Department Email<span class="text-danger">*</span></label>
                             <input type="email" value="<?php echo $rows['department_email']; ?>" name="department_email" required class="form-control">
                         </div>
