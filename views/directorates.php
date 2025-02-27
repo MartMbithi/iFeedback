@@ -95,7 +95,7 @@ require_once('../helpers/deps.php');
                                             <h3 class="nk-block-title page-title">Directorates</h3>
                                             <div class="nk-block-des text-soft">
                                                 <p>
-                                                    This module allows you to manage Directorates <br>
+                                                    This module allows you to manage directorates <br>
                                                 </p>
                                             </div>
                                         </div><!-- .nk-block-head-content -->
