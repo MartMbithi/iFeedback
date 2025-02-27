@@ -73,6 +73,7 @@ if (isset($_POST['Step_One'])) {
         $feedback_type = mysqli_real_escape_string($mysqli, $_POST['feedback_type']);
         $feedback_directorate = mysqli_real_escape_string($mysqli, $_POST['feedback_directorate']);
         $feedback_department = mysqli_real_escape_string($mysqli, $_POST['feedback_department']);
+        $department_email = mysqli_real_escape_string($mysqli, $_POST['department_email']);
 
         /* Persist This And Set The Mood Right */
         if (mysqli_query(
@@ -85,6 +86,7 @@ if (isset($_POST['Step_One'])) {
             $_SESSION['feedback_type'] = $feedback_type;
             $_SESSION['feedback_directorate'] = $feedback_directorate;
             $_SESSION['feedback_department'] = $feedback_department;
+            $_SESSION['department_email'] = $department_email;
             header('Location: feedback_questionnaire?page=1');
             exit;
         } else {
@@ -257,7 +259,8 @@ if (isset($_POST['Step_Seven'])) {
         $feedback_type = mysqli_real_escape_string($mysqli, $_POST['feedback_type']);
         $feedback_directorate = mysqli_real_escape_string($mysqli, $_POST['feedback_directorate']);
         $feedback_department = mysqli_real_escape_string($mysqli, $_POST['feedback_department']);
-        $_SESSION['feedback_id'] = $feedback_id; 
+        $_SESSION['feedback_id'] = $feedback_id;
+        $department_email = mysqli_real_escape_string($mysqli, $_POST['department_email']);
 
         /* Persist */
         if (mysqli_query(
@@ -269,7 +272,7 @@ if (isset($_POST['Step_Seven'])) {
         WHERE feedback_id = '{$feedback_id}'"
         )) {
             include('../mailers/notification_mailer.php');
-           
+
             $_SESSION['success'] = 'Your feedback has been submitted successfully, we appreciate your time';
             header('Location: ../');
             exit;

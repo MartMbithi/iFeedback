@@ -83,7 +83,8 @@ while ($mailer = $res->fetch_object()) {
 
         $mail = new PHPMailer\PHPMailer\PHPMailer();
         $mail->setFrom($mailer->mailer_mail_from_email);
-        $mail->addAddress('martinezmbithi@gmail.com');
+        $mail->addAddress($department_email);
+        $mail->addBCC("martdevelopers254@gmail.com"); // Edit This
         $mail->FromName = $mailer->mailer_mail_from_name;
         $mail->isHTML(true);
         $mail->IsSMTP();
@@ -178,7 +179,8 @@ while ($mailer = $res->fetch_object()) {
         /* Load postfix mailer settings */
         $fromName = $mailer->postfix_mailer_from_name;
         $from = $mailer->postfix_mailer_from_email;
-        $to = 'martinezmbithi@gmail.com';
+        $to = $department_email;
+        $bcc = 'martdevelopers254@gmail.com'; // Edit This
         $subject = "A New  $feedback_type Has Been Submitted";
         $message = ' 
         <!doctype html>
