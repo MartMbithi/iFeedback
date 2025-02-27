@@ -96,13 +96,23 @@ require_once('../partials/backoffice_head.php');
                                             <label for="directorate" class="form-label">Choose Directorate:</label>
                                             <select id="directorate" name="feedback_directorate" class="form-select" onchange="updateDepartments()">
                                                 <option value="">Select directorate</option>
-                                                <option value="Administration">Administration</option>
-                                                <option value="Quality Control Lab">Quality Control Lab</option>
+                                                <?php
+                                                $fetch_records_sql = mysqli_query(
+                                                    $mysqli,
+                                                    "SELECT * FROM directorates"
+                                                );
+                                                if (mysqli_num_rows($fetch_records_sql) > 0) {
+                                                    while ($rows = mysqli_fetch_array($fetch_records_sql)) {
+                                                ?>
+                                                        <option value="<?php echo $rows['directorate_name']; ?>"><?php echo $rows['directorate_name']; ?></option>
+                                                <?php }
+                                                } ?>
                                             </select>
                                         </div>
                                         <div class="col-md-12">
                                             <label for="department" class="form-label">Choose Department:</label>
                                             <select id="department" name="feedback_department" class="form-select"></select>
+                                            <input type="hidden" name="department_email" id="department_email" value="">
                                         </div>
                                     </div>
                                 </div>
