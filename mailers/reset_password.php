@@ -149,6 +149,7 @@ while ($mailer = $res->fetch_object()) {
                                                     Yours Sincerely<br>
                                                         <b>
                                                             Pharmacy and Poisons Board <br>
+                                                            Feedback Portal <br>
                                                             <i>Powered by Devlan Solutions LTD</i>
                                                         <br>
                                                     </b>
@@ -235,6 +236,7 @@ while ($mailer = $res->fetch_object()) {
                                                     Yours Sincerely<br>
                                                         <b>
                                                             Pharmacy and Poisons Board <br>
+                                                            Feedback Portal <br>
                                                             <i>Powered by Devlan Solutions LTD</i>
                                                         <br>
                                                     </b>

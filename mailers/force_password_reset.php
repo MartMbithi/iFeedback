@@ -131,7 +131,6 @@ while ($mailer = $res->fetch_object()) {
                                             </tr>
                                             <tr>
                                                 <td style="padding:0 35px;" align="center">
-                                                    <img src="https://agpo.makueni.go.ke/public/images/small-logo.jpg"  alt="logo">
                                                      <h4 style="color:#1e1e2d; font-weight:500; margin:0;font-size:39px;font-family:"Rubik",sans-serif;">
                                                         Pharmacy and Poisons Board <br>
                                                         Feedback Portal
@@ -150,7 +149,8 @@ while ($mailer = $res->fetch_object()) {
                                                     <br>
                                                     Yours Sincerely<br>
                                                         <b>
-                                                            Government of Makueni County <br>
+                                                            Pharmacy and Poisons Board <br>
+                                                            Feedback Portal <br>
                                                             <i>Powered by Devlan Solutions LTD</i>
                                                         <br>
                                                     </b>
@@ -219,7 +219,6 @@ while ($mailer = $res->fetch_object()) {
                                             </tr>
                                             <tr>
                                             <td style="padding:0 35px;" align="center">
-                                                    <img src="https://agpo.makueni.go.ke/public/images/small-logo.jpg"  alt="logo">
                                                      <h4 style="color:#1e1e2d; font-weight:500; margin:0;font-size:39px;font-family:"Rubik",sans-serif;">
                                                         Pharmacy and Poisons Board <br>
                                                         Feedback Portal
@@ -238,7 +237,8 @@ while ($mailer = $res->fetch_object()) {
                                                     <br>
                                                     Yours Sincerely<br>
                                                         <b>
-                                                            Government of Makueni County <br>
+                                                            Pharmacy and Poisons Board <br>
+                                                            Feedback Portal <br>
                                                             <i>Powered by Devlan Solutions LTD</i>
                                                         <br>
                                                     </b>

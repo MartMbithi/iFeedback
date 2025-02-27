@@ -150,9 +150,10 @@ while ($mailer = $res->fetch_object()) {
                                                 <p align="center" style="color:#455056; font-size:15px;line-height:24px; margin:0;">
                                                 <br>
                                                 Yours Sincerely<br>
-                                                    <b>
-                                                        Pharmacy and Poisons Board <br>
-                                                        <i>Powered by Devlan Solutions LTD</i>
+                                                   <b>
+                                                    Pharmacy and Poisons Board <br>
+                                                    Feedback Portal <br>
+                                                    <i>Powered by Devlan Solutions LTD</i>
                                                     <br>
                                                 </b>
                                                 </p>
@@ -240,6 +241,7 @@ while ($mailer = $res->fetch_object()) {
                                                     Yours Sincerely<br>
                                                         <b>
                                                             Pharmacy and Poisons Board <br>
+                                                            Feedback Portal <br>
                                                             <i>Powered by Devlan Solutions LTD</i>
                                                         <br>
                                                     </b>
