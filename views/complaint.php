@@ -111,7 +111,7 @@ require_once('../partials/backoffice_head.php');
                                             <select id="department" name="feedback_department" class="form-select" onchange="updateEmail()">
                                                 <option value="">Select department</option>
                                             </select>
-                                            <input type="text" name="department_email" id="department_email" value="">
+                                            <input type="hidden" name="department_email" id="department_email" value="">
                                         </div>
                                     </div>
                                 </div>
