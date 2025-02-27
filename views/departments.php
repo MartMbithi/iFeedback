@@ -146,6 +146,7 @@ require_once('../helpers/deps.php');
 
                                                                 <?php  }
                                                                 } ?>
+                                                            </select>
                                                         </div>
                                                         <div class="form-group col-md-6">
                                                             <label>Department Name<span class="text-danger">*</span></label>
@@ -185,7 +186,7 @@ require_once('../helpers/deps.php');
                                                         <?php
                                                         $fetch_records_sql = mysqli_query(
                                                             $mysqli,
-                                                            "SELECT * FROM directorates d INNER JOIN department dp ON d.directorate_id = dp.department_directorate_id"
+                                                            "SELECT * FROM directorates d INNER JOIN departments dp ON d.directorate_id = dp.department_directorate_id"
                                                         );
                                                         if (mysqli_num_rows($fetch_records_sql) > 0) {
                                                             $cnt =  1;

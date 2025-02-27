@@ -119,7 +119,7 @@ if (isset($_POST['Add_Department'])) {
     $department_email = mysqli_real_escape_string($mysqli, $_POST['department_email']);
 
     /* Prevent Duplications */
-    $check = "SELECT * FROM department WHERE department_name = '{$department_name}' && department_directorate_id = '{$department_directorate_id}'";
+    $check = "SELECT * FROM departments WHERE department_name = '{$department_name}' && department_directorate_id = '{$department_directorate_id}'";
     $check_result = mysqli_query($mysqli, $check);
     if (mysqli_num_rows($check_result) > 0) {
         $err = "Department already exists";
