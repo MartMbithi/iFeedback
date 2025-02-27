@@ -1,6 +1,7 @@
 {
     "require": {
         "cloudinary/cloudinary_php": "^2",
-        "crunzphp/crunz": "^3.4"
+        "crunzphp/crunz": "^3.4",
+        "dompdf/dompdf": "^3.1"
     }
 }

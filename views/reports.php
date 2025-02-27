@@ -108,7 +108,7 @@ if (isset($_POST['Export_Compliments'])) {
             require_once('../reports/pdf/filtered_departments_compliments.php');
         } else {
             /* Load CSV Report */
-            require_once('../reports/pdf/filtered_departments_compliments.php');
+            require_once('../reports/csv/filtered_departments_compliments.php');
         }
     }
 }
