@@ -59,6 +59,20 @@
                             </a>
                         </li>
                     <?php } ?>
+                    <li class="nk-menu-item has-sub">
+                        <a href="#" class="nk-menu-link nk-menu-toggle">
+                            <span class="nk-menu-icon"><em class="icon ni ni-list"></em></span>
+                            <span class="nk-menu-text">Reports</span>
+                        </a>
+                        <ul class="nk-menu-sub">
+                            <li class="nk-menu-item">
+                                <a href="reports_compliments" class="nk-menu-link"><span class="nk-menu-text">Compliments</span></a>
+                            </li>
+                            <li class="nk-menu-item">
+                                <a href="reports_complains" class="nk-menu-link"><span class="nk-menu-text">Complains</span></a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="nk-menu-item">
                         <a data-toggle="modal" href="#end_session" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-power"></em></span>
