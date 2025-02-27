@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 25, 2025 at 03:06 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Feb 27, 2025 at 12:27 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,49 @@ SET time_zone = "+00:00";
 --
 -- Database: `ifeedback`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `departments`
+--
+
+CREATE TABLE `departments` (
+  `department_id` int(200) NOT NULL,
+  `department_directorate_id` int(200) NOT NULL,
+  `department_name` varchar(200) NOT NULL,
+  `department_email` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `departments`
+--
+
+INSERT INTO `departments` (`department_id`, `department_directorate_id`, `department_name`, `department_email`) VALUES
+(1, 2, 'Transport', 'martinezmbithi@gmail.com'),
+(2, 2, 'Security', 'martinezmbithi@gmail.com'),
+(3, 2, 'Finance', 'martinezmbithi@gmail.com'),
+(4, 3, 'Testing', 'martinezmbithi@gmail.com'),
+(5, 3, 'Analysis', 'martinezmbithi@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `directorates`
+--
+
+CREATE TABLE `directorates` (
+  `directorate_id` int(200) NOT NULL,
+  `directorate_name` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `directorates`
+--
+
+INSERT INTO `directorates` (`directorate_id`, `directorate_name`) VALUES
+(2, 'Administration'),
+(3, 'Quality Control Lab');
 
 -- --------------------------------------------------------
 
@@ -61,15 +104,18 @@ CREATE TABLE `feedbacks` (
   `feedback_owner_email` varchar(200) DEFAULT NULL,
   `feedback_owner_contact` varchar(200) DEFAULT NULL,
   `feedback_status` varchar(200) NOT NULL DEFAULT 'Queued',
-  `feedback_sumbitted_on` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
+  `feedback_sumbitted_on` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+  `feedback_iscomplete` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `feedbacks`
 --
 
-INSERT INTO `feedbacks` (`feedback_id`, `feedback_type`, `feedback_directorate`, `feedback_department`, `feedback_gsd1`, `feedback_gsd2`, `feedback_gsd3`, `feedback_gsd4`, `feedback_gsd5`, `feedback_si1`, `feedback_si2`, `feedback_si3`, `feedback_si4`, `feedback_si5`, `feedback_et1`, `feedback_et2`, `feedback_et3`, `feedback_et4`, `feedback_et5`, `feedback_ac1`, `feedback_ac2`, `feedback_ac3`, `feedback_ac4`, `feedback_ac5`, `feedback_is1`, `feedback_is2`, `feedback_is3`, `feedback_is4`, `feedback_is5`, `feedback_owner_name`, `feedback_owner_email`, `feedback_owner_contact`, `feedback_status`, `feedback_sumbitted_on`) VALUES
-(8, 'Complain', 'Administration', 'Transport', 'Very Poor', 'Strongly Disagree', 'Very Dissatisfied', 'Strongly Disagree', 'Strongly Disagree', 'Poor', 'Disagree', 'Dissatisfied', 'Very Poor', 'Disagree', 'Dissatisfied', 'Inefficient', 'Inefficient', 'Dissatisfied', 'Disagree', 'Difficult', 'Poor', 'Poor', 'Difficult', 'Neutral', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,', 'Unlikely', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,', 'Martin Mbithi', 'martinezmbithi@gmail.com', '0740847563', 'Resolved', '2025-02-25 12:35:27.740705');
+INSERT INTO `feedbacks` (`feedback_id`, `feedback_type`, `feedback_directorate`, `feedback_department`, `feedback_gsd1`, `feedback_gsd2`, `feedback_gsd3`, `feedback_gsd4`, `feedback_gsd5`, `feedback_si1`, `feedback_si2`, `feedback_si3`, `feedback_si4`, `feedback_si5`, `feedback_et1`, `feedback_et2`, `feedback_et3`, `feedback_et4`, `feedback_et5`, `feedback_ac1`, `feedback_ac2`, `feedback_ac3`, `feedback_ac4`, `feedback_ac5`, `feedback_is1`, `feedback_is2`, `feedback_is3`, `feedback_is4`, `feedback_is5`, `feedback_owner_name`, `feedback_owner_email`, `feedback_owner_contact`, `feedback_status`, `feedback_sumbitted_on`, `feedback_iscomplete`) VALUES
+(1, 'Complain', 'Quality Control Lab', 'Testing', 'Very Poor', 'Strongly Disagree', 'Very Dissatisfied', 'Strongly Disagree', 'Strongly Disagree', 'Very Poor', 'Strongly Disagree', 'Very Dissatisfied', 'Very Poor', 'Strongly Disagree', 'Very Dissatisfied', 'Very Inefficient', 'Very Inefficient', 'Very Dissatisfied', 'Strongly Disagree', 'Very Difficult', 'Very Poor', 'Very Poor', 'Very Difficult', 'Very Inconvenient', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', 'Very Unlikely', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', 'Martin Mbithi', 'martinezmbithi@gmail.com', '0740847563', 'Queued', '2025-02-26 10:41:37.167492', 1),
+(2, 'Compliment', 'Administration', 'Security', 'Excellent', 'Strongly Agree', 'Very Satisfied', 'Strongly Agree', 'Strongly Agree', 'Excellent', 'Strongly Agree', 'Very Satisfied', 'Excellent', 'Strongly Agree', 'Very Satisfied', 'Very Efficient', 'Very Efficient', 'Very Satisfied', 'Strongly Agree', 'Very Easy', 'Excellent', 'Excellent', 'Very Easy', 'Very Convenient', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', 'Very Likely', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', '', '', '', 'Queued', '2025-02-27 10:19:08.865640', 1),
+(3, 'Compliment', 'Quality Control Lab', 'Analysis', 'Excellent', 'Strongly Agree', 'Very Satisfied', 'Strongly Agree', 'Strongly Agree', 'Excellent', 'Strongly Agree', 'Very Satisfied', 'Excellent', 'Strongly Agree', 'Very Satisfied', 'Very Efficient', 'Very Efficient', 'Very Satisfied', 'Strongly Agree', 'Very Easy', 'Excellent', 'Excellent', 'Very Easy', 'Very Convenient', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ', 'Very Likely', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ', 'Martin Mbithi', 'martinezmbithi@gmail.com', '0740847563', 'Queued', '2025-02-27 10:54:27.693664', 1);
 
 -- --------------------------------------------------------
 
@@ -92,7 +138,10 @@ CREATE TABLE `logs` (
 
 INSERT INTO `logs` (`log_id`, `log_user_id`, `log_user_type`, `log_date`, `log_ip_address`, `log_device`) VALUES
 (1, 6, 'System Administrator', '2025-02-25 12:00:43', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:135.0) Gecko/20100101 Firefox/135.0'),
-(2, 6, 'System Administrator', '2025-02-25 16:47:31', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:135.0) Gecko/20100101 Firefox/135.0');
+(2, 6, 'System Administrator', '2025-02-25 16:47:31', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:135.0) Gecko/20100101 Firefox/135.0'),
+(3, 6, 'System Administrator', '2025-02-26 13:18:33', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0'),
+(4, 6, 'System Administrator', '2025-02-26 13:36:40', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0'),
+(5, 6, 'System Administrator', '2025-02-27 12:04:49', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0');
 
 -- --------------------------------------------------------
 
@@ -169,6 +218,18 @@ INSERT INTO `users` (`user_id`, `user_names`, `user_email`, `user_password`, `us
 --
 
 --
+-- Indexes for table `departments`
+--
+ALTER TABLE `departments`
+  ADD PRIMARY KEY (`department_id`);
+
+--
+-- Indexes for table `directorates`
+--
+ALTER TABLE `directorates`
+  ADD PRIMARY KEY (`directorate_id`);
+
+--
 -- Indexes for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
@@ -204,16 +265,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `department_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `directorates`
+--
+ALTER TABLE `directorates`
+  MODIFY `directorate_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  MODIFY `feedback_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `feedback_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-  MODIFY `log_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `log_id` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `mailer_settings`
