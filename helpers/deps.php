@@ -138,5 +138,18 @@ if (isset($_POST['Add_Department'])) {
 
 
 /* Update Department */
+if (isset($_POST['Update_Department'])) {
+    $department_id = mysqli_real_escape_string($mysqli, $_POST['department_id']);
+    $department_name = mysqli_real_escape_string($mysqli, $_POST['department_name']);
+    $department_email = mysqli_real_escape_string($mysqli, $_POST['department_email']);
+
+    if (mysqli_query($mysqli, "UPDATE departments SET  department_name = '{$department_name}', 
+        department_email = '{$department_email}' 
+        WHERE department_id = '{$department_id}'")) {
+        $success = "Department updated successfully";
+    } else {
+        $err = "Failed to update Department";
+    }
+}
 
 /* Delete Department */
