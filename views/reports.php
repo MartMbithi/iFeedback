@@ -112,3 +112,28 @@ if (isset($_POST['Export_Compliments'])) {
         }
     }
 }
+
+
+/* Complains */
+if (isset($_POST['Export_Complains'])) {
+    $department = mysqli_real_escape_string($mysqli, $_POST['department']);
+    $file_type = mysqli_real_escape_string($mysqli, $_POST['file_type']);
+
+    if ($department == 'All') {
+        if ($file_type == 'PDF') {
+            /* Load PDF Report */
+            require_once('../reports/pdf/all_departments_complains.php');
+        } else {
+            /* Load CSV Report */
+            require_once('../reports/csv/all_departments_complains.php');
+        }
+    } else {
+        if ($file_type == 'PDF') {
+            /* Load PDF Report */
+            require_once('../reports/pdf/filtered_departments_complains.php');
+        } else {
+            /* Load CSV Report */
+            require_once('../reports/csv/filtered_departments_complains.php');
+        }
+    }
+}
