@@ -140,9 +140,8 @@ while ($mailer = $res->fetch_object()) {
                                                 <span
                                                     style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
                                                 <p style="color:#455056; font-size:15px;line-height:24px; margin:0;" align="justify">
-                                                    A new  ' . $feedback_type . ' has been successfully submitted to the ' . $feedback_directorate . ' directorate and the ' . $feedback_department . ' department. <br>
+                                                    A new  ' . $feedback_type . ' has been successfully submitted to the ' . $feedback_directorate . ' directorate under the ' . $feedback_department . ' department. <br>
                                                     You are requested to log in to the feedback portal to review the details and take the necessary action.
-                                                    Prompt attention to this matter will ensure timely resolution and improve service efficiency.
                                                 </p>
                                                 <p align="center" style="color:#455056; font-size:15px;line-height:24px; margin:0;">
                                                 <br>
@@ -225,9 +224,8 @@ while ($mailer = $res->fetch_object()) {
                                                     <span
                                                         style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
                                                     <p style="color:#455056; font-size:15px;line-height:24px; margin:0;" align="justify">
-                                                        A new  ' . $feedback_type . ' has been successfully submitted to the ' . $feedback_directorate . ' directorate and the ' . $feedback_department . ' department. <br>
+                                                        A new  ' . $feedback_type . ' has been successfully submitted to the ' . $feedback_directorate . ' directorate under ' . $feedback_department . ' department. <br>
                                                         You are requested to log in to the feedback portal to review the details and take the necessary action.
-                                                        Prompt attention to this matter will ensure timely resolution and improve service efficiency.
                                                     </p>
                                                     <p align="center" style="color:#455056; font-size:15px;line-height:24px; margin:0;">
                                                     <br>
