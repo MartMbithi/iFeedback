@@ -178,7 +178,37 @@ $html =
                                 <th style="width:100%">Compliment By</th>
                             </tr>
                         </thead>
-                        
+                        <tbody>
+                            ';
+                                $pdf_sql = mysqli_query(
+                                    $mysqli,
+                                    "SELECT * FROM feedbacks WHERE feedback_type = 'Compliment' AND  feedback_iscomplete = '1' ORDER BY feedback_id DESC"
+                                );
+                                $cnt = 1;
+                                if (mysqli_num_rows($pdf_sql) > 0) {
+                                    while ($row = mysqli_fetch_array($pdf_sql)) {
+                                        if (empty($row['feedback_owner_name'])) {
+                                            $feedback_by = "Anonymous";
+                                        } else {
+                                            $feedback_by = $row['feedback_owner_name'] . ' ' . $row['feedback_owner_contact'];
+                                        }
+                                        $html .=
+                                            '
+                                            <tr>
+                                                <td>' . $cnt . '</td>
+                                                <td>' . $row['feedback_directorate'] . '</td>
+                                                <td>' . $row['feedback_department'] . '</td>
+                                                <td>' . $row['feedback_is1'] . '</td>
+                                                <td>' .date('d M Y g:ia', strtotime($row['feedback_sumbitted_on'])) . '</td>
+                                                <td>' . $row['feedback_status'] . '</td>
+                                                <td>' . $feedback_by . '</td>
+                                            </tr>
+                                        ';
+                                        $cnt = $cnt + 1;
+                                    }
+                                }
+                                $html .= '
+                        </tbody>
                     </table>
                 </body>
             </html>
