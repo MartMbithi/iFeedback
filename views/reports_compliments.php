@@ -142,7 +142,7 @@ require_once('../helpers/users.php');
                                                                 if (mysqli_num_rows($fetch_records_sql) > 0) {
                                                                     while ($rows = mysqli_fetch_array($fetch_records_sql)) {
                                                                 ?>
-                                                                        <option value="<?php echo $rows['directorate_name']; ?>"><?php echo $rows['directorate_name']; ?></option>
+                                                                        <option value="<?php echo $rows['department_name']; ?>"><?php echo $rows['department_name']; ?></option>
 
                                                                 <?php  }
                                                                 } ?>
@@ -160,7 +160,7 @@ require_once('../helpers/users.php');
                                                     <br><br>
                                                     <div class="text-right">
                                                         <button name="Export_Compliments" class="btn btn-primary" type="submit">
-                                                            <em class="icon ni ni-save"></em> Save
+                                                            <em class="icon ni ni-download"></em> Download
                                                         </button>
                                                     </div>
                                                 </form>
