@@ -100,3 +100,12 @@ if (isset($_POST['Update_Directorate'])) {
 
 
 /* Delete Directorate */
+if (isset($_POST['Delete_Directorate'])) {
+    $directorate_id = mysqli_real_escape_string($mysqli, $_POST['directorate_id']);
+
+    if (mysqli_query($mysqli, "DELETE FROM directorate WHERE directorate_id = '{$directorate_id}'")) {
+        $success = "Directorate deleted successfully";
+    } else {
+        $err = "Failed to delete Directorate";
+    }
+}
