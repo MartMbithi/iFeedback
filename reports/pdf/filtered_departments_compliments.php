@@ -172,7 +172,6 @@ $html =
                                 <th style="width:10%">S/N</th>
                                 <th style="width:100%">Compliment</th>
                                 <th style="width:40%">Date</th>
-                                <th style="width:40%">Status</th>
                                 <th style="width:70%">Compliment By</th>
                             </tr>
                         </thead>
@@ -196,7 +195,6 @@ $html =
                                                 <td>' . $cnt . '</td>
                                                 <td>' . $row['feedback_summary'] . '</td>
                                                 <td>' .date('d M Y g:ia', strtotime($row['feedback_sumbitted_on'])) . '</td>
-                                                <td>' . $row['feedback_status'] . '</td>
                                                 <td>' . $feedback_by . '</td>
                                             </tr>
                                         ';
