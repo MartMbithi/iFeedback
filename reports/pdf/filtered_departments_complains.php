@@ -188,7 +188,7 @@ $html =
                                         if (empty($row['feedback_owner_name'])) {
                                             $feedback_by = "Anonymous";
                                         } else {
-                                            $feedback_by = $row['feedback_owner_name'] . ' ' . $row['feedback_owner_contact'];
+                                            $feedback_by = $row['feedback_owner_name'];
                                         }
                                         $html .=
                                             '
