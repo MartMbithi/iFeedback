@@ -74,12 +74,13 @@ if (isset($_POST['Step_One'])) {
         $feedback_directorate = mysqli_real_escape_string($mysqli, $_POST['feedback_directorate']);
         $feedback_department = mysqli_real_escape_string($mysqli, $_POST['feedback_department']);
         $department_email = mysqli_real_escape_string($mysqli, $_POST['department_email']);
+        $feedback_summary = mysqli_real_escape_string($mysqli, $_POST['feedback_summary']);
 
         /* Persist This And Set The Mood Right */
         if (mysqli_query(
             $mysqli,
-            "INSERT INTO feedbacks (feedback_type, feedback_directorate, feedback_department) 
-        VALUES ('{$feedback_type}', '{$feedback_directorate}', '{$feedback_department}')"
+            "INSERT INTO feedbacks (feedback_type, feedback_directorate, feedback_department, feedback_summary) 
+        VALUES ('{$feedback_type}', '{$feedback_directorate}', '{$feedback_department}', '{$feedback_summary}')"
         )) {
             $feedback_id = mysqli_insert_id($mysqli);
             $_SESSION['feedback_id'] = $feedback_id;
