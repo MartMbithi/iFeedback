@@ -42,11 +42,11 @@ INSERT INTO `departments` (
     `department_name`,
     `department_email`
   )
-VALUES (1, 2, 'Transport', 'martinezmbithi@gmail.com'),
-  (2, 2, 'Security', 'martinezmbithi@gmail.com'),
-  (3, 2, 'Finance', 'martinezmbithi@gmail.com'),
-  (4, 3, 'Testing', 'martinezmbithi@gmail.com'),
-  (5, 3, 'Analysis', 'martinezmbithi@gmail.com');
+VALUES (1, 2, 'Transport', 'hello@gmail.com'),
+  (2, 2, 'Security', 'hello@gmail.com'),
+  (3, 2, 'Finance', 'hello@gmail.com'),
+  (4, 3, 'Testing', 'hello@gmail.com'),
+  (5, 3, 'Analysis', 'hello@gmail.com');
 -- --------------------------------------------------------
 --
 -- Table structure for table `directorates`
@@ -406,13 +406,13 @@ INSERT INTO `mailer_settings` (
   )
 VALUES (
     2,
-    'mailer@devlan.co.ke',
+    'mailer@domain.com',
     '587',
     'tls',
-    'mailer@devlan.co.ke',
+    'mailer@domain.com',
     'Pharmacy and Poisons Board',
     'info@pharmacyandpoisionboard.org',
-    'MyFuckinPassword',
+    'STMPPassword',
     'Active'
   );
 -- --------------------------------------------------------
@@ -475,9 +475,9 @@ INSERT INTO `users` (
   )
 VALUES (
     6,
-    'Demo User',
-    'demo@devlan.co.ke',
-    '3b1f05a2237a5e698e9824889f1c673e823be2cc',
+    'Admin',
+    'admin@devlan.co.ke',
+    'a69681bcf334ae130217fea4505fd3c994f5683f',
     '074-084-7563',
     'System Administrator',
     NULL,
