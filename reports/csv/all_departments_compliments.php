@@ -105,7 +105,7 @@ if ($query->num_rows > 0) {
             $cnt,
             $row['feedback_directorate'],
             $row['feedback_department'],
-            $row['feedback_is1'],
+            $row['feedback_summary'],
             date('d M Y g:ia', strtotime($row['feedback_sumbitted_on'])),
             $row['feedback_status'],
             $feedback_by

@@ -198,7 +198,7 @@ $html =
                                                 <td>' . $cnt . '</td>
                                                 <td>' . $row['feedback_directorate'] . '</td>
                                                 <td>' . $row['feedback_department'] . '</td>
-                                                <td>' . $row['feedback_is2'] . '</td>
+                                                <td>' . $row['feedback_summary'] . '</td>
                                                 <td>' .date('d M Y g:ia', strtotime($row['feedback_sumbitted_on'])) . '</td>
                                                 <td>' . $row['feedback_status'] . '</td>
                                                 <td>' . $feedback_by . '</td>
