@@ -102,7 +102,7 @@ require_once('../partials/backoffice_head.php');
                                             <div class="nk-block-between">
                                                 <div class="nk-block-head-content">
                                                     <h3 class="nk-block-title page-title">
-                                                    Compliment Details - Submitted on <?php echo  date('d M Y g:ia', strtotime($return_results['feedback_sumbitted_on'])); ?>
+                                                        Compliment Details - Submitted on <?php echo  date('d M Y g:ia', strtotime($return_results['feedback_sumbitted_on'])); ?>
                                                     </h3>
                                                 </div><!-- .nk-block-head-content -->
                                                 <div class="nk-block-head-content">
@@ -111,7 +111,7 @@ require_once('../partials/backoffice_head.php');
                                                         <div class="toggle-expand-content" data-content="pageMenu">
                                                             <ul class="nk-block-tools g-3">
                                                                 <li>
-                                                                    <a href="javascript:history.back()"  class="btn btn-white btn-outline-light">
+                                                                    <a href="javascript:history.back()" class="btn btn-white btn-outline-light">
                                                                         <em class="icon ni ni-first"></em>
                                                                         <span>Back</span>
                                                                     </a>
@@ -127,6 +127,24 @@ require_once('../partials/backoffice_head.php');
                                             <div class="row">
                                                 <div class="card mb-3 col-md-12 border border-success">
                                                     <div class="card-body">
+                                                        <div class="nk-block">
+                                                            <div class="nk-block">
+                                                                <div class="row g-gs">
+                                                                    <div class="col-md-12">
+                                                                        <fieldset class="border col-12 border p-3 rounded ">
+                                                                            <legend class="w-auto text-danger">Compliment Summary</legend>
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <label class="text-dark">
+                                                                                        <?php echo $return_results['feedback_summary']; ?>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <div class="nk-block">
                                                             <div class="nk-block">
                                                                 <div class="row g-gs">
@@ -178,6 +196,7 @@ require_once('../partials/backoffice_head.php');
                                                                 </div>
                                                             </div>
                                                         </div>
+
                                                         <div class="nk-block">
                                                             <div class="nk-block">
                                                                 <div class="row g-gs">
