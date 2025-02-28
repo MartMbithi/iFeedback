@@ -113,6 +113,10 @@ require_once('../partials/backoffice_head.php');
                                             </select>
                                             <input type="hidden" name="department_email" id="department_email" value="">
                                         </div>
+                                        <div class="col-md-12">
+                                            <label for="department" class="form-label">Complain summary</label>
+                                            <textarea class="form-control" name="feedback_summary" value=""></textarea>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
